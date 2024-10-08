@@ -143,8 +143,8 @@ false = value;
 /d+/ = value;
 >/d+/ = value : any
 >             : ^^^
->/d+/ : RegExp
->     : ^^^^^^
+>/d+/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >value : any
 >      : ^^^
 
@@ -338,10 +338,10 @@ foo() = value;
 (/d+/) = value;
 >(/d+/) = value : any
 >               : ^^^
->(/d+/) : RegExp
->       : ^^^^^^
->/d+/ : RegExp
->     : ^^^^^^
+>(/d+/) : RegExp<CapturingGroups, NamedCapturingGroups>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/d+/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >value : any
 >      : ^^^
 

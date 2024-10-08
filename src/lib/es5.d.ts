@@ -389,6 +389,31 @@ interface IArguments {
     callee: Function;
 }
 
+interface StringReplaceCallbackOptions {}
+
+interface StringReplaceCallbackIncludeNamedCapturingGroups {
+    readonly includeNamedCapturingGroups: unique symbol;
+}
+
+// Used by `String.replace`, `String.replaceAll` and `RegExp[Symbol.replace]`
+type StringReplaceCallbackSignature<
+    CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+> = (
+    ...args: [
+        ...capturingGroups: CapturingGroups,
+        offset: number,
+        input: string,
+        ...(StringReplaceCallbackOptions extends StringReplaceCallbackIncludeNamedCapturingGroups ? [groups: NamedCapturingGroups] : []),
+    ]
+) => string;
+
+/**
+ * The array returned by `String.prototype.match` when the global (`g`) flag is set on the specified RegExp.
+ * The first match will always be present because `null` will be returned if there are no matches.
+ */
+type RegExpMatchArray = [string, ...string[]];
+
 interface String {
     /** Returns a string representation of a string. */
     toString(): string;
@@ -432,24 +457,29 @@ interface String {
     localeCompare(that: string): number;
 
     /**
-     * Matches a string with a regular expression, and returns an array containing the results of that search.
-     * @param regexp A variable name or string literal containing the regular expression pattern and flags.
+     * Matches a string with a regular expression.
+     * @param regexp The regular expression for searching. If a string is provided, it will be converted to a RegExp without flags.
+     * @returns Either a {@link RegExpMatchArray} that contains all the matches when the global (`g`) flag is set on the specified RegExp,
+     * a {@link RegExpExecArray} which is identical to the return value of `regexp.exec(string)`,
+     * or `null` if no matches are present.
      */
-    match(regexp: string | RegExp): RegExpMatchArray | null;
+    match<
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    >(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>): RegExpMatchArray | CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups> | null;
 
     /**
      * Replaces text in a string, using a regular expression or search string.
      * @param searchValue A string or regular expression to search for.
      * @param replaceValue A string containing the text to replace. When the {@linkcode searchValue} is a `RegExp`, all matches are replaced if the `g` flag is set (or only those matches at the beginning, if the `y` flag is also present). Otherwise, only the first match of {@linkcode searchValue} is replaced.
      */
-    replace(searchValue: string | RegExp, replaceValue: string): string;
-
-    /**
-     * Replaces text in a string, using a regular expression or search string.
-     * @param searchValue A string to search for.
-     * @param replacer A function that returns the replacement text.
-     */
-    replace(searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string;
+    replace<
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    >(
+        searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>,
+        replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>,
+    ): string;
 
     /**
      * Finds the first substring match in a regular expression search.
@@ -942,22 +972,16 @@ interface DateConstructor {
 
 declare var Date: DateConstructor;
 
-interface RegExpMatchArray extends Array<string> {
-    /**
-     * The index of the search at which the result was found.
-     */
-    index?: number;
-    /**
-     * A copy of the search string.
-     */
-    input?: string;
-    /**
-     * The first match. This will always be present because `null` will be returned if there are no matches.
-     */
-    0: string;
-}
+// `RegExpExecArray` can't extend `[string, ...(string | undefined)[]]` correctly, see issue #51751
+type CapturingGroupsArray = { 0: string; } & (string | undefined)[];
+type NamedCapturingGroupsObject = { [name: string]: string | undefined; } | undefined;
 
-interface RegExpExecArray extends Array<string> {
+// `CapturingGroups` can't be extended directly, see issue #2225
+// `NamedCapturingGroups` is used from ES2018
+interface RegExpExecArray<
+    CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+> extends CapturingGroupsArray {
     /**
      * The index of the search at which the result was found.
      */
@@ -966,18 +990,17 @@ interface RegExpExecArray extends Array<string> {
      * A copy of the search string.
      */
     input: string;
-    /**
-     * The first match. This will always be present because `null` will be returned if there are no matches.
-     */
-    0: string;
 }
 
-interface RegExp {
+interface RegExp<
+    CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+> {
     /**
      * Executes a search on a string using a regular expression pattern, and returns an array containing the results of that search.
      * @param string The String object or string literal on which to perform the search.
      */
-    exec(string: string): RegExpExecArray | null;
+    exec(string: string): CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups> | null;
 
     /**
      * Returns a Boolean value that indicates whether or not a pattern exists in a searched string.
@@ -985,7 +1008,7 @@ interface RegExp {
      */
     test(string: string): boolean;
 
-    /** Returns a copy of the text of the regular expression pattern. Read-only. The regExp argument is a Regular expression object. It can be a variable name or a literal. */
+    /** Returns a copy of the text of the regular expression pattern. Read-only. */
     readonly source: string;
 
     /** Returns a Boolean value indicating the state of the global flag (g) used with a regular expression. Default is false. Read-only. */
@@ -1005,9 +1028,9 @@ interface RegExp {
 }
 
 interface RegExpConstructor {
-    new (pattern: RegExp | string): RegExp;
+    new <T extends RegExp = RegExp>(pattern: T | string): T;
     new (pattern: string, flags?: string): RegExp;
-    (pattern: RegExp | string): RegExp;
+    <T extends RegExp = RegExp>(pattern: T | string): T;
     (pattern: string, flags?: string): RegExp;
     readonly "prototype": RegExp;
 

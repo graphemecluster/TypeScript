@@ -1,23 +1,27 @@
 //// [tests/cases/compiler/regExpWithOpenBracketInCharClass.ts] ////
 
+=== Performance Stats ===
+Type Count: 1,000
+Instantiation count: 2,500
+
 === regExpWithOpenBracketInCharClass.ts ===
 const regexes: RegExp[] = [
->regexes : RegExp[]
->        : ^^^^^^^^
->[  /[[]/,  // Valid  /[[]/u, // Valid  /[[]/v, // Well-terminated regex with an incomplete character class] : RegExp[]
->                                                                                                            : ^^^^^^^^
+>regexes : RegExp<CapturingGroupsArray, { [name: string]: string; }>[]
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>[  /[[]/,  // Valid  /[[]/u, // Valid  /[[]/v, // Well-terminated regex with an incomplete character class] : RegExp<CapturingGroups, NamedCapturingGroups>[]
+>                                                                                                            : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /[[]/,  // Valid
->/[[]/ : RegExp
->      : ^^^^^^
+>/[[]/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /[[]/u, // Valid
->/[[]/u : RegExp
->       : ^^^^^^
+>/[[]/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /[[]/v, // Well-terminated regex with an incomplete character class
->/[[]/v : RegExp
->       : ^^^^^^
+>/[[]/v : RegExp<CapturingGroups, NamedCapturingGroups>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ];
 

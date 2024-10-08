@@ -2779,10 +2779,19 @@ export interface LiteralExpression extends LiteralLikeNode, PrimaryExpression {
 
 export interface RegularExpressionLiteral extends LiteralExpression {
     readonly kind: SyntaxKind.RegularExpressionLiteral;
+    readonly regExpBody: string;
+    readonly regExpFlags: RegularExpressionFlags;
+    readonly regExpFlagsText: string;
+    readonly capturingGroups: RegularExpressionCapturingGroup[];
+    readonly capturingGroupSpecifiers: Map<string, RegularExpressionCapturingGroup[]>;
+}
+
+export interface RegularExpressionCapturingGroup extends ReadonlyTextRange {
+    readonly pattern: string[];
+    readonly isPossiblyUndefined: boolean;
 }
 
 // dprint-ignore
-/** @internal */
 export const enum RegularExpressionFlags {
     None           = 0,
     HasIndices     = 1 << 0, // d

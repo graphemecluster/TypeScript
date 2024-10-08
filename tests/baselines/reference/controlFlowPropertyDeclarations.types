@@ -5,11 +5,15 @@
 
 declare var require:any;
 >require : any
+>        : ^^^
 
 var HTMLDOMPropertyConfig = require('react/lib/HTMLDOMPropertyConfig');
 >HTMLDOMPropertyConfig : any
+>                      : ^^^
 >require('react/lib/HTMLDOMPropertyConfig') : any
+>                                           : ^^^
 >require : any
+>        : ^^^
 >'react/lib/HTMLDOMPropertyConfig' : "react/lib/HTMLDOMPropertyConfig"
 >                                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -19,6 +23,7 @@ for (var propname in HTMLDOMPropertyConfig.Properties) {
 >propname : string
 >         : ^^^^^^
 >HTMLDOMPropertyConfig.Properties : any
+>                                 : ^^^
 >HTMLDOMPropertyConfig : any
 >                      : ^^^
 >Properties : any
@@ -28,7 +33,9 @@ for (var propname in HTMLDOMPropertyConfig.Properties) {
 >!HTMLDOMPropertyConfig.Properties.hasOwnProperty(propname) : boolean
 >                                                           : ^^^^^^^
 >HTMLDOMPropertyConfig.Properties.hasOwnProperty(propname) : any
+>                                                          : ^^^
 >HTMLDOMPropertyConfig.Properties.hasOwnProperty : any
+>                                                : ^^^
 >HTMLDOMPropertyConfig.Properties : any
 >                                 : ^^^
 >HTMLDOMPropertyConfig : any
@@ -45,9 +52,13 @@ for (var propname in HTMLDOMPropertyConfig.Properties) {
 
   var mapFrom = HTMLDOMPropertyConfig.DOMAttributeNames[propname] || propname.toLowerCase();
 >mapFrom : any
+>        : ^^^
 >HTMLDOMPropertyConfig.DOMAttributeNames[propname] || propname.toLowerCase() : any
+>                                                                            : ^^^
 >HTMLDOMPropertyConfig.DOMAttributeNames[propname] : any
+>                                                  : ^^^
 >HTMLDOMPropertyConfig.DOMAttributeNames : any
+>                                        : ^^^
 >HTMLDOMPropertyConfig : any
 >                      : ^^^
 >DOMAttributeNames : any
@@ -77,22 +88,27 @@ function repeatString(string, times) {
 >repeatString : (string: any, times: any) => any
 >             : ^      ^^^^^^^     ^^^^^^^^^^^^^
 >string : any
+>       : ^^^
 >times : any
+>      : ^^^
 
   if (times === 1) {
 >times === 1 : boolean
 >            : ^^^^^^^
 >times : any
+>      : ^^^
 >1 : 1
 >  : ^
 
     return string;
 >string : any
+>       : ^^^
   }
   if (times < 0) { throw new Error(); }
 >times < 0 : boolean
 >          : ^^^^^^^
 >times : any
+>      : ^^^
 >0 : 0
 >  : ^
 >new Error() : Error
@@ -108,11 +124,13 @@ function repeatString(string, times) {
 
   while (times) {
 >times : any
+>      : ^^^
 
     if (times & 1) {
 >times & 1 : number
 >          : ^^^^^^
 >times : any
+>      : ^^^
 >1 : 1
 >  : ^
 
@@ -122,18 +140,23 @@ function repeatString(string, times) {
 >repeated : string
 >         : ^^^^^^
 >string : any
+>       : ^^^
     }
     if (times >>= 1) {
 >times >>= 1 : number
 >            : ^^^^^^
 >times : any
+>      : ^^^
 >1 : 1
 >  : ^
 
       string += string;
 >string += string : any
+>                 : ^^^
 >string : any
+>       : ^^^
 >string : any
+>       : ^^^
     }
   }
   return repeated;
@@ -152,13 +175,17 @@ function endsWith(haystack, needle) {
 >endsWith : (haystack: any, needle: any) => boolean
 >         : ^        ^^^^^^^      ^^^^^^^^^^^^^^^^^
 >haystack : any
+>         : ^^^
 >needle : any
+>       : ^^^
 
   return haystack.slice(-needle.length) === needle;
 >haystack.slice(-needle.length) === needle : boolean
 >                                          : ^^^^^^^
 >haystack.slice(-needle.length) : any
+>                               : ^^^
 >haystack.slice : any
+>               : ^^^
 >haystack : any
 >         : ^^^
 >slice : any
@@ -166,11 +193,13 @@ function endsWith(haystack, needle) {
 >-needle.length : number
 >               : ^^^^^^
 >needle.length : any
+>              : ^^^
 >needle : any
 >       : ^^^
 >length : any
 >       : ^^^
 >needle : any
+>       : ^^^
 }
 
 /**
@@ -185,20 +214,27 @@ function trimEnd(haystack, needle) {
 >trimEnd : (haystack: any, needle: any) => any
 >        : ^        ^^^^^^^      ^^^^^^^^^^^^^
 >haystack : any
+>         : ^^^
 >needle : any
+>       : ^^^
 
   return endsWith(haystack, needle)
 >endsWith(haystack, needle)    ? haystack.slice(0, -needle.length)    : haystack : any
+>                                                                                : ^^^
 >endsWith(haystack, needle) : boolean
 >                           : ^^^^^^^
 >endsWith : (haystack: any, needle: any) => boolean
 >         : ^        ^^^^^^^      ^^^^^^^^^^^^^^^^^
 >haystack : any
+>         : ^^^
 >needle : any
+>       : ^^^
 
     ? haystack.slice(0, -needle.length)
 >haystack.slice(0, -needle.length) : any
+>                                  : ^^^
 >haystack.slice : any
+>               : ^^^
 >haystack : any
 >         : ^^^
 >slice : any
@@ -208,6 +244,7 @@ function trimEnd(haystack, needle) {
 >-needle.length : number
 >               : ^^^^^^
 >needle.length : any
+>              : ^^^
 >needle : any
 >       : ^^^
 >length : any
@@ -215,6 +252,7 @@ function trimEnd(haystack, needle) {
 
     : haystack;
 >haystack : any
+>         : ^^^
 }
 
 /**
@@ -224,24 +262,31 @@ function hyphenToCamelCase(string) {
 >hyphenToCamelCase : (string: any) => any
 >                  : ^      ^^^^^^^^^^^^^
 >string : any
+>       : ^^^
 
   return string.replace(/-(.)/g, function(match, chr) {
 >string.replace(/-(.)/g, function(match, chr) {    return chr.toUpperCase();  }) : any
+>                                                                                : ^^^
 >string.replace : any
+>               : ^^^
 >string : any
 >       : ^^^
 >replace : any
 >        : ^^^
->/-(.)/g : RegExp
->        : ^^^^^^
+>/-(.)/g : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >function(match, chr) {    return chr.toUpperCase();  } : (match: any, chr: any) => any
 >                                                       : ^     ^^^^^^^   ^^^^^^^^^^^^^
 >match : any
+>      : ^^^
 >chr : any
+>    : ^^^
 
     return chr.toUpperCase();
 >chr.toUpperCase() : any
+>                  : ^^^
 >chr.toUpperCase : any
+>                : ^^^
 >chr : any
 >    : ^^^
 >toUpperCase : any
@@ -257,6 +302,7 @@ function isEmpty(string) {
 >isEmpty : (string: any) => boolean
 >        : ^      ^^^^^^^^^^^^^^^^^
 >string : any
+>       : ^^^
 
    return !/[^\s]/.test(string);
 >!/[^\s]/.test(string) : boolean
@@ -265,11 +311,12 @@ function isEmpty(string) {
 >                     : ^^^^^^^
 >/[^\s]/.test : (string: string) => boolean
 >             : ^      ^^      ^^^^^       
->/[^\s]/ : RegExp
->        : ^^^^^^
+>/[^\s]/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >test : (string: string) => boolean
 >     : ^      ^^      ^^^^^       
 >string : any
+>       : ^^^
 }
 
 /**
@@ -283,17 +330,19 @@ function isConvertiblePixelValue(value) {
 >isConvertiblePixelValue : (value: any) => boolean
 >                        : ^     ^^^^^^^^^^^^^^^^^
 >value : any
+>      : ^^^
 
   return /^\d+px$/.test(value);
 >/^\d+px$/.test(value) : boolean
 >                      : ^^^^^^^
 >/^\d+px$/.test : (string: string) => boolean
 >               : ^      ^^      ^^^^^       
->/^\d+px$/ : RegExp
->          : ^^^^^^
+>/^\d+px$/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >test : (string: string) => boolean
 >     : ^      ^^      ^^^^^       
 >value : any
+>      : ^^^
 }
 
 export class HTMLtoJSX {
@@ -324,17 +373,23 @@ export class HTMLtoJSX {
 >(node) => {    var parentTag = node.parentNode && node.parentNode.tagName.toLowerCase();    if (parentTag === 'textarea' || parentTag === 'style') {      // Ignore text content of textareas and styles, as it will have already been moved      // to a "defaultValue" attribute and "dangerouslySetInnerHTML" attribute respectively.      return;    }    var text = ''    if (this._inPreTag) {      // If this text is contained within a <pre>, we need to ensure the JSX      // whitespace coalescing rules don't eat the whitespace. This means      // wrapping newlines and sequences of two or more spaces in variables.      text = text        .replace(/\r/g, '')        .replace(/( {2,}|\n|\t|\{|\})/g, function(whitespace) {          return '{' + JSON.stringify(whitespace) + '}';        });    } else {      // If there's a newline in the text, adjust the indent level      if (text.indexOf('\n') > -1) {      }    }    this.output += text;  } : (node: any) => void
 >                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             : ^    ^^^^^^^^^^^^^^
 >node : any
+>     : ^^^
 
     var parentTag = node.parentNode && node.parentNode.tagName.toLowerCase();
 >parentTag : any
+>          : ^^^
 >node.parentNode && node.parentNode.tagName.toLowerCase() : any
+>                                                         : ^^^
 >node.parentNode : any
+>                : ^^^
 >node : any
 >     : ^^^
 >parentNode : any
 >           : ^^^
 >node.parentNode.tagName.toLowerCase() : any
+>                                      : ^^^
 >node.parentNode.tagName.toLowerCase : any
+>                                    : ^^^
 >node.parentNode.tagName : any
 >                        : ^^^
 >node.parentNode : any
@@ -354,11 +409,13 @@ export class HTMLtoJSX {
 >parentTag === 'textarea' : boolean
 >                         : ^^^^^^^
 >parentTag : any
+>          : ^^^
 >'textarea' : "textarea"
 >           : ^^^^^^^^^^
 >parentTag === 'style' : boolean
 >                      : ^^^^^^^
 >parentTag : any
+>          : ^^^
 >'style' : "style"
 >        : ^^^^^^^
 
@@ -391,32 +448,32 @@ export class HTMLtoJSX {
 >     : ^^^^^^
 >text        .replace(/\r/g, '')        .replace(/( {2,}|\n|\t|\{|\})/g, function(whitespace) {          return '{' + JSON.stringify(whitespace) + '}';        }) : string
 >                                                                                                                                                                 : ^^^^^^
->text        .replace(/\r/g, '')        .replace : { (searchValue: string | RegExp, replaceValue: string): string; (searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string; }
->                                                : ^^^           ^^               ^^            ^^      ^^^      ^^^           ^^               ^^        ^^                                             ^^^      ^^^
+>text        .replace(/\r/g, '')        .replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
+>                                                : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
 >text        .replace(/\r/g, '') : string
 >                                : ^^^^^^
->text        .replace : { (searchValue: string | RegExp, replaceValue: string): string; (searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string; }
->                     : ^^^           ^^               ^^            ^^      ^^^      ^^^           ^^               ^^        ^^                                             ^^^      ^^^
+>text        .replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
+>                     : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
 >text : string
 >     : ^^^^^^
 
         .replace(/\r/g, '')
->replace : { (searchValue: string | RegExp, replaceValue: string): string; (searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string; }
->        : ^^^           ^^               ^^            ^^      ^^^      ^^^           ^^               ^^        ^^                                             ^^^      ^^^
->/\r/g : RegExp
->      : ^^^^^^
+>replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
+>        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
+>/\r/g : RegExp<CapturingGroups, NamedCapturingGroups>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >'' : ""
 >   : ^^
 
         .replace(/( {2,}|\n|\t|\{|\})/g, function(whitespace) {
->replace : { (searchValue: string | RegExp, replaceValue: string): string; (searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string; }
->        : ^^^           ^^               ^^            ^^      ^^^      ^^^           ^^               ^^        ^^                                             ^^^      ^^^
->/( {2,}|\n|\t|\{|\})/g : RegExp
->                       : ^^^^^^
->function(whitespace) {          return '{' + JSON.stringify(whitespace) + '}';        } : (whitespace: string) => string
->                                                                                        : ^          ^^^^^^^^^^^^^^^^^^^
->whitespace : string
->           : ^^^^^^
+>replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
+>        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
+>/( {2,}|\n|\t|\{|\})/g : RegExp<CapturingGroups, NamedCapturingGroups>
+>                       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>function(whitespace) {          return '{' + JSON.stringify(whitespace) + '}';        } : (whitespace: string | number | CapturingGroups[number]) => string
+>                                                                                        : ^          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>whitespace : string | number | CapturingGroups[number]
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
           return '{' + JSON.stringify(whitespace) + '}';
 >'{' + JSON.stringify(whitespace) + '}' : string
@@ -433,8 +490,8 @@ export class HTMLtoJSX {
 >     : ^^^^
 >stringify : { (value: any, replacer?: (this: any, key: string, value: any) => any, space?: string | number): string; (value: any, replacer?: (number | string)[] | null, space?: string | number): string; }
 >          : ^^^     ^^   ^^        ^^^                                           ^^     ^^^               ^^^      ^^^     ^^   ^^        ^^^                          ^^     ^^^               ^^^      ^^^
->whitespace : string
->           : ^^^^^^
+>whitespace : string | number | CapturingGroups[number]
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >'}' : "}"
 >    : ^^^
 

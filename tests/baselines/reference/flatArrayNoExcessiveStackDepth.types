@@ -1,8 +1,8 @@
 //// [tests/cases/compiler/flatArrayNoExcessiveStackDepth.ts] ////
 
 === Performance Stats ===
-Type Count: 2,500
-Instantiation count: 5,000
+Type Count: 1,000
+Instantiation count: 2,500
 
 === flatArrayNoExcessiveStackDepth.ts ===
 // Repro from #43493
@@ -68,22 +68,22 @@ const repro_43249 = (value: unknown) => {
 >                              : ^^^^^^^^^^^^^^^^^^^^^
 >value.match(/anything/) : RegExpMatchArray | null
 >                        : ^^^^^^^^^^^^^^^^^^^^^^^
->value.match : { (regexp: string | RegExp): RegExpMatchArray | null; (matcher: { [Symbol.match](string: string): RegExpMatchArray | null; }): RegExpMatchArray | null; }
->            : ^^^      ^^               ^^^                       ^^^       ^^                                                            ^^^                       ^^^
+>value.match : { <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>): RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null; <T>(matcher: { [Symbol.match](string: string): T; }): T; }
+>            : ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^                   ^                                                                        ^       ^^^ ^^       ^^                                      ^^^ ^^^
 >value : string
 >      : ^^^^^^
->match : { (regexp: string | RegExp): RegExpMatchArray | null; (matcher: { [Symbol.match](string: string): RegExpMatchArray | null; }): RegExpMatchArray | null; }
->      : ^^^      ^^               ^^^                       ^^^       ^^                                                            ^^^                       ^^^
->/anything/ : RegExp
->           : ^^^^^^
+>match : { <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>): RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null; <T>(matcher: { [Symbol.match](string: string): T; }): T; }
+>      : ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^                   ^                                                                        ^       ^^^ ^^       ^^                                      ^^^ ^^^
+>/anything/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >[] : []
 >   : ^^
 
     const [, extracted] = match;
 > : undefined
 > : ^^^^^^^^^
->extracted : string
->          : ^^^^^^
+>extracted : string | undefined
+>          : ^^^^^^^^^^^^^^^^^^
 >match : [] | RegExpMatchArray
 >      : ^^^^^^^^^^^^^^^^^^^^^
 

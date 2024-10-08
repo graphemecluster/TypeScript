@@ -8,16 +8,16 @@ const [, a = ''] = ''.match('') || [];
 >  : ^^^^^^
 >'' : ""
 >   : ^^
->''.match('') || [] : RegExpMatchArray | []
->                   : ^^^^^^^^^^^^^^^^^^^^^
->''.match('') : RegExpMatchArray
->             : ^^^^^^^^^^^^^^^^
->''.match : (regexp: string | RegExp) => RegExpMatchArray | null
->         : ^      ^^               ^^^^^                       
+>''.match('') || [] : RegExpMatchArray | ({ 0: string; } & string[] & RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>) | []
+>                   : ^^^^^^^^^^^^^^^^^^^^^^^^^      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>''.match('') : RegExpMatchArray | ({ 0: string; } & string[] & RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>)
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>''.match : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>) => RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>         : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^^^                   ^                                                                        ^       
 >'' : ""
 >   : ^^
->match : (regexp: string | RegExp) => RegExpMatchArray | null
->      : ^      ^^               ^^^^^                       
+>match : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>) => RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>      : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^^^                   ^                                                                        ^       
 >'' : ""
 >   : ^^
 >[] : []

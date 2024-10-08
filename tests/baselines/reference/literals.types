@@ -146,18 +146,18 @@ var s = "foo\
     bar";
 
 var r: RegExp;
->r : RegExp
->  : ^^^^^^
+>r : RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 var r = /what/;
->r : RegExp
->  : ^^^^^^
->/what/ : RegExp
->       : ^^^^^^
+>r : RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/what/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 var r = /\\\\/;
->r : RegExp
->  : ^^^^^^
->/\\\\/ : RegExp
->       : ^^^^^^
+>r : RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\\\\/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

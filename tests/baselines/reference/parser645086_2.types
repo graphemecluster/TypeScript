@@ -2,10 +2,10 @@
 
 === parser645086_2.ts ===
 var v = /[^]/]/
->v : RegExp
->  : ^^^^^^
->/[^]/ : RegExp
->      : ^^^^^^
->/ : RegExp
->  : ^^^^^^
+>v : RegExp<CapturingGroups, NamedCapturingGroups>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[^]/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

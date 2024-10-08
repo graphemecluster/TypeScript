@@ -2230,7 +2230,7 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
     var globalStringType: ObjectType;
     var globalNumberType: ObjectType;
     var globalBooleanType: ObjectType;
-    var globalRegExpType: ObjectType;
+    var globalRegExpType: GenericType;
     var globalThisType: GenericType;
     var anyArrayType: Type;
     var autoArrayType: Type;
@@ -50415,7 +50415,7 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
         globalStringType = getGlobalType("String" as __String, /*arity*/ 0, /*reportErrors*/ true);
         globalNumberType = getGlobalType("Number" as __String, /*arity*/ 0, /*reportErrors*/ true);
         globalBooleanType = getGlobalType("Boolean" as __String, /*arity*/ 0, /*reportErrors*/ true);
-        globalRegExpType = getGlobalType("RegExp" as __String, /*arity*/ 0, /*reportErrors*/ true);
+        globalRegExpType = getGlobalType("RegExp" as __String, /*arity*/ 2, /*reportErrors*/ true);
         anyArrayType = createArrayType(anyType);
 
         autoArrayType = createArrayType(autoType);

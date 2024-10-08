@@ -57,8 +57,8 @@ switch (x) {
 >       : ^^^^^^^^^^^^^^^^^
 
     case /[a-z]/:
->/[a-z]/ : RegExp
->        : ^^^^^^
+>/[a-z]/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     case[]:
 >[] : undefined[]
@@ -209,8 +209,8 @@ switch (new Object()) { }
 >       : ^^^^^^^^^^^^^^^^^
 
 switch (/[a-z]/) { }
->/[a-z]/ : RegExp
->        : ^^^^^^
+>/[a-z]/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 switch ([]) { }
 >[] : undefined[]

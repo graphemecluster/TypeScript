@@ -5007,6 +5007,28 @@ declare namespace ts {
     }
     interface RegularExpressionLiteral extends LiteralExpression {
         readonly kind: SyntaxKind.RegularExpressionLiteral;
+        readonly regExpBody: string;
+        readonly regExpFlags: RegularExpressionFlags;
+        readonly regExpFlagsText: string;
+        readonly capturingGroups: RegularExpressionCapturingGroup[];
+        readonly capturingGroupSpecifiers: Map<string, RegularExpressionCapturingGroup[]>;
+    }
+    interface RegularExpressionCapturingGroup extends ReadonlyTextRange {
+        readonly pattern: string[];
+        readonly isPossiblyUndefined: boolean;
+    }
+    enum RegularExpressionFlags {
+        None = 0,
+        HasIndices = 1,
+        Global = 2,
+        IgnoreCase = 4,
+        Multiline = 8,
+        DotAll = 16,
+        Unicode = 32,
+        UnicodeSets = 64,
+        Sticky = 128,
+        AnyUnicodeMode = 96,
+        Modifiers = 28,
     }
     interface NoSubstitutionTemplateLiteral extends LiteralExpression, TemplateLiteralLikeNode, Declaration {
         readonly kind: SyntaxKind.NoSubstitutionTemplateLiteral;

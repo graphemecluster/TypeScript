@@ -521,6 +521,12 @@ Info seq  [hh:mm:ss:mss] response:
             "sortText": "15"
           },
           {
+            "name": "CapturingGroupsArray",
+            "kind": "type",
+            "kindModifiers": "declare",
+            "sortText": "15"
+          },
+          {
             "name": "ClassAccessorDecoratorContext",
             "kind": "interface",
             "kindModifiers": "declare",
@@ -833,6 +839,12 @@ Info seq  [hh:mm:ss:mss] response:
             "sortText": "15"
           },
           {
+            "name": "NamedCapturingGroupsObject",
+            "kind": "type",
+            "kindModifiers": "declare",
+            "sortText": "15"
+          },
+          {
             "name": "never",
             "kind": "keyword",
             "kindModifiers": "",
@@ -1044,7 +1056,7 @@ Info seq  [hh:mm:ss:mss] response:
           },
           {
             "name": "RegExpMatchArray",
-            "kind": "interface",
+            "kind": "type",
             "kindModifiers": "declare",
             "sortText": "15"
           },
@@ -1075,6 +1087,24 @@ Info seq  [hh:mm:ss:mss] response:
           {
             "name": "StringConstructor",
             "kind": "interface",
+            "kindModifiers": "declare",
+            "sortText": "15"
+          },
+          {
+            "name": "StringReplaceCallbackIncludeNamedCapturingGroups",
+            "kind": "interface",
+            "kindModifiers": "declare",
+            "sortText": "15"
+          },
+          {
+            "name": "StringReplaceCallbackOptions",
+            "kind": "interface",
+            "kindModifiers": "declare",
+            "sortText": "15"
+          },
+          {
+            "name": "StringReplaceCallbackSignature",
+            "kind": "type",
             "kindModifiers": "declare",
             "sortText": "15"
           },

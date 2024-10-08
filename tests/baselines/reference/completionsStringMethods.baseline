@@ -10,8 +10,12 @@
 // | (method) String.lastIndexOf(searchString: string, position?: number): number
 // | (property) String.length: number
 // | (method) String.localeCompare(that: string): number (+1 overload)
-// | (method) String.match(regexp: string | RegExp): RegExpMatchArray | null
-// | (method) String.replace(searchValue: string | RegExp, replaceValue: string): string (+1 overload)
+// | (method) String.match<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = {
+// |     [name: string]: string;
+// | }>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>): RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+// | (method) String.replace<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = {
+// |     [name: string]: string;
+// | }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string
 // | (method) String.search(regexp: string | RegExp): number
 // | (method) String.slice(start?: number, end?: number): string
 // | (method) String.split(separator: string | RegExp, limit?: number): string[]
@@ -840,6 +844,150 @@
               "kind": "methodName"
             },
             {
+              "text": "<",
+              "kind": "punctuation"
+            },
+            {
+              "text": "CapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "extends",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "CapturingGroupsArray",
+              "kind": "aliasName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "=",
+              "kind": "operator"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "CapturingGroupsArray",
+              "kind": "aliasName"
+            },
+            {
+              "text": ",",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "NamedCapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "extends",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "NamedCapturingGroupsObject",
+              "kind": "aliasName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "=",
+              "kind": "operator"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "name",
+              "kind": "parameterName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "string",
+              "kind": "keyword"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "string",
+              "kind": "keyword"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
+            },
+            {
+              "text": ">",
+              "kind": "punctuation"
+            },
+            {
               "text": "(",
               "kind": "punctuation"
             },
@@ -876,6 +1024,30 @@
               "kind": "localName"
             },
             {
+              "text": "<",
+              "kind": "punctuation"
+            },
+            {
+              "text": "CapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": ",",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "NamedCapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": ">",
+              "kind": "punctuation"
+            },
+            {
               "text": ")",
               "kind": "punctuation"
             },
@@ -889,7 +1061,71 @@
             },
             {
               "text": "RegExpMatchArray",
+              "kind": "aliasName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "|",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "(",
+              "kind": "punctuation"
+            },
+            {
+              "text": "CapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "&",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "RegExpExecArray",
               "kind": "interfaceName"
+            },
+            {
+              "text": "<",
+              "kind": "punctuation"
+            },
+            {
+              "text": "CapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": ",",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "NamedCapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": ">",
+              "kind": "punctuation"
+            },
+            {
+              "text": ")",
+              "kind": "punctuation"
             },
             {
               "text": " ",
@@ -910,7 +1146,7 @@
           ],
           "documentation": [
             {
-              "text": "Matches a string with a regular expression, and returns an array containing the results of that search.",
+              "text": "Matches a string with a regular expression.",
               "kind": "text"
             }
           ],
@@ -927,7 +1163,62 @@
                   "kind": "space"
                 },
                 {
-                  "text": "A variable name or string literal containing the regular expression pattern and flags.",
+                  "text": "The regular expression for searching. If a string is provided, it will be converted to a RegExp without flags.",
+                  "kind": "text"
+                }
+              ]
+            },
+            {
+              "name": "returns",
+              "text": [
+                {
+                  "text": "Either a ",
+                  "kind": "text"
+                },
+                {
+                  "text": "{@link ",
+                  "kind": "link"
+                },
+                {
+                  "text": "RegExpMatchArray",
+                  "kind": "linkName",
+                  "target": {
+                    "fileName": "lib.d.ts",
+                    "textSpan": {
+                      "start": "--",
+                      "length": "--"
+                    }
+                  }
+                },
+                {
+                  "text": "}",
+                  "kind": "link"
+                },
+                {
+                  "text": " that contains all the matches when the global (`g`) flag is set on the specified RegExp,\na ",
+                  "kind": "text"
+                },
+                {
+                  "text": "{@link ",
+                  "kind": "link"
+                },
+                {
+                  "text": "RegExpExecArray",
+                  "kind": "linkName",
+                  "target": {
+                    "fileName": "lib.d.ts",
+                    "textSpan": {
+                      "start": "--",
+                      "length": "--"
+                    }
+                  }
+                },
+                {
+                  "text": "}",
+                  "kind": "link"
+                },
+                {
+                  "text": " which is identical to the return value of `regexp.exec(string)`,\nor `null` if no matches are present.",
                   "kind": "text"
                 }
               ]
@@ -969,6 +1260,150 @@
               "kind": "methodName"
             },
             {
+              "text": "<",
+              "kind": "punctuation"
+            },
+            {
+              "text": "CapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "extends",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "CapturingGroupsArray",
+              "kind": "aliasName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "=",
+              "kind": "operator"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "CapturingGroupsArray",
+              "kind": "aliasName"
+            },
+            {
+              "text": ",",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "NamedCapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "extends",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "NamedCapturingGroupsObject",
+              "kind": "aliasName"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "=",
+              "kind": "operator"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "name",
+              "kind": "parameterName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "string",
+              "kind": "keyword"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "string",
+              "kind": "keyword"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
+            },
+            {
+              "text": ">",
+              "kind": "punctuation"
+            },
+            {
               "text": "(",
               "kind": "punctuation"
             },
@@ -1005,6 +1440,30 @@
               "kind": "localName"
             },
             {
+              "text": "<",
+              "kind": "punctuation"
+            },
+            {
+              "text": "CapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": ",",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "NamedCapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": ">",
+              "kind": "punctuation"
+            },
+            {
               "text": ",",
               "kind": "punctuation"
             },
@@ -1029,6 +1488,46 @@
               "kind": "keyword"
             },
             {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "|",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "StringReplaceCallbackSignature",
+              "kind": "aliasName"
+            },
+            {
+              "text": "<",
+              "kind": "punctuation"
+            },
+            {
+              "text": "CapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": ",",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "NamedCapturingGroups",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": ">",
+              "kind": "punctuation"
+            },
+            {
               "text": ")",
               "kind": "punctuation"
             },
@@ -1043,34 +1542,6 @@
             {
               "text": "string",
               "kind": "keyword"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "(",
-              "kind": "punctuation"
-            },
-            {
-              "text": "+",
-              "kind": "operator"
-            },
-            {
-              "text": "1",
-              "kind": "numericLiteral"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "overload",
-              "kind": "text"
-            },
-            {
-              "text": ")",
-              "kind": "punctuation"
             }
           ],
           "documentation": [

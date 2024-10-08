@@ -2,6 +2,6 @@
 
 === parserSkippedTokens13.ts ===
 /regexp/ \ ;
->/regexp/ : RegExp
->         : ^^^^^^
+>/regexp/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

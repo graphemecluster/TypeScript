@@ -2,32 +2,32 @@
 
 === firstMatchRegExpMatchArray.ts ===
 const match = ''.match(/ /)
->match : RegExpMatchArray | null
->      : ^^^^^^^^^^^^^^^^^^^^^^^
->''.match(/ /) : RegExpMatchArray | null
->              : ^^^^^^^^^^^^^^^^^^^^^^^
->''.match : (regexp: string | RegExp) => RegExpMatchArray | null
->         : ^      ^^               ^^^^^                       
+>match : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | RegExpMatchArray | null
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>''.match(/ /) : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | RegExpMatchArray | null
+>              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>''.match : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>) => RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>         : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^^^                   ^                                                                        ^       
 >'' : ""
 >   : ^^
->match : (regexp: string | RegExp) => RegExpMatchArray | null
->      : ^      ^^               ^^^^^                       
->/ / : RegExp
->    : ^^^^^^
+>match : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>) => RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>      : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^^^                   ^                                                                        ^       
+>/ / : RegExp<CapturingGroups, NamedCapturingGroups>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 if (match !== null) {
 >match !== null : boolean
 >               : ^^^^^^^
->match : RegExpMatchArray | null
->      : ^^^^^^^^^^^^^^^^^^^^^^^
+>match : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | RegExpMatchArray | null
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     const foo: string = match[0]
 >foo : string
 >    : ^^^^^^
 >match[0] : string
 >         : ^^^^^^
->match : RegExpMatchArray
->      : ^^^^^^^^^^^^^^^^
+>match : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | RegExpMatchArray
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >0 : 0
 >  : ^
 
@@ -36,8 +36,8 @@ if (match !== null) {
 >    : ^^^^^^
 >match[1] : string | undefined
 >         : ^^^^^^^^^^^^^^^^^^
->match : RegExpMatchArray
->      : ^^^^^^^^^^^^^^^^
+>match : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | RegExpMatchArray
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >1 : 1
 >  : ^
 }

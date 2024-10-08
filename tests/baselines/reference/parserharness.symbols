@@ -47,9 +47,9 @@ function switchToForwardSlashes(path: string) {
 >path : Symbol(path, Decl(parserharness.ts, 27, 32))
 
     return path.replace(/\\/g, "/");
->path.replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
+>path.replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --))
 >path : Symbol(path, Decl(parserharness.ts, 27, 32))
->replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
+>replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --))
 }
 
 function filePath(fullPath: string) {
@@ -239,9 +239,9 @@ module Harness {
 >bugs : Symbol(bugs, Decl(parserharness.ts, 95, 15))
 
                 bugs.forEach(bug => assert.bug(bug));
->bugs.forEach : Symbol(Array.forEach, Decl(lib.es5.d.ts, --, --))
+>bugs.forEach : Symbol(Array.forEach, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
 >bugs : Symbol(bugs, Decl(parserharness.ts, 95, 15))
->forEach : Symbol(Array.forEach, Decl(lib.es5.d.ts, --, --))
+>forEach : Symbol(Array.forEach, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
 >bug : Symbol(bug, Decl(parserharness.ts, 97, 29))
 >assert : Symbol(assert, Decl(parserharness.ts, 20, 11))
 >bug : Symbol(bug, Decl(parserharness.ts, 97, 29))
@@ -3811,7 +3811,7 @@ module Harness {
 >path.match : Symbol(String.match, Decl(lib.es5.d.ts, --, --))
 >path : Symbol(path, Decl(parserharness.ts, 1285, 36))
 >match : Symbol(String.match, Decl(lib.es5.d.ts, --, --))
->0 : Symbol(RegExpMatchArray[0], Decl(lib.es5.d.ts, --, --))
+>0 : Symbol(0, Decl(lib.es5.d.ts, --, --))
 
             var code = readFile(path);
 >code : Symbol(code, Decl(parserharness.ts, 1288, 15))
@@ -3949,7 +3949,7 @@ module Harness {
 >lastUnit : Symbol(lastUnit, Decl(parserharness.ts, 1326, 15))
 >name : Symbol(TestCaseParser.TestUnitData.name, Decl(parserharness.ts, 1422, 28))
 >match : Symbol(String.match, Decl(lib.es5.d.ts, --, --))
->0 : Symbol(RegExpMatchArray[0], Decl(lib.es5.d.ts, --, --))
+>0 : Symbol(0, Decl(lib.es5.d.ts, --, --))
 
             var dependencies = units.slice(0, units.length - 1);
 >dependencies : Symbol(dependencies, Decl(parserharness.ts, 1329, 15))
@@ -5702,7 +5702,7 @@ module Harness {
 >path.match : Symbol(String.match, Decl(lib.es5.d.ts, --, --))
 >path : Symbol(path, Decl(parserharness.ts, 1869, 38))
 >match : Symbol(String.match, Decl(lib.es5.d.ts, --, --))
->0 : Symbol(RegExpMatchArray[0], Decl(lib.es5.d.ts, --, --))
+>0 : Symbol(0, Decl(lib.es5.d.ts, --, --))
 >callback : Symbol(callback, Decl(parserharness.ts, 1869, 51))
         }
 
@@ -5939,9 +5939,9 @@ module Harness {
 
                 reportContent = reportContent.replace(htmlTrailer, '');
 >reportContent : Symbol(reportContent, Decl(parserharness.ts, 1955, 15))
->reportContent.replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
+>reportContent.replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --))
 >reportContent : Symbol(reportContent, Decl(parserharness.ts, 1955, 15))
->replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
+>replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --))
 >htmlTrailer : Symbol(htmlTrailer, Decl(parserharness.ts, 1913, 11))
 
             } else {
@@ -6061,15 +6061,15 @@ module Harness {
 
                 expected = expected.replace(/\r\n?/g, '\n')
 >expected : Symbol(expected, Decl(parserharness.ts, 2005, 15))
->expected.replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
+>expected.replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --))
 >expected : Symbol(expected, Decl(parserharness.ts, 2005, 15))
->replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
+>replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --))
 
                 actual = actual.replace(/\r\n?/g, '\n')
 >actual : Symbol(actual, Decl(parserharness.ts, 1991, 35))
->actual.replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
+>actual.replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --))
 >actual : Symbol(actual, Decl(parserharness.ts, 1991, 35))
->replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --), Decl(lib.es5.d.ts, --, --))
+>replace : Symbol(String.replace, Decl(lib.es5.d.ts, --, --))
             }
 
             return { expected: expected, actual: actual };

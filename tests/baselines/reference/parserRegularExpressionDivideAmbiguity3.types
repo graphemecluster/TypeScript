@@ -8,8 +8,8 @@ if (1) /regexp/a.foo();
 >                : ^^^
 >/regexp/a.foo : any
 >              : ^^^
->/regexp/a : RegExp
->          : ^^^^^^
+>/regexp/a : RegExp<CapturingGroups, NamedCapturingGroups>
+>          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >foo : any
 >    : ^^^
 

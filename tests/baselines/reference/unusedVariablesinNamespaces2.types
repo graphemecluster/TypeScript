@@ -6,16 +6,16 @@ namespace Validation {
 >           : ^^^^^^^^^^^^^^^^^
 
     const lettersRegexp = /^[A-Za-z]+$/;
->lettersRegexp : RegExp
->              : ^^^^^^
->/^[A-Za-z]+$/ : RegExp
->              : ^^^^^^
+>lettersRegexp : RegExp<CapturingGroups, NamedCapturingGroups>
+>              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/^[A-Za-z]+$/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     const numberRegexp = /^[0-9]+$/;
->numberRegexp : RegExp
->             : ^^^^^^
->/^[0-9]+$/ : RegExp
->           : ^^^^^^
+>numberRegexp : RegExp<CapturingGroups, NamedCapturingGroups>
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/^[0-9]+$/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     export class LettersOnlyValidator {
 >LettersOnlyValidator : LettersOnlyValidator
@@ -32,8 +32,8 @@ namespace Validation {
 >                       : ^^^^^^^
 >lettersRegexp.test : (string: string) => boolean
 >                   : ^      ^^      ^^^^^       
->lettersRegexp : RegExp
->              : ^^^^^^
+>lettersRegexp : RegExp<CapturingGroups, NamedCapturingGroups>
+>              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >test : (string: string) => boolean
 >     : ^      ^^      ^^^^^       
 >s2 : string

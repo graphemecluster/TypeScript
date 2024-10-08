@@ -8,16 +8,16 @@ var x = 5;
 >  : ^
 
 var r = /yo/;
->r : RegExp
->  : ^^^^^^
->/yo/ : RegExp
->     : ^^^^^^
+>r : RegExp<CapturingGroups, NamedCapturingGroups>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/yo/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 r.source;
 >r.source : string
 >         : ^^^^^^
->r : RegExp
->  : ^^^^^^
+>r : RegExp<CapturingGroups, NamedCapturingGroups>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >source : string
 >       : ^^^^^^
 
@@ -88,10 +88,10 @@ var f: Function = (x: string) => x.length;
 >       : ^^^^^^
 
 var r2: RegExp = /./g;
->r2 : RegExp
->   : ^^^^^^
->/./g : RegExp
->     : ^^^^^^
+>r2 : RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/./g : RegExp<CapturingGroups, NamedCapturingGroups>
+>     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 var n2: Number = 34;
 >n2 : Number

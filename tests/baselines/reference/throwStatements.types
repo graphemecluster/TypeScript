@@ -331,8 +331,8 @@ throw ['a', ['b']];
 >    : ^^^
 
 throw /[a-z]/;
->/[a-z]/ : RegExp
->        : ^^^^^^
+>/[a-z]/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 throw new Date();
 >new Date() : Date

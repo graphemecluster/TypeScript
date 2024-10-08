@@ -8,16 +8,16 @@ var a = "Hello";
 >        : ^^^^^^^
 
 var b = a.match(/\/ver=([^/]+)/);
->b : RegExpMatchArray
->  : ^^^^^^^^^^^^^^^^
->a.match(/\/ver=([^/]+)/) : RegExpMatchArray
->                         : ^^^^^^^^^^^^^^^^
->a.match : (regexp: string | RegExp) => RegExpMatchArray | null
->        : ^      ^^               ^^^^^                       
+>b : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | RegExpMatchArray
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>a.match(/\/ver=([^/]+)/) : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | RegExpMatchArray
+>                         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>a.match : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>) => RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^^^                   ^                                                                        ^       
 >a : string
 >  : ^^^^^^
->match : (regexp: string | RegExp) => RegExpMatchArray | null
->      : ^      ^^               ^^^^^                       
->/\/ver=([^/]+)/ : RegExp
->                : ^^^^^^
+>match : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>) => RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>      : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^^^                   ^                                                                        ^       
+>/\/ver=([^/]+)/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>                : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

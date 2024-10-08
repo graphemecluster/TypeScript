@@ -1,39 +1,43 @@
 //// [tests/cases/compiler/stringMatchAll.ts] ////
 
+=== Performance Stats ===
+Type Count: 1,000
+Instantiation count: 2,500
+
 === stringMatchAll.ts ===
 const matches = "matchAll".matchAll(/\w/g);
->matches : RegExpStringIterator<RegExpExecArray>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->"matchAll".matchAll(/\w/g) : RegExpStringIterator<RegExpExecArray>
->                           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->"matchAll".matchAll : (regexp: RegExp) => RegExpStringIterator<RegExpExecArray>
->                    : ^      ^^      ^^^^^                                     
+>matches : RegExpStringIterator<CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>"matchAll".matchAll(/\w/g) : RegExpStringIterator<CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>>
+>                           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>"matchAll".matchAll : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(regexp: RegExp<CapturingGroups, NamedCapturingGroups>) => RegExpStringIterator<CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>>
+>                    : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                             ^^^^^                                                                                              
 >"matchAll" : "matchAll"
 >           : ^^^^^^^^^^
->matchAll : (regexp: RegExp) => RegExpStringIterator<RegExpExecArray>
->         : ^      ^^      ^^^^^                                     
->/\w/g : RegExp
->      : ^^^^^^
+>matchAll : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(regexp: RegExp<CapturingGroups, NamedCapturingGroups>) => RegExpStringIterator<CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>>
+>         : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                             ^^^^^                                                                                              
+>/\w/g : RegExp<CapturingGroups, NamedCapturingGroups>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 const array = [...matches];
->array : RegExpExecArray[]
->      : ^^^^^^^^^^^^^^^^^
->[...matches] : RegExpExecArray[]
->             : ^^^^^^^^^^^^^^^^^
->...matches : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
->matches : RegExpStringIterator<RegExpExecArray>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>array : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>)[]
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>[...matches] : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>)[]
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>...matches : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>matches : RegExpStringIterator<CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 const { index, input } = array[0];
 >index : number
 >      : ^^^^^^
 >input : string
 >      : ^^^^^^
->array[0] : RegExpExecArray
->         : ^^^^^^^^^^^^^^^
->array : RegExpExecArray[]
->      : ^^^^^^^^^^^^^^^^^
+>array[0] : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>array : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>)[]
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >0 : 0
 >  : ^
 

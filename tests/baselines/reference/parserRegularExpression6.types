@@ -12,9 +12,9 @@ a /= 1; // parse as infix
 >  : ^
 
 a = /=/; // parse as regexp
->a = /=/ : RegExp
->        : ^^^^^^
+>a = /=/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >a : any
->/=/ : RegExp
->    : ^^^^^^
+>/=/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

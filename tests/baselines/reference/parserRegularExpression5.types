@@ -8,8 +8,8 @@ if (a) / (\\ ? | & ) rct = j / .test(c.href);
 >                                      : ^^^^^^^
 >/ (\\ ? | & ) rct = j / .test : (string: string) => boolean
 >                              : ^      ^^      ^^^^^       
->/ (\\ ? | & ) rct = j / : RegExp
->                        : ^^^^^^
+>/ (\\ ? | & ) rct = j / : RegExp<CapturingGroups, NamedCapturingGroups>
+>                        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >test : (string: string) => boolean
 >     : ^      ^^      ^^^^^       
 >c.href : any

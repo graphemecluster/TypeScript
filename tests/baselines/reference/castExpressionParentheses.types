@@ -71,8 +71,8 @@ declare var a;
 (<any>/regexp/g); 
 >(<any>/regexp/g) : any
 ><any>/regexp/g : any
->/regexp/g : RegExp
->          : ^^^^^^
+>/regexp/g : RegExp<CapturingGroups, NamedCapturingGroups>
+>          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 (<any>false); 
 >(<any>false) : any

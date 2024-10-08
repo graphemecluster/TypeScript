@@ -6,8 +6,8 @@ export function foo(matchResult: RegExpMatchArray, execResult: RegExpExecArray) 
 >    : ^           ^^                ^^          ^^               ^^^^^^^^^
 >matchResult : RegExpMatchArray
 >            : ^^^^^^^^^^^^^^^^
->execResult : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
+>execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     matchResult[0].length;
 >matchResult[0].length : number
@@ -34,54 +34,54 @@ export function foo(matchResult: RegExpMatchArray, execResult: RegExpExecArray) 
 >       : ^^^^^^
 
     matchResult.index + 0;
->matchResult.index + 0 : number
->                      : ^^^^^^
->matchResult.index : number
->                  : ^^^^^^
+>matchResult.index + 0 : any
+>                      : ^^^
+>matchResult.index : any
+>                  : ^^^
 >matchResult : RegExpMatchArray
 >            : ^^^^^^^^^^^^^^^^
->index : number
->      : ^^^^^^
+>index : any
+>      : ^^^
 >0 : 0
 >  : ^
 
     matchResult.input.length;
->matchResult.input.length : number
->                         : ^^^^^^
->matchResult.input : string
->                  : ^^^^^^
+>matchResult.input.length : any
+>                         : ^^^
+>matchResult.input : any
+>                  : ^^^
 >matchResult : RegExpMatchArray
 >            : ^^^^^^^^^^^^^^^^
->input : string
->      : ^^^^^^
->length : number
->       : ^^^^^^
+>input : any
+>      : ^^^
+>length : any
+>       : ^^^
 
     matchResult.groups["someVariable"].length;
->matchResult.groups["someVariable"].length : number
->                                          : ^^^^^^
->matchResult.groups["someVariable"] : string
->                                   : ^^^^^^
->matchResult.groups : { [key: string]: string; }
->                   : ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>matchResult.groups["someVariable"].length : any
+>                                          : ^^^
+>matchResult.groups["someVariable"] : any
+>                                   : ^^^
+>matchResult.groups : any
+>                   : ^^^
 >matchResult : RegExpMatchArray
 >            : ^^^^^^^^^^^^^^^^
->groups : { [key: string]: string; }
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>groups : any
+>       : ^^^
 >"someVariable" : "someVariable"
 >               : ^^^^^^^^^^^^^^
->length : number
->       : ^^^^^^
+>length : any
+>       : ^^^
 
     matchResult.groups = undefined;
 >matchResult.groups = undefined : undefined
 >                               : ^^^^^^^^^
->matchResult.groups : { [key: string]: string; }
->                   : ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>matchResult.groups : any
+>                   : ^^^
 >matchResult : RegExpMatchArray
 >            : ^^^^^^^^^^^^^^^^
->groups : { [key: string]: string; }
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>groups : any
+>       : ^^^
 >undefined : undefined
 >          : ^^^^^^^^^
 
@@ -90,8 +90,8 @@ export function foo(matchResult: RegExpMatchArray, execResult: RegExpExecArray) 
 >                     : ^^^^^^
 >execResult[0] : string
 >              : ^^^^^^
->execResult : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
+>execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >0 : 0
 >  : ^
 >length : number
@@ -102,8 +102,8 @@ export function foo(matchResult: RegExpMatchArray, execResult: RegExpExecArray) 
 >                       : ^^^^^^
 >execResult[999] : string
 >                : ^^^^^^
->execResult : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
+>execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >999 : 999
 >    : ^^^
 >length : number
@@ -114,8 +114,8 @@ export function foo(matchResult: RegExpMatchArray, execResult: RegExpExecArray) 
 >                     : ^^^^^^
 >execResult.index : number
 >                 : ^^^^^^
->execResult : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
+>execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >index : number
 >      : ^^^^^^
 >0 : 0
@@ -126,8 +126,8 @@ export function foo(matchResult: RegExpMatchArray, execResult: RegExpExecArray) 
 >                        : ^^^^^^
 >execResult.input : string
 >                 : ^^^^^^
->execResult : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
+>execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >input : string
 >      : ^^^^^^
 >length : number
@@ -138,12 +138,12 @@ export function foo(matchResult: RegExpMatchArray, execResult: RegExpExecArray) 
 >                                         : ^^^^^^
 >execResult.groups["someVariable"] : string
 >                                  : ^^^^^^
->execResult.groups : { [key: string]: string; }
->                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^
->execResult : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
->groups : { [key: string]: string; }
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>execResult.groups : { [name: string]: string; }
+>                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>groups : { [name: string]: string; }
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >"someVariable" : "someVariable"
 >               : ^^^^^^^^^^^^^^
 >length : number
@@ -152,12 +152,12 @@ export function foo(matchResult: RegExpMatchArray, execResult: RegExpExecArray) 
     execResult.groups = undefined;
 >execResult.groups = undefined : undefined
 >                              : ^^^^^^^^^
->execResult.groups : { [key: string]: string; }
->                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^
->execResult : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
->groups : { [key: string]: string; }
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>execResult.groups : { [name: string]: string; }
+>                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>groups : { [name: string]: string; }
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >undefined : undefined
 >          : ^^^^^^^^^
 
@@ -172,19 +172,19 @@ export function foo(matchResult: RegExpMatchArray, execResult: RegExpExecArray) 
 >       : ^^^^^^      
 
         matchResult = execResult;
->matchResult = execResult : RegExpExecArray
->                         : ^^^^^^^^^^^^^^^
+>matchResult = execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>                         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >matchResult : RegExpMatchArray
 >            : ^^^^^^^^^^^^^^^^
->execResult : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
+>execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     }
     else {
         execResult = matchResult
 >execResult = matchResult : RegExpMatchArray
 >                         : ^^^^^^^^^^^^^^^^
->execResult : RegExpExecArray
->           : ^^^^^^^^^^^^^^^
+>execResult : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >matchResult : RegExpMatchArray
 >            : ^^^^^^^^^^^^^^^^
     }

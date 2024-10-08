@@ -155,32 +155,32 @@ function f4() {
 // Repro from #8851
 
 const re = /./g
->re : RegExp
->   : ^^^^^^
->/./g : RegExp
->     : ^^^^^^
+>re : RegExp<CapturingGroups, NamedCapturingGroups>
+>   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/./g : RegExp<CapturingGroups, NamedCapturingGroups>
+>     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 let match: RegExpExecArray | null
->match : RegExpExecArray | null
->      : ^^^^^^^^^^^^^^^^^^^^^^
+>match : RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject> | null
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 while ((match = re.exec("xxx")) != null) {
 >(match = re.exec("xxx")) != null : boolean
 >                                 : ^^^^^^^
->(match = re.exec("xxx")) : RegExpExecArray | null
->                         : ^^^^^^^^^^^^^^^^^^^^^^
->match = re.exec("xxx") : RegExpExecArray | null
->                       : ^^^^^^^^^^^^^^^^^^^^^^
->match : RegExpExecArray | null
->      : ^^^^^^^^^^^^^^^^^^^^^^
->re.exec("xxx") : RegExpExecArray | null
->               : ^^^^^^^^^^^^^^^^^^^^^^
->re.exec : (string: string) => RegExpExecArray | null
->        : ^      ^^      ^^^^^                      
->re : RegExp
->   : ^^^^^^
->exec : (string: string) => RegExpExecArray | null
->     : ^      ^^      ^^^^^                      
+>(match = re.exec("xxx")) : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>                         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>match = re.exec("xxx") : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>                       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>match : RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject> | null
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>re.exec("xxx") : (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>               : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>re.exec : (string: string) => (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>        : ^      ^^      ^^^^^^                                                                        ^       
+>re : RegExp<CapturingGroups, NamedCapturingGroups>
+>   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>exec : (string: string) => (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
+>     : ^      ^^      ^^^^^^                                                                        ^       
 >"xxx" : "xxx"
 >      : ^^^^^
 
@@ -191,20 +191,20 @@ while ((match = re.exec("xxx")) != null) {
 >                                  : ^^^^^^
 >match[1].length : number
 >                : ^^^^^^
->match[1] : string
->         : ^^^^^^
->match : RegExpExecArray
->      : ^^^^^^^^^^^^^^^
+>match[1] : string | undefined
+>         : ^^^^^^^^^^^^^^^^^^
+>match : RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >1 : 1
 >  : ^
 >length : number
 >       : ^^^^^^
 >match[2].length : number
 >                : ^^^^^^
->match[2] : string
->         : ^^^^^^
->match : RegExpExecArray
->      : ^^^^^^^^^^^^^^^
+>match[2] : string | undefined
+>         : ^^^^^^^^^^^^^^^^^^
+>match : RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >2 : 2
 >  : ^
 >length : number

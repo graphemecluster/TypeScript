@@ -97,7 +97,7 @@ interface NewableFunction {}
 interface IArguments {}
 interface Number {}
 interface Object {}
-interface RegExp {}
+interface RegExp<T, U> {}
 interface String {}
 interface Array<T> { length: number; [n: number]: T; }
 interface SymbolConstructor {

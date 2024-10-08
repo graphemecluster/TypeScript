@@ -348,7 +348,10 @@ interface ReadonlyArray<T> {
     toLocaleString(locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
 }
 
-interface RegExp {
+interface RegExp<
+    CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+> {
     /**
      * Returns a string indicating the flags of the regular expression in question. This field is read-only.
      * The characters in this string are sequenced and concatenated in the following order:
@@ -377,8 +380,8 @@ interface RegExp {
 }
 
 interface RegExpConstructor {
-    new (pattern: RegExp | string, flags?: string): RegExp;
-    (pattern: RegExp | string, flags?: string): RegExp;
+    new <T extends RegExp = RegExp>(pattern: T | string, flags?: string): T;
+    <T extends RegExp = RegExp>(pattern: T | string, flags?: string): T;
 }
 
 interface String {

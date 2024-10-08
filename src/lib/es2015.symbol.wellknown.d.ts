@@ -162,7 +162,10 @@ interface PromiseConstructor {
     readonly [Symbol.species]: PromiseConstructor;
 }
 
-interface RegExp {
+interface RegExp<
+    CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+> {
     /**
      * Matches a string with this regular expression, and returns an array containing the results of
      * that search.
@@ -177,15 +180,7 @@ interface RegExp {
      * @param replaceValue A String object or string literal containing the text to replace for every
      *                     successful match of this regular expression.
      */
-    [Symbol.replace](string: string, replaceValue: string): string;
-
-    /**
-     * Replaces text in a string, using this regular expression.
-     * @param string A String object or string literal whose contents matching against
-     *               this regular expression will be replaced
-     * @param replacer A function that returns the replacement text.
-     */
-    [Symbol.replace](string: string, replacer: (substring: string, ...args: any[]) => string): string;
+    [Symbol.replace](string: string, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string;
 
     /**
      * Finds the position beginning first substring match in a regular expression search
@@ -220,21 +215,14 @@ interface String {
      * containing the results of that search, or null if no matches are found.
      * @param matcher An object that supports being matched against.
      */
-    match(matcher: { [Symbol.match](string: string): RegExpMatchArray | null; }): RegExpMatchArray | null;
+    match<T>(matcher: { [Symbol.match](string: string): T; }): T;
 
     /**
      * Passes a string and {@linkcode replaceValue} to the `[Symbol.replace]` method on {@linkcode searchValue}. This method is expected to implement its own replacement algorithm.
      * @param searchValue An object that supports searching for and replacing matches within a string.
      * @param replaceValue The replacement text.
      */
-    replace(searchValue: { [Symbol.replace](string: string, replaceValue: string): string; }, replaceValue: string): string;
-
-    /**
-     * Replaces text in a string, using an object that supports replacement within a string.
-     * @param searchValue A object can search for and replace matches within a string.
-     * @param replacer A function that returns the replacement text.
-     */
-    replace(searchValue: { [Symbol.replace](string: string, replacer: (substring: string, ...args: any[]) => string): string; }, replacer: (substring: string, ...args: any[]) => string): string;
+    replace<T>(searchValue: { [Symbol.replace](string: string, replaceValue: T): string; }, replaceValue: T): string;
 
     /**
      * Finds the first substring match in a regular expression search.

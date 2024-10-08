@@ -1,0 +1,21 @@
+fakelib.ts(7,11): error TS2317: Global type 'RegExp' must have 2 type parameter(s).
+
+
+==== fakelib.ts (1 errors) ====
+    interface Object { }
+    interface Array<T> { }
+    interface String { }
+    interface Boolean { }
+    interface Number { }
+    interface Function { }
+    interface RegExp { }
+              ~~~~~~
+!!! error TS2317: Global type 'RegExp' must have 2 type parameter(s).
+    interface IArguments { }
+    
+    
+==== file1.ts (0 errors) ====
+    /// <reference lib="dom" />
+    export declare interface HTMLElement { field: string; }
+    export const elem: HTMLElement = { field: 'a' };
+    

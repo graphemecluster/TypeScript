@@ -6,6 +6,6 @@ foo(/notregexp);
 >                : ^^^
 >foo : any
 >    : ^^^
->/notregexp : RegExp
->           : ^^^^^^
+>/notregexp : RegExp<CapturingGroups, NamedCapturingGroups>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

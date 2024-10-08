@@ -191,14 +191,14 @@ function f() {
 >  : ^^^^^^^^^^
 
     let x: string | number | boolean | RegExp | Function;
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     x = "";
 >x = "" : ""
 >       : ^^
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >"" : ""
 >   : ^^
 
@@ -210,8 +210,8 @@ function f() {
             x = 42;
 >x = 42 : 42
 >       : ^^
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >42 : 42
 >   : ^^
 
@@ -224,42 +224,42 @@ function f() {
             x = true;
 >x = true : true
 >         : ^^^^
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >true : true
 >     : ^^^^
 
             continue;
         }
         x = /a/;
->x = /a/ : RegExp
->        : ^^^^^^
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/a/ : RegExp
->    : ^^^^^^
+>x = /a/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/a/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     } while (cond)
 >cond : boolean
 >     : ^^^^^^^
 
     x; // number | boolean | RegExp
->x : number | true | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^
+>x : number | true | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 }
 function g() {
 >g : () => void
 >  : ^^^^^^^^^^
 
     let x: string | number | boolean | RegExp | Function;
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     x = "";
 >x = "" : ""
 >       : ^^
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >"" : ""
 >   : ^^
 
@@ -271,8 +271,8 @@ function g() {
             x = 42;
 >x = 42 : 42
 >       : ^^
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >42 : 42
 >   : ^^
 
@@ -285,20 +285,20 @@ function g() {
             x = true;
 >x = true : true
 >         : ^^^^
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >true : true
 >     : ^^^^
 
             continue;
         }
         x = /a/;
->x = /a/ : RegExp
->        : ^^^^^^
->x : string | number | boolean | Function | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/a/ : RegExp
->    : ^^^^^^
+>x = /a/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | Function | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/a/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     } while (true)
 >true : true

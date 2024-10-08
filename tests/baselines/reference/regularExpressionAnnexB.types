@@ -1,157 +1,161 @@
 //// [tests/cases/compiler/regularExpressionAnnexB.ts] ////
 
+=== Performance Stats ===
+Type Count: 1,000
+Instantiation count: 2,500
+
 === regularExpressionAnnexB.ts ===
 const regexes: RegExp[] = [
->regexes : RegExp[]
->        : ^^^^^^^^
->[  /\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/,  /[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/,  /\P[\P\w-_]/,  // Compare to  /\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/u,  /[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/u,  /\P[\P\w-_]/u,] : RegExp[]
->                                                                                                                                                                                                   : ^^^^^^^^
+>regexes : RegExp<CapturingGroupsArray, { [name: string]: string; }>[]
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>[  /\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/,  /[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/,  /\P[\P\w-_]/,  // Compare to  /\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/u,  /[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/u,  /\P[\P\w-_]/u,] : RegExp<CapturingGroups, NamedCapturingGroups>[]
+>                                                                                                                                                                                                   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/,
->/\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/ : RegExp
->                                 : ^^^^^^
+>/\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>                                 : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/,
->/[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/ : RegExp
->                                   : ^^^^^^
+>/[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>                                   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /\P[\P\w-_]/,
->/\P[\P\w-_]/ : RegExp
->             : ^^^^^^
+>/\P[\P\w-_]/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   // Compare to
   /\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/u,
->/\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/u : RegExp
->                                  : ^^^^^^
+>/\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>                                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/u,
->/[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/u : RegExp
->                                    : ^^^^^^
+>/[\q\u\i\c\k\_\f\o\x\-\j\u\m\p\s]/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>                                    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /\P[\P\w-_]/u,
->/\P[\P\w-_]/u : RegExp
->              : ^^^^^^
+>/\P[\P\w-_]/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ];
 
 const regexesWithBraces: RegExp[] = [
->regexesWithBraces : RegExp[]
->                  : ^^^^^^^^
->[  /{??/,  /{,??/,  /{,1??/,  /{1??/,  /{1,??/,  /{1,2??/,  /{2,1??/,  /{}??/,  /{,}??/,  /{,1}??/,  /{1}??/,  /{1,}??/,  /{1,2}??/,  /{2,1}??/,  // Compare to  /{??/u,  /{,??/u,  /{,1??/u,  /{1??/u,  /{1,??/u,  /{1,2??/u,  /{2,1??/u,  /{}??/u,  /{,}??/u,  /{,1}??/u,  /{1}??/u,  /{1,}??/u,  /{1,2}??/u,  /{2,1}??/u,] : RegExp[]
->                                                                                                                                                                                                                                                                                                                              : ^^^^^^^^
+>regexesWithBraces : RegExp<CapturingGroupsArray, { [name: string]: string; }>[]
+>                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>[  /{??/,  /{,??/,  /{,1??/,  /{1??/,  /{1,??/,  /{1,2??/,  /{2,1??/,  /{}??/,  /{,}??/,  /{,1}??/,  /{1}??/,  /{1,}??/,  /{1,2}??/,  /{2,1}??/,  // Compare to  /{??/u,  /{,??/u,  /{,1??/u,  /{1??/u,  /{1,??/u,  /{1,2??/u,  /{2,1??/u,  /{}??/u,  /{,}??/u,  /{,1}??/u,  /{1}??/u,  /{1,}??/u,  /{1,2}??/u,  /{2,1}??/u,] : RegExp<CapturingGroups, NamedCapturingGroups>[]
+>                                                                                                                                                                                                                                                                                                                              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{??/,
->/{??/ : RegExp
->      : ^^^^^^
+>/{??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{,??/,
->/{,??/ : RegExp
->       : ^^^^^^
+>/{,??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{,1??/,
->/{,1??/ : RegExp
->        : ^^^^^^
+>/{,1??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1??/,
->/{1??/ : RegExp
->       : ^^^^^^
+>/{1??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1,??/,
->/{1,??/ : RegExp
->        : ^^^^^^
+>/{1,??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1,2??/,
->/{1,2??/ : RegExp
->         : ^^^^^^
+>/{1,2??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{2,1??/,
->/{2,1??/ : RegExp
->         : ^^^^^^
+>/{2,1??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{}??/,
->/{}??/ : RegExp
->       : ^^^^^^
+>/{}??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{,}??/,
->/{,}??/ : RegExp
->        : ^^^^^^
+>/{,}??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{,1}??/,
->/{,1}??/ : RegExp
->         : ^^^^^^
+>/{,1}??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1}??/,
->/{1}??/ : RegExp
->        : ^^^^^^
+>/{1}??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1,}??/,
->/{1,}??/ : RegExp
->         : ^^^^^^
+>/{1,}??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1,2}??/,
->/{1,2}??/ : RegExp
->          : ^^^^^^
+>/{1,2}??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{2,1}??/,
->/{2,1}??/ : RegExp
->          : ^^^^^^
+>/{2,1}??/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   // Compare to
   /{??/u,
->/{??/u : RegExp
->       : ^^^^^^
+>/{??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{,??/u,
->/{,??/u : RegExp
->        : ^^^^^^
+>/{,??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{,1??/u,
->/{,1??/u : RegExp
->         : ^^^^^^
+>/{,1??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1??/u,
->/{1??/u : RegExp
->        : ^^^^^^
+>/{1??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1,??/u,
->/{1,??/u : RegExp
->         : ^^^^^^
+>/{1,??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1,2??/u,
->/{1,2??/u : RegExp
->          : ^^^^^^
+>/{1,2??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{2,1??/u,
->/{2,1??/u : RegExp
->          : ^^^^^^
+>/{2,1??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{}??/u,
->/{}??/u : RegExp
->        : ^^^^^^
+>/{}??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{,}??/u,
->/{,}??/u : RegExp
->         : ^^^^^^
+>/{,}??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{,1}??/u,
->/{,1}??/u : RegExp
->          : ^^^^^^
+>/{,1}??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1}??/u,
->/{1}??/u : RegExp
->         : ^^^^^^
+>/{1}??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1,}??/u,
->/{1,}??/u : RegExp
->          : ^^^^^^
+>/{1,}??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{1,2}??/u,
->/{1,2}??/u : RegExp
->           : ^^^^^^
+>/{1,2}??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   /{2,1}??/u,
->/{2,1}??/u : RegExp
->           : ^^^^^^
+>/{2,1}??/u : RegExp<CapturingGroups, NamedCapturingGroups>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ];
 

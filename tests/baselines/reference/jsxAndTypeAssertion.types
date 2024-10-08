@@ -118,8 +118,8 @@ x = <foo>x</foo>, x = <foo/>;
 >              : ^^^^^^^
 >/foo/.test : (string: string) => boolean
 >           : ^      ^^      ^^^^^       
->/foo/ : RegExp
->      : ^^^^^^
+>/foo/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >test : (string: string) => boolean
 >     : ^      ^^      ^^^^^       
 >x : any

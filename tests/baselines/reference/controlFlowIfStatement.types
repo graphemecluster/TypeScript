@@ -2,32 +2,32 @@
 
 === controlFlowIfStatement.ts ===
 let x: string | number | boolean | RegExp;
->x : string | number | boolean | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 let cond: boolean;
 >cond : boolean
 >     : ^^^^^^^
 
 x = /a/;
->x = /a/ : RegExp
->        : ^^^^^^
->x : string | number | boolean | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/a/ : RegExp
->    : ^^^^^^
+>x = /a/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/a/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 if (x /* RegExp */, (x = true)) {
 >x /* RegExp */, (x = true) : true
 >                           : ^^^^
->x : RegExp
->  : ^^^^^^
+>x : RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >(x = true) : true
 >           : ^^^^
 >x = true : true
 >         : ^^^^
->x : string | number | boolean | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >true : true
 >     : ^^^^
 
@@ -38,8 +38,8 @@ if (x /* RegExp */, (x = true)) {
     x = "";
 >x = "" : ""
 >       : ^^
->x : string | number | boolean | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >"" : ""
 >   : ^^
 }
@@ -51,8 +51,8 @@ else {
     x = 42;
 >x = 42 : 42
 >       : ^^
->x : string | number | boolean | RegExp
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : string | number | boolean | RegExp<CapturingGroupsArray, { [name: string]: string; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >42 : 42
 >   : ^^
 }

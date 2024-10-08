@@ -269,28 +269,28 @@ function f2<T, U>(x: T, y: U) {
 >     : ^^^^^^^^^^^^^^^
 
     var r5 = true ? /1/ : x;
->r5 : RegExp | T
->   : ^^^^^^^^^^
->true ? /1/ : x : RegExp | T
->               : ^^^^^^^^^^
+>r5 : RegExp<CapturingGroups, NamedCapturingGroups> | T
+>   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>true ? /1/ : x : RegExp<CapturingGroups, NamedCapturingGroups> | T
+>               : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >true : true
 >     : ^^^^
->/1/ : RegExp
->    : ^^^^^^
+>/1/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >x : T
 >  : ^
 
     var r5 = true ? x : /1/;
->r5 : RegExp | T
->   : ^^^^^^^^^^
->true ? x : /1/ : RegExp | T
->               : ^^^^^^^^^^
+>r5 : RegExp<CapturingGroups, NamedCapturingGroups> | T
+>   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>true ? x : /1/ : RegExp<CapturingGroups, NamedCapturingGroups> | T
+>               : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >true : true
 >     : ^^^^
 >x : T
 >  : ^
->/1/ : RegExp
->    : ^^^^^^
+>/1/ : RegExp<CapturingGroups, NamedCapturingGroups>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     var r6 = true ? { foo: 1 } : x;
 >r6 : T | { foo: number; }

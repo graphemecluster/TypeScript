@@ -13,7 +13,10 @@ interface RegExpStringIterator<T> extends IteratorObject<T, BuiltinIteratorRetur
     [Symbol.iterator](): RegExpStringIterator<T>;
 }
 
-interface RegExp {
+interface RegExp<
+    CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+> {
     /**
      * Matches a string with this regular expression, and returns an iterable of matches
      * containing the results of that search.
