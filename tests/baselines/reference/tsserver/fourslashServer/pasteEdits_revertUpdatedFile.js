@@ -419,6 +419,18 @@ Info seq  [hh:mm:ss:mss] response:
             "sortText": "11"
           },
           {
+            "name": "_RegExp",
+            "kind": "interface",
+            "kindModifiers": "declare",
+            "sortText": "15"
+          },
+          {
+            "name": "_RegExpExecArray",
+            "kind": "interface",
+            "kindModifiers": "declare",
+            "sortText": "15"
+          },
+          {
             "name": "any",
             "kind": "keyword",
             "kindModifiers": "",
@@ -1050,6 +1062,18 @@ Info seq  [hh:mm:ss:mss] response:
           },
           {
             "name": "RegExpExecArray",
+            "kind": "type",
+            "kindModifiers": "declare",
+            "sortText": "15"
+          },
+          {
+            "name": "RegExpFlags",
+            "kind": "interface",
+            "kindModifiers": "declare",
+            "sortText": "15"
+          },
+          {
+            "name": "RegExpIndices",
             "kind": "interface",
             "kindModifiers": "declare",
             "sortText": "15"

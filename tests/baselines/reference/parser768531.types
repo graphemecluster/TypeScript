@@ -8,6 +8,5 @@
 >  : ^
 
 /x/
->/x/ : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/x/ : any
 

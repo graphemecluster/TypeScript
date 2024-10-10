@@ -5,8 +5,6 @@
 //  2. If cp ≤ 65535, return cp.
 // (FFFF == 65535)
 var x = /\u{FFFF}/gu;
->x : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\u{FFFF}/gu : RegExp<CapturingGroups, NamedCapturingGroups>
->             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : any
+>/\u{FFFF}/gu : any
 

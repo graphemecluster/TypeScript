@@ -6,8 +6,8 @@ namespace Validation {
 >           : ^^^^^^^^^^^^^^^^^
 
     const lettersRegexp = /^[A-Za-z]+$/;
->lettersRegexp : RegExp<CapturingGroups, NamedCapturingGroups>
->              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/^[A-Za-z]+$/ : RegExp<CapturingGroups, NamedCapturingGroups>
->              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>lettersRegexp : any
+>              : ^^^
+>/^[A-Za-z]+$/ : any
+>              : ^^^
 }

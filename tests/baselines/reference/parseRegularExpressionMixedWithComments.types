@@ -2,16 +2,12 @@
 
 === parseRegularExpressionMixedWithComments.ts ===
 var regex1 = / asdf /;
->regex1 : RegExp<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/ asdf / : RegExp<CapturingGroups, NamedCapturingGroups>
->         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>regex1 : any
+>/ asdf / : any
 
 var regex2 = /**// asdf /;
->regex2 : RegExp<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/ asdf / : RegExp<CapturingGroups, NamedCapturingGroups>
->         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>regex2 : any
+>/ asdf / : any
 
 var regex3 = /**///**/ asdf /       // should be a comment line
 >regex3 : number
@@ -26,18 +22,14 @@ var regex4 = /**// /**/asdf /;
 >       : ^^^^^^
 >/ /**/asdf / : number
 >             : ^^^^^^
->/ / : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/asdf / : RegExp<CapturingGroups, NamedCapturingGroups>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/ / : any
+>/asdf / : any
 
 var regex5 = /**// asdf/**/ /;
 >regex5 : number
 >       : ^^^^^^
 >/ asdf/**/ / : number
 >             : ^^^^^^
->/ asdf/ : RegExp<CapturingGroups, NamedCapturingGroups>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/ / : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/ asdf/ : any
+>/ / : any
 

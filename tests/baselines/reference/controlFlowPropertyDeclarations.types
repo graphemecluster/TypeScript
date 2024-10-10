@@ -273,8 +273,8 @@ function hyphenToCamelCase(string) {
 >       : ^^^
 >replace : any
 >        : ^^^
->/-(.)/g : RegExp<CapturingGroups, NamedCapturingGroups>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/-(.)/g : any
+>        : ^^^
 >function(match, chr) {    return chr.toUpperCase();  } : (match: any, chr: any) => any
 >                                                       : ^     ^^^^^^^   ^^^^^^^^^^^^^
 >match : any
@@ -307,14 +307,14 @@ function isEmpty(string) {
    return !/[^\s]/.test(string);
 >!/[^\s]/.test(string) : boolean
 >                      : ^^^^^^^
->/[^\s]/.test(string) : boolean
->                     : ^^^^^^^
->/[^\s]/.test : (string: string) => boolean
->             : ^      ^^      ^^^^^       
->/[^\s]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->test : (string: string) => boolean
->     : ^      ^^      ^^^^^       
+>/[^\s]/.test(string) : any
+>                     : ^^^
+>/[^\s]/.test : any
+>             : ^^^
+>/[^\s]/ : any
+>        : ^^^
+>test : any
+>     : ^^^
 >string : any
 >       : ^^^
 }
@@ -327,20 +327,20 @@ function isEmpty(string) {
  * @return {boolean}
  */
 function isConvertiblePixelValue(value) {
->isConvertiblePixelValue : (value: any) => boolean
->                        : ^     ^^^^^^^^^^^^^^^^^
+>isConvertiblePixelValue : (value: any) => any
+>                        : ^     ^^^^^^^^^^^^^
 >value : any
 >      : ^^^
 
   return /^\d+px$/.test(value);
->/^\d+px$/.test(value) : boolean
->                      : ^^^^^^^
->/^\d+px$/.test : (string: string) => boolean
->               : ^      ^^      ^^^^^       
->/^\d+px$/ : RegExp<CapturingGroups, NamedCapturingGroups>
->          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->test : (string: string) => boolean
->     : ^      ^^      ^^^^^       
+>/^\d+px$/.test(value) : any
+>                      : ^^^
+>/^\d+px$/.test : any
+>               : ^^^
+>/^\d+px$/ : any
+>          : ^^^
+>test : any
+>     : ^^^
 >value : any
 >      : ^^^
 }
@@ -460,20 +460,20 @@ export class HTMLtoJSX {
         .replace(/\r/g, '')
 >replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
 >        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
->/\r/g : RegExp<CapturingGroups, NamedCapturingGroups>
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\r/g : any
+>      : ^^^
 >'' : ""
 >   : ^^
 
         .replace(/( {2,}|\n|\t|\{|\})/g, function(whitespace) {
 >replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
 >        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
->/( {2,}|\n|\t|\{|\})/g : RegExp<CapturingGroups, NamedCapturingGroups>
->                       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->function(whitespace) {          return '{' + JSON.stringify(whitespace) + '}';        } : (whitespace: string | number | CapturingGroups[number]) => string
->                                                                                        : ^          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->whitespace : string | number | CapturingGroups[number]
->           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/( {2,}|\n|\t|\{|\})/g : any
+>                       : ^^^
+>function(whitespace) {          return '{' + JSON.stringify(whitespace) + '}';        } : (whitespace: string | number) => string
+>                                                                                        : ^          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>whitespace : string | number
+>           : ^^^^^^^^^^^^^^^
 
           return '{' + JSON.stringify(whitespace) + '}';
 >'{' + JSON.stringify(whitespace) + '}' : string
@@ -490,8 +490,8 @@ export class HTMLtoJSX {
 >     : ^^^^
 >stringify : { (value: any, replacer?: (this: any, key: string, value: any) => any, space?: string | number): string; (value: any, replacer?: (number | string)[] | null, space?: string | number): string; }
 >          : ^^^     ^^   ^^        ^^^                                           ^^     ^^^               ^^^      ^^^     ^^   ^^        ^^^                          ^^     ^^^               ^^^      ^^^
->whitespace : string | number | CapturingGroups[number]
->           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>whitespace : string | number
+>           : ^^^^^^^^^^^^^^^
 >'}' : "}"
 >    : ^^^
 

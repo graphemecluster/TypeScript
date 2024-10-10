@@ -269,28 +269,28 @@ function f2<T, U>(x: T, y: U) {
 >     : ^^^^^^^^^^^^^^^
 
     var r5 = true ? /1/ : x;
->r5 : RegExp<CapturingGroups, NamedCapturingGroups> | T
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->true ? /1/ : x : RegExp<CapturingGroups, NamedCapturingGroups> | T
->               : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>r5 : any
+>   : ^^^
+>true ? /1/ : x : any
+>               : ^^^
 >true : true
 >     : ^^^^
->/1/ : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/1/ : any
+>    : ^^^
 >x : T
 >  : ^
 
     var r5 = true ? x : /1/;
->r5 : RegExp<CapturingGroups, NamedCapturingGroups> | T
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->true ? x : /1/ : RegExp<CapturingGroups, NamedCapturingGroups> | T
->               : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>r5 : any
+>   : ^^^
+>true ? x : /1/ : any
+>               : ^^^
 >true : true
 >     : ^^^^
 >x : T
 >  : ^
->/1/ : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/1/ : any
+>    : ^^^
 
     var r6 = true ? { foo: 1 } : x;
 >r6 : T | { foo: number; }

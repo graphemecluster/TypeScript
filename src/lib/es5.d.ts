@@ -404,7 +404,7 @@ type StringReplaceCallbackSignature<
         ...capturingGroups: CapturingGroups,
         offset: number,
         input: string,
-        ...(StringReplaceCallbackOptions extends StringReplaceCallbackIncludeNamedCapturingGroups ? [groups: NamedCapturingGroups] : []),
+        ...([StringReplaceCallbackOptions, NamedCapturingGroups] extends [StringReplaceCallbackIncludeNamedCapturingGroups, {}] ? [groups: NamedCapturingGroups] : []),
     ]
 ) => string;
 
@@ -412,7 +412,7 @@ type StringReplaceCallbackSignature<
  * The array returned by `String.prototype.match` when the global (`g`) flag is set on the specified RegExp.
  * The first match will always be present because `null` will be returned if there are no matches.
  */
-type RegExpMatchArray = [string, ...string[]];
+type RegExpMatchArray<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray> = [CapturingGroups[0], ...CapturingGroups[0][]];
 
 interface String {
     /** Returns a string representation of a string. */
@@ -458,6 +458,27 @@ interface String {
 
     /**
      * Matches a string with a regular expression.
+     * @param regexp The regular expression with the global (`g`) flag set.
+     * @returns A {@link RegExpMatchArray} that contains all the matches, or `null` if no matches are present.
+     */
+    match<
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    >(regexp: RegExp<CapturingGroups, NamedCapturingGroupsObject, { readonly global: true; }>): RegExpMatchArray<CapturingGroups> | null;
+
+    /**
+     * Matches a string with a regular expression.
+     * @param regexp The regular expression with the global (`g`) flag unset.
+     * @returns A {@link RegExpExecArray} which is identical to the return value of `regexp.exec(string)`,
+     * or `null` if no matches are present.
+     */
+    match<
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+        Flags extends Partial<RegExpFlags> & { readonly global: false; } = RegExpFlags & { readonly global: false; },
+    >(regexp: RegExp<CapturingGroups, NamedCapturingGroups, Flags>): RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags> | null;
+
+    /**
+     * Matches a string with a regular expression.
      * @param regexp The regular expression for searching. If a string is provided, it will be converted to a RegExp without flags.
      * @returns Either a {@link RegExpMatchArray} that contains all the matches when the global (`g`) flag is set on the specified RegExp,
      * a {@link RegExpExecArray} which is identical to the return value of `regexp.exec(string)`,
@@ -466,7 +487,8 @@ interface String {
     match<
         CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
         NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
-    >(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>): RegExpMatchArray | CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups> | null;
+        Flags extends Partial<RegExpFlags> = RegExpFlags,
+    >(regexp: RegExp<CapturingGroups, NamedCapturingGroups, Flags> | string): RegExpMatchArray<CapturingGroups> | RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags> | null;
 
     /**
      * Replaces text in a string, using a regular expression or search string.
@@ -978,10 +1000,19 @@ type NamedCapturingGroupsObject = { [name: string]: string | undefined; } | unde
 
 // `CapturingGroups` can't be extended directly, see issue #2225
 // `NamedCapturingGroups` is used from ES2018
-interface RegExpExecArray<
+type RegExpExecArray<
     CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
     NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
-> extends CapturingGroupsArray {
+    Flags extends Partial<RegExpFlags> = RegExpFlags,
+> =
+    & CapturingGroups
+    & _RegExpExecArray<CapturingGroups, NamedCapturingGroups>
+    & (Flags extends { readonly hasIndices: true; } ? RegExpIndices : unknown);
+
+interface _RegExpExecArray<
+    CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+> {
     /**
      * The index of the search at which the result was found.
      */
@@ -992,15 +1023,28 @@ interface RegExpExecArray<
     input: string;
 }
 
-interface RegExp<
+// Used from ES2022
+interface RegExpIndices<
     CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
     NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+> {}
+
+type RegExp<
+    CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    Flags extends Partial<RegExpFlags> = RegExpFlags,
+> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags;
+
+interface _RegExp<
+    CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    Flags extends Partial<RegExpFlags> = RegExpFlags,
 > {
     /**
      * Executes a search on a string using a regular expression pattern, and returns an array containing the results of that search.
      * @param string The String object or string literal on which to perform the search.
      */
-    exec(string: string): CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups> | null;
+    exec(string: string): RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags> | null;
 
     /**
      * Returns a Boolean value that indicates whether or not a pattern exists in a searched string.
@@ -1011,20 +1055,26 @@ interface RegExp<
     /** Returns a copy of the text of the regular expression pattern. Read-only. */
     readonly source: string;
 
-    /** Returns a Boolean value indicating the state of the global flag (g) used with a regular expression. Default is false. Read-only. */
-    readonly global: boolean;
-
-    /** Returns a Boolean value indicating the state of the ignoreCase flag (i) used with a regular expression. Default is false. Read-only. */
-    readonly ignoreCase: boolean;
-
-    /** Returns a Boolean value indicating the state of the multiline flag (m) used with a regular expression. Default is false. Read-only. */
-    readonly multiline: boolean;
-
+    /**
+     * The end index of the previous match relative to the string matched against,
+     * or 0 if the RegExp has not been executed yet or no match is found before.
+     */
     lastIndex: number;
 
     // Non-standard extensions
     /** @deprecated A legacy feature for browser compatibility */
     compile(pattern: string, flags?: string): this;
+}
+
+interface RegExpFlags {
+    /** A Boolean value indicating the state of the global flag (g) used with a regular expression. Read-only. */
+    readonly global: boolean;
+
+    /** A Boolean value indicating the state of the ignoreCase flag (i) used with a regular expression. Read-only. */
+    readonly ignoreCase: boolean;
+
+    /** A Boolean value indicating the state of the multiline flag (m) used with a regular expression. Read-only. */
+    readonly multiline: boolean;
 }
 
 interface RegExpConstructor {

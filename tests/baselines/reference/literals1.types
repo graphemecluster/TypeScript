@@ -68,20 +68,14 @@ var k = 'q\tq';
 >       : ^^^^^^
 
 var m = /q/;
->m : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/q/ : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>m : any
+>/q/ : any
 
 var n = /\d+/g;
->n : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\d+/g : RegExp<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>n : any
+>/\d+/g : any
 
 var o = /[3-5]+/i;
->o : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/[3-5]+/i : RegExp<CapturingGroups, NamedCapturingGroups>
->          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>o : any
+>/[3-5]+/i : any
 

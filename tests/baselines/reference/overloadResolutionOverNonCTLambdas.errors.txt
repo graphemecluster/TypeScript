@@ -1,13 +1,11 @@
-overloadResolutionOverNonCTLambdas.ts(7,47): error TS2345: Argument of type '(match: string | number | CapturingGroups[number], ...rest: [...capturingGroups: CapturingGroups, offset: number, input: string][number][]) => any' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>'.
-  Type '(match: string | number | CapturingGroups[number], ...rest: [...capturingGroups: CapturingGroups, offset: number, input: string][number][]) => any' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>'.
+overloadResolutionOverNonCTLambdas.ts(7,47): error TS2345: Argument of type '(match: string | number, ...rest: (string | number)[]) => any' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
+  Type '(match: string | number, ...rest: (string | number)[]) => any' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
     Types of parameters 'match' and 'capturingGroups' are incompatible.
-      Type '[...capturingGroups: CapturingGroups, offset: number, input: string]' is not assignable to type '[match: string | number | CapturingGroups[number], ...rest: [...capturingGroups: CapturingGroups, offset: number, input: string][number][]]'.
-        Variadic element at position 0 in source does not match element at position 0 in target.
-overloadResolutionOverNonCTLambdas.ts(9,21): error TS2536: Type '[...capturingGroups: CapturingGroups, offset: number, input: string][number]' cannot be used to index type 'any[]'.
-overloadResolutionOverNonCTLambdas.ts(10,11): error TS2536: Type '[...capturingGroups: CapturingGroups, offset: number, input: string][number]' cannot be used to index type 'any[]'.
+      Type '[...capturingGroups: string[], offset: number, input: string]' is not assignable to type '[match: string | number, ...rest: (string | number)[]]'.
+        Source provides no match for required element at position 0 in target.
 
 
-==== overloadResolutionOverNonCTLambdas.ts (3 errors) ====
+==== overloadResolutionOverNonCTLambdas.ts (1 errors) ====
     module Bugs {
       class A {
       }
@@ -16,18 +14,14 @@ overloadResolutionOverNonCTLambdas.ts(10,11): error TS2536: Type '[...capturingG
       function bug2(message:string, ...args:any[]):string {
         var result= message.replace(/\{(\d+)\}/g, function(match, ...rest) {
                                                   ~~~~~~~~
-!!! error TS2345: Argument of type '(match: string | number | CapturingGroups[number], ...rest: [...capturingGroups: CapturingGroups, offset: number, input: string][number][]) => any' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>'.
-!!! error TS2345:   Type '(match: string | number | CapturingGroups[number], ...rest: [...capturingGroups: CapturingGroups, offset: number, input: string][number][]) => any' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>'.
+!!! error TS2345: Argument of type '(match: string | number, ...rest: (string | number)[]) => any' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
+!!! error TS2345:   Type '(match: string | number, ...rest: (string | number)[]) => any' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
 !!! error TS2345:     Types of parameters 'match' and 'capturingGroups' are incompatible.
-!!! error TS2345:       Type '[...capturingGroups: CapturingGroups, offset: number, input: string]' is not assignable to type '[match: string | number | CapturingGroups[number], ...rest: [...capturingGroups: CapturingGroups, offset: number, input: string][number][]]'.
-!!! error TS2345:         Variadic element at position 0 in source does not match element at position 0 in target.
+!!! error TS2345:       Type '[...capturingGroups: string[], offset: number, input: string]' is not assignable to type '[match: string | number, ...rest: (string | number)[]]'.
+!!! error TS2345:         Source provides no match for required element at position 0 in target.
           var index= rest[0];
           return typeof args[index] !== 'undefined'
-                        ~~~~~~~~~~~
-!!! error TS2536: Type '[...capturingGroups: CapturingGroups, offset: number, input: string][number]' cannot be used to index type 'any[]'.
             ? args[index]
-              ~~~~~~~~~~~
-!!! error TS2536: Type '[...capturingGroups: CapturingGroups, offset: number, input: string][number]' cannot be used to index type 'any[]'.
             : match;
         });
         return result;

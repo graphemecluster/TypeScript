@@ -8,6 +8,6 @@ Foo(!/(\\?|&)adurl=/);
 >    : ^^^
 >!/(\\?|&)adurl=/ : boolean
 >                 : ^^^^^^^
->/(\\?|&)adurl=/ : RegExp<CapturingGroups, NamedCapturingGroups>
->                : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/(\\?|&)adurl=/ : any
+>                : ^^^
 

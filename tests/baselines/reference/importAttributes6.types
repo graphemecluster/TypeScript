@@ -18,8 +18,8 @@ import * as thing3 from "./mod.mjs" with { field: /a/g };
 >       : ^^^^^^^^^^^^^
 >field : any
 >      : ^^^
->/a/g : RegExp<CapturingGroups, NamedCapturingGroups>
->     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/a/g : any
+>     : ^^^
 
 import * as thing4 from "./mod.mjs" with { field: ["a"] };
 >thing4 : typeof thing1

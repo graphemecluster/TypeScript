@@ -2,14 +2,10 @@
 
 === regexMatchAll-esnext.ts ===
 const matches = /\w/g[Symbol.matchAll]("matchAll");
->matches : RegExpStringIterator<RegExpMatchArray>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\w/g[Symbol.matchAll]("matchAll") : RegExpStringIterator<RegExpMatchArray>
->                                   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\w/g[Symbol.matchAll] : (str: string) => RegExpStringIterator<RegExpMatchArray>
->                       : ^   ^^      ^^^^^                                      
->/\w/g : RegExp<CapturingGroups, NamedCapturingGroups>
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>matches : any
+>/\w/g[Symbol.matchAll]("matchAll") : any
+>/\w/g[Symbol.matchAll] : any
+>/\w/g : any
 >Symbol.matchAll : unique symbol
 >                : ^^^^^^^^^^^^^
 >Symbol : SymbolConstructor
@@ -20,24 +16,21 @@ const matches = /\w/g[Symbol.matchAll]("matchAll");
 >           : ^^^^^^^^^^
 
 const array = [...matches];
->array : RegExpMatchArray[]
->      : ^^^^^^^^^^^^^^^^^^
->[...matches] : RegExpMatchArray[]
->             : ^^^^^^^^^^^^^^^^^^
->...matches : RegExpMatchArray
->           : ^^^^^^^^^^^^^^^^
->matches : RegExpStringIterator<RegExpMatchArray>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>array : any[]
+>      : ^^^^^
+>[...matches] : any[]
+>             : ^^^^^
+>...matches : any
+>matches : any
 
 const { index, input } = array[0];
 >index : any
 >      : ^^^
 >input : any
 >      : ^^^
->array[0] : RegExpMatchArray
->         : ^^^^^^^^^^^^^^^^
->array : RegExpMatchArray[]
->      : ^^^^^^^^^^^^^^^^^^
+>array[0] : any
+>array : any[]
+>      : ^^^^^
 >0 : 0
 >  : ^
 

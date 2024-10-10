@@ -1,8 +1,7 @@
 //// [tests/cases/conformance/parser/ecmascript5/parserRealSource11.ts] ////
 
 === Performance Stats ===
-Type Count: 2,500
-Instantiation count: 1,000
+Type Count: 1,000
 
 === parserRealSource11.ts ===
 // Copyright (c) Microsoft. All rights reserved. Licensed under the Apache License, Version 2.0. 
@@ -18617,8 +18616,8 @@ module TypeScript {
 >  : ^^^^^^
 >replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
 >        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
->/^\s+|\s+$/g : RegExp<CapturingGroups, NamedCapturingGroups>
->             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/^\s+|\s+$/g : any
+>             : ^^^
 >'' : ""
 >   : ^^
                     }
@@ -18649,8 +18648,8 @@ module TypeScript {
 >        : ^^^^^^
 >replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
 >        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
->/^\s+|\s+$/g : RegExp<CapturingGroups, NamedCapturingGroups>
->             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/^\s+|\s+$/g : any
+>             : ^^^
 >'' : ""
 >   : ^^
                 }

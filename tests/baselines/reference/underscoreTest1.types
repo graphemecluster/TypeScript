@@ -1,8 +1,7 @@
 //// [tests/cases/compiler/underscoreTest1.ts] ////
 
 === Performance Stats ===
-Type Count: 2,500
-Instantiation count: 2,500
+Type Count: 1,000
 
 === underscoreTest1_underscoreTests.ts ===
 /// <reference path="underscoreTest1_underscore.ts" />
@@ -2622,8 +2621,8 @@ _.isRegExp(/moe/);
 >  : ^^^^^^^^^^^^^^^^^
 >isRegExp : (object: any) => boolean
 >         : ^      ^^   ^^^^^       
->/moe/ : RegExp<CapturingGroups, NamedCapturingGroups>
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/moe/ : any
+>      : ^^^
 
 _.isNaN(NaN);
 >_.isNaN(NaN) : boolean
@@ -3033,22 +3032,22 @@ compiled2({ epithet: "stooge" });
 >         : ^^^^^^^^
 
 _.templateSettings = {
->_.templateSettings = {    interpolate: /\{\{(.+?)\}\}/g} : { interpolate: RegExp<CapturingGroups, NamedCapturingGroups>; }
->                                                         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>_.templateSettings = {    interpolate: /\{\{(.+?)\}\}/g} : { interpolate: any; }
+>                                                         : ^^^^^^^^^^^^^^^^^^^^^
 >_.templateSettings : Underscore.TemplateSettings
 >                   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >_ : Underscore.Static
 >  : ^^^^^^^^^^^^^^^^^
 >templateSettings : Underscore.TemplateSettings
 >                 : ^^^^^^^^^^^^^^^^^^^^^^^^^^^
->{    interpolate: /\{\{(.+?)\}\}/g} : { interpolate: RegExp<CapturingGroups, NamedCapturingGroups>; }
->                                    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>{    interpolate: /\{\{(.+?)\}\}/g} : { interpolate: any; }
+>                                    : ^^^^^^^^^^^^^^^^^^^^^
 
     interpolate: /\{\{(.+?)\}\}/g
->interpolate : RegExp<CapturingGroups, NamedCapturingGroups>
->            : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\{\{(.+?)\}\}/g : RegExp<CapturingGroups, NamedCapturingGroups>
->                 : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>interpolate : any
+>            : ^^^
+>/\{\{(.+?)\}\}/g : any
+>                 : ^^^
 
 };
 var template2 = _.template("Hello {{ name }}!");
@@ -5351,16 +5350,16 @@ module Underscore {
 
     export interface TemplateSettings {
         evaluate?: RegExp;
->evaluate : RegExp<CapturingGroupsArray, { [name: string]: string; }>
->         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>evaluate : RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         interpolate?: RegExp;
->interpolate : RegExp<CapturingGroupsArray, { [name: string]: string; }>
->            : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>interpolate : RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>
+>            : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         escape?: RegExp;
->escape : RegExp<CapturingGroupsArray, { [name: string]: string; }>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>escape : RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         variable?: string;
 >variable : string

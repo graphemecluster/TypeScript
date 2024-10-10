@@ -2,8 +2,6 @@
 
 === unicodeExtendedEscapesInRegularExpressions18.ts ===
 var x = /\u{65}\u{65}/gu;
->x : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\u{65}\u{65}/gu : RegExp<CapturingGroups, NamedCapturingGroups>
->                 : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : any
+>/\u{65}\u{65}/gu : any
 

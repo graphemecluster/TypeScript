@@ -2,8 +2,8 @@
 
 === unicodeExtendedEscapesInRegularExpressions15.ts ===
 var x = /\u{abcd}\u{ef12}\u{3456}\u{7890}/gu;
->x : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\u{abcd}\u{ef12}\u{3456}\u{7890}/gu : RegExp<CapturingGroups, NamedCapturingGroups>
->                                     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : any
+>  : ^^^
+>/\u{abcd}\u{ef12}\u{3456}\u{7890}/gu : any
+>                                     : ^^^
 

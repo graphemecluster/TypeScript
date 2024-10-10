@@ -2,8 +2,6 @@
 
 === parser596700.ts ===
 var regex2 = /[a-z/]$/i;
->regex2 : RegExp<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/[a-z/]$/i : RegExp<CapturingGroups, NamedCapturingGroups>
->           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>regex2 : any
+>/[a-z/]$/i : any
 

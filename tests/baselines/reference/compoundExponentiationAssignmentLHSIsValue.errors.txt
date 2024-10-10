@@ -13,7 +13,7 @@ compoundExponentiationAssignmentLHSIsValue.ts(36,1): error TS2362: The left-hand
 compoundExponentiationAssignmentLHSIsValue.ts(37,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundExponentiationAssignmentLHSIsValue.ts(38,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
 compoundExponentiationAssignmentLHSIsValue.ts(39,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
-compoundExponentiationAssignmentLHSIsValue.ts(40,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(40,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
 compoundExponentiationAssignmentLHSIsValue.ts(43,10): error TS1128: Declaration or statement expected.
 compoundExponentiationAssignmentLHSIsValue.ts(46,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundExponentiationAssignmentLHSIsValue.ts(52,15): error TS1034: 'super' must be followed by an argument list or member access.
@@ -32,7 +32,7 @@ compoundExponentiationAssignmentLHSIsValue.ts(77,1): error TS2531: Object is pos
 compoundExponentiationAssignmentLHSIsValue.ts(78,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundExponentiationAssignmentLHSIsValue.ts(79,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
 compoundExponentiationAssignmentLHSIsValue.ts(80,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
-compoundExponentiationAssignmentLHSIsValue.ts(81,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(81,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
 compoundExponentiationAssignmentLHSIsValue.ts(82,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundExponentiationAssignmentLHSIsValue.ts(83,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundExponentiationAssignmentLHSIsValue.ts(84,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
@@ -111,7 +111,7 @@ compoundExponentiationAssignmentLHSIsValue.ts(85,1): error TS2362: The left-hand
 !!! error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
     /d+/ **= value;
     ~~~~
-!!! error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+!!! error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
     
     // object literals
     { a: 0 } **= value;
@@ -190,7 +190,7 @@ compoundExponentiationAssignmentLHSIsValue.ts(85,1): error TS2362: The left-hand
 !!! error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
     (/d+/) **= value;
     ~~~~~~
-!!! error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+!!! error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
     ({}) **= value;
     ~~~~
 !!! error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.

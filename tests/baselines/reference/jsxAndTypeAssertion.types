@@ -114,14 +114,14 @@ x = <foo>x</foo>, x = <foo/>;
 >    : ^^^^^^^^^^
 >/foo/.test(x) ? <foo><foo></foo> : <foo><foo></foo>}</foo>}</foo> : any
 >                                                                  : ^^^
->/foo/.test(x) : boolean
->              : ^^^^^^^
->/foo/.test : (string: string) => boolean
->           : ^      ^^      ^^^^^       
->/foo/ : RegExp<CapturingGroups, NamedCapturingGroups>
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->test : (string: string) => boolean
->     : ^      ^^      ^^^^^       
+>/foo/.test(x) : any
+>              : ^^^
+>/foo/.test : any
+>           : ^^^
+>/foo/ : any
+>      : ^^^
+>test : any
+>     : ^^^
 >x : any
 >  : ^^^
 ><foo><foo></foo> : <foo><foo></foo>}</foo>}</foo> : any

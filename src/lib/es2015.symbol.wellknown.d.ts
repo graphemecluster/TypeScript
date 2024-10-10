@@ -162,16 +162,17 @@ interface PromiseConstructor {
     readonly [Symbol.species]: PromiseConstructor;
 }
 
-interface RegExp<
+interface _RegExp<
     CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
     NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    Flags extends Partial<RegExpFlags> = RegExpFlags,
 > {
     /**
      * Matches a string with this regular expression, and returns an array containing the results of
      * that search.
      * @param string A string to search within.
      */
-    [Symbol.match](string: string): RegExpMatchArray | null;
+    [Symbol.match](string: string): RegExpMatchArray<CapturingGroups> | null;
 
     /**
      * Replaces text in a string, using this regular expression.

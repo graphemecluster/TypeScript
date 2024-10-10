@@ -2779,19 +2779,10 @@ export interface LiteralExpression extends LiteralLikeNode, PrimaryExpression {
 
 export interface RegularExpressionLiteral extends LiteralExpression {
     readonly kind: SyntaxKind.RegularExpressionLiteral;
-    readonly regExpBody: string;
-    readonly regExpFlags: RegularExpressionFlags;
-    readonly regExpFlagsText: string;
-    readonly capturingGroups: RegularExpressionCapturingGroup[];
-    readonly capturingGroupSpecifiers: Map<string, RegularExpressionCapturingGroup[]>;
-}
-
-export interface RegularExpressionCapturingGroup extends ReadonlyTextRange {
-    readonly pattern: string[];
-    readonly isPossiblyUndefined: boolean;
 }
 
 // dprint-ignore
+/** @internal */
 export const enum RegularExpressionFlags {
     None           = 0,
     HasIndices     = 1 << 0, // d
@@ -2804,6 +2795,35 @@ export const enum RegularExpressionFlags {
     Sticky         = 1 << 7, // y
     AnyUnicodeMode = Unicode | UnicodeSets,
     Modifiers      = IgnoreCase | Multiline | DotAll,
+}
+
+/** @internal */
+export interface RegularExpressionAnyString {
+    _regularExpressionAnyStringBrand: any;
+}
+
+/** @internal */
+export interface RegularExpressionBackreference {
+    _regularExpressionBackreferenceBrand: any;
+    backreference: string | number;
+}
+
+/** @internal */
+export type RegularExpressionPatternContent = string | RegularExpressionAnyString | RegularExpressionPatternUnion;
+
+/** @internal */
+export interface RegularExpressionPattern extends Array<RegularExpressionPatternContent | RegularExpressionBackreference> {
+    _regularExpressionPatternBrand: any;
+}
+
+/** @internal */
+export interface RegularExpressionPatternUnion extends Set<string | RegularExpressionPattern> {
+    _regularExpressionPatternUnionBrand: any;
+}
+
+/** @internal */
+export interface RegularExpressionCapturingGroup extends RegularExpressionPatternUnion {
+    isPossiblyUndefined?: boolean;
 }
 
 export interface NoSubstitutionTemplateLiteral extends LiteralExpression, TemplateLiteralLikeNode, Declaration {

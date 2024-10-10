@@ -453,28 +453,22 @@ function f9<T extends RegExp>(x: T) {
 >  : ^
 
     var r5 = true ? /1/ : x; // ok
->r5 : RegExp<CapturingGroups, NamedCapturingGroups> | T
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->true ? /1/ : x : RegExp<CapturingGroups, NamedCapturingGroups> | T
->               : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>r5 : any
+>true ? /1/ : x : any
 >true : true
 >     : ^^^^
->/1/ : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/1/ : any
 >x : T
 >  : ^
 
     var r5 = true ? x : /1/; // ok
->r5 : RegExp<CapturingGroups, NamedCapturingGroups> | T
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->true ? x : /1/ : RegExp<CapturingGroups, NamedCapturingGroups> | T
->               : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>r5 : any
+>true ? x : /1/ : any
 >true : true
 >     : ^^^^
 >x : T
 >  : ^
->/1/ : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/1/ : any
 }
 
 function f10<T extends { foo: number }>(x: T) {

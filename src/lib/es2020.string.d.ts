@@ -11,7 +11,8 @@ interface String {
     matchAll<
         CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
         NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
-    >(regexp: RegExp<CapturingGroups, NamedCapturingGroups>): RegExpStringIterator<CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>>;
+        Flags extends Partial<RegExpFlags> & { readonly global: true; } = RegExpFlags & { readonly global: true; },
+    >(regexp: RegExp<CapturingGroups, NamedCapturingGroups, Flags> | string): RegExpStringIterator<RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags>>;
 
     /** Converts all alphabetic characters to lowercase, taking into account the host environment's current locale. */
     toLocaleLowerCase(locales?: Intl.LocalesArgument): string;

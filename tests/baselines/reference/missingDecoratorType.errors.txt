@@ -1,18 +1,14 @@
 error TS2318: Cannot find global type 'TypedPropertyDescriptor'.
-a.ts(7,11): error TS2317: Global type 'RegExp' must have 2 type parameter(s).
 
 
 !!! error TS2318: Cannot find global type 'TypedPropertyDescriptor'.
-==== a.ts (1 errors) ====
+==== a.ts (0 errors) ====
     interface Object { }
     interface Array<T> { }
     interface String { }
     interface Boolean { }
     interface Number { }
     interface Function { }
-    interface RegExp { }
-              ~~~~~~
-!!! error TS2317: Global type 'RegExp' must have 2 type parameter(s).
     interface IArguments { }
     
 ==== b.ts (0 errors) ====

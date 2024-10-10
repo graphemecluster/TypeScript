@@ -60,6 +60,6 @@ var x8: typeof /123/;
 >   : ^^^
 > : any
 > : ^^^
->/123/ : RegExp<CapturingGroups, NamedCapturingGroups>
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/123/ : any
+>      : ^^^
 

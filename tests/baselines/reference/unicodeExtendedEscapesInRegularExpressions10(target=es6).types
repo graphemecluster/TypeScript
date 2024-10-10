@@ -6,8 +6,6 @@
 // Although we should just get back a single code point value of 0xD800,
 // this is a useful edge-case test.
 var x = /\u{D800}/gu;
->x : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\u{D800}/gu : RegExp<CapturingGroups, NamedCapturingGroups>
->             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : any
+>/\u{D800}/gu : any
 

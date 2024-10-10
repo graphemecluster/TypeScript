@@ -1,8 +1,8 @@
-controlFlowPropertyDeclarations.ts(122,42): error TS2345: Argument of type '(whitespace: string | number | CapturingGroups[number]) => string' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>'.
-  Type '(whitespace: string | number | CapturingGroups[number]) => string' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>'.
+controlFlowPropertyDeclarations.ts(122,42): error TS2345: Argument of type '(whitespace: string | number) => string' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
+  Type '(whitespace: string | number) => string' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
     Types of parameters 'whitespace' and 'capturingGroups' are incompatible.
-      Type '[...capturingGroups: CapturingGroups, offset: number, input: string]' is not assignable to type '[whitespace: string | number | CapturingGroups[number]]'.
-        Source has 3 element(s) but target allows only 1.
+      Type '[...capturingGroups: string[], offset: number, input: string]' is not assignable to type '[whitespace: string | number]'.
+        Source has 2 element(s) but target allows only 1.
 
 
 ==== controlFlowPropertyDeclarations.ts (1 errors) ====
@@ -129,11 +129,11 @@ controlFlowPropertyDeclarations.ts(122,42): error TS2345: Argument of type '(whi
             .replace(/\r/g, '')
             .replace(/( {2,}|\n|\t|\{|\})/g, function(whitespace) {
                                              ~~~~~~~~
-!!! error TS2345: Argument of type '(whitespace: string | number | CapturingGroups[number]) => string' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>'.
-!!! error TS2345:   Type '(whitespace: string | number | CapturingGroups[number]) => string' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>'.
+!!! error TS2345: Argument of type '(whitespace: string | number) => string' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
+!!! error TS2345:   Type '(whitespace: string | number) => string' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
 !!! error TS2345:     Types of parameters 'whitespace' and 'capturingGroups' are incompatible.
-!!! error TS2345:       Type '[...capturingGroups: CapturingGroups, offset: number, input: string]' is not assignable to type '[whitespace: string | number | CapturingGroups[number]]'.
-!!! error TS2345:         Source has 3 element(s) but target allows only 1.
+!!! error TS2345:       Type '[...capturingGroups: string[], offset: number, input: string]' is not assignable to type '[whitespace: string | number]'.
+!!! error TS2345:         Source has 2 element(s) but target allows only 1.
 !!! related TS6212 controlFlowPropertyDeclarations.ts:122:42: Did you mean to call this expression?
               return '{' + JSON.stringify(whitespace) + '}';
             });

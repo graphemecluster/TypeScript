@@ -2,6 +2,5 @@
 
 === parserRegularExpression1.ts ===
 /(#?-?\d*\.\d\w*%?)|(@?#?[\w-?]+%?)/g;
->/(#?-?\d*\.\d\w*%?)|(@?#?[\w-?]+%?)/g : RegExp<CapturingGroups, NamedCapturingGroups>
->                                      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/(#?-?\d*\.\d\w*%?)|(@?#?[\w-?]+%?)/g : any
 

@@ -121,24 +121,18 @@ var r4 = true ? null : new Date();
 >     : ^^^^^^^^^^^^^^^
 
 var r5 = true ? /1/ : null;
->r5 : RegExp<CapturingGroups, NamedCapturingGroups>
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->true ? /1/ : null : RegExp<CapturingGroups, NamedCapturingGroups>
->                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>r5 : any
+>true ? /1/ : null : any
 >true : true
 >     : ^^^^
->/1/ : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/1/ : any
 
 var r5 = true ? null : /1/;
->r5 : RegExp<CapturingGroups, NamedCapturingGroups>
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->true ? null : /1/ : RegExp<CapturingGroups, NamedCapturingGroups>
->                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>r5 : any
+>true ? null : /1/ : any
 >true : true
 >     : ^^^^
->/1/ : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/1/ : any
 
 var r6 = true ? { foo: 1 } : null;
 >r6 : { foo: number; }

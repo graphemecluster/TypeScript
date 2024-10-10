@@ -378,10 +378,10 @@ module TypeScriptAllInOne {
 >    : ^^^
 
             var reg = /\w*/;
->reg : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\w*/ : RegExp<CapturingGroups, NamedCapturingGroups>
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>reg : any
+>    : ^^^
+>/\w*/ : any
+>      : ^^^
 
             var objLit = { "var": number = 42, equals: function (x) { return x["var"] === 42; },  instanceof : () => 'objLit{42}' };
 >objLit : { var: number; equals: (x: any) => boolean; instanceof: () => string; }
@@ -468,14 +468,14 @@ module TypeScriptAllInOne {
 >       : ^^^^^^
 >toString : (radix?: number) => string
 >         : ^     ^^^      ^^^^^      
->reg.toString() : string
->               : ^^^^^^
->reg.toString : () => string
->             : ^^^^^^      
->reg : RegExp<CapturingGroups, NamedCapturingGroups>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->toString : () => string
->         : ^^^^^^      
+>reg.toString() : any
+>               : ^^^
+>reg.toString : any
+>             : ^^^
+>reg : any
+>    : ^^^
+>toString : any
+>         : ^^^
 >objLit : { var: number; equals: (x: any) => boolean; instanceof: () => string; }
 >       : ^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >weekday : Weekdays.Monday

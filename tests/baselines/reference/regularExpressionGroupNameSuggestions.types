@@ -2,8 +2,8 @@
 
 === regularExpressionGroupNameSuggestions.ts ===
 const regex = /(?<foo>)\k<Foo>/;
->regex : RegExp<CapturingGroups, NamedCapturingGroups>
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/(?<foo>)\k<Foo>/ : RegExp<CapturingGroups, NamedCapturingGroups>
->                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>regex : any
+>      : ^^^
+>/(?<foo>)\k<Foo>/ : any
+>                  : ^^^
 

@@ -2089,6 +2089,8 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
     var templateConstraintType = getUnionType([stringType, numberType, booleanType, bigintType, nullType, undefinedType]) as UnionType;
     var numericStringType = getTemplateLiteralType(["", ""], [numberType]); // The `${number}` type
 
+    var regExpType = createIntrinsicType(TypeFlags.Reserved1, "RegExp");
+
     var restrictiveMapper: TypeMapper = makeFunctionTypeMapper(t => t.flags & TypeFlags.TypeParameter ? getRestrictiveTypeParameter(t as TypeParameter) : t, () => "(restrictive mapper)");
     var permissiveMapper: TypeMapper = makeFunctionTypeMapper(t => t.flags & TypeFlags.TypeParameter ? wildcardType : t, () => "(permissive mapper)");
     var uniqueLiteralType = createIntrinsicType(TypeFlags.Never, "never", /*objectFlags*/ undefined, "unique literal"); // `uniqueLiteralType` is a special `never` flagged by union reduction to behave as a literal
@@ -2230,7 +2232,6 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
     var globalStringType: ObjectType;
     var globalNumberType: ObjectType;
     var globalBooleanType: ObjectType;
-    var globalRegExpType: GenericType;
     var globalThisType: GenericType;
     var anyArrayType: Type;
     var autoArrayType: Type;
@@ -2269,6 +2270,7 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
     var deferredGlobalImportAttributesType: ObjectType | undefined;
     var deferredGlobalDisposableType: ObjectType | undefined;
     var deferredGlobalAsyncDisposableType: ObjectType | undefined;
+    var deferredGlobalRegExpSymbol: Symbol | undefined;
     var deferredGlobalExtractSymbol: Symbol | undefined;
     var deferredGlobalOmitSymbol: Symbol | undefined;
     var deferredGlobalAwaitedSymbol: Symbol | undefined;
@@ -16912,6 +16914,12 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
     function getGlobalTypeOrUndefined(name: __String, arity = 0): ObjectType | undefined {
         const symbol = getGlobalSymbol(name, SymbolFlags.Type, /*diagnostic*/ undefined);
         return symbol && getTypeOfGlobalSymbol(symbol, arity) as GenericType;
+    }
+
+    function getGlobalRegExpSymbol(): Symbol | undefined {
+        // We always report an error, so cache a result in the event we could not resolve the symbol to prevent reporting it multiple times
+        deferredGlobalRegExpSymbol ||= getGlobalTypeAliasSymbol("RegExp" as __String, /*arity*/ 3, /*reportErrors*/ true) || unknownSymbol;
+        return deferredGlobalRegExpSymbol === unknownSymbol ? undefined : deferredGlobalRegExpSymbol;
     }
 
     function getGlobalExtractSymbol(): Symbol | undefined {
@@ -32437,7 +32445,11 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
             nodeLinks.flags |= NodeCheckFlags.TypeChecked;
             addLazyDiagnostic(() => checkGrammarRegularExpressionLiteral(node));
         }
-        return globalRegExpType;
+        const regExpTypeAlias = getGlobalRegExpSymbol();
+        if (regExpTypeAlias) {
+            return getTypeAliasInstantiation(regExpTypeAlias, [anyType, anyType, anyType]);
+        }
+        return regExpType;
     }
 
     function checkSpreadExpression(node: SpreadElement, checkMode?: CheckMode): Type {
@@ -50415,7 +50427,6 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
         globalStringType = getGlobalType("String" as __String, /*arity*/ 0, /*reportErrors*/ true);
         globalNumberType = getGlobalType("Number" as __String, /*arity*/ 0, /*reportErrors*/ true);
         globalBooleanType = getGlobalType("Boolean" as __String, /*arity*/ 0, /*reportErrors*/ true);
-        globalRegExpType = getGlobalType("RegExp" as __String, /*arity*/ 2, /*reportErrors*/ true);
         anyArrayType = createArrayType(anyType);
 
         autoArrayType = createArrayType(autoType);

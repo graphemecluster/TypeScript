@@ -152,8 +152,8 @@ false **= value;
 /d+/ **= value;
 >/d+/ **= value : number
 >               : ^^^^^^
->/d+/ : RegExp<CapturingGroups, NamedCapturingGroups>
->     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/d+/ : any
+>     : ^^^
 >value : any
 >      : ^^^
 
@@ -357,10 +357,10 @@ foo() **= value;
 (/d+/) **= value;
 >(/d+/) **= value : number
 >                 : ^^^^^^
->(/d+/) : RegExp<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/d+/ : RegExp<CapturingGroups, NamedCapturingGroups>
->     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>(/d+/) : any
+>       : ^^^
+>/d+/ : any
+>     : ^^^
 >value : any
 >      : ^^^
 

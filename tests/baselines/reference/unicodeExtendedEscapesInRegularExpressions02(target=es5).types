@@ -2,8 +2,8 @@
 
 === unicodeExtendedEscapesInRegularExpressions02.ts ===
 var x = /\u{00}/gu;
->x : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\u{00}/gu : RegExp<CapturingGroups, NamedCapturingGroups>
->           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : any
+>  : ^^^
+>/\u{00}/gu : any
+>           : ^^^
 

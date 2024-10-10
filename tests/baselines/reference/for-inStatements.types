@@ -64,8 +64,8 @@ for (var x in fn()) { }
 for (var x in /[a-z]/) { }
 >x : string
 >  : ^^^^^^
->/[a-z]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[a-z]/ : any
+>        : ^^^
 
 for (var x in new Date()) { }
 >x : string

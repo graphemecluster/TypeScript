@@ -1,27 +1,23 @@
 //// [tests/cases/compiler/regularExpressionExtendedUnicodeEscapes.ts] ////
 
-=== Performance Stats ===
-Type Count: 1,000
-Instantiation count: 2,500
-
 === regularExpressionExtendedUnicodeEscapes.ts ===
 const regexes: RegExp[] = [
->regexes : RegExp<CapturingGroupsArray, { [name: string]: string; }>[]
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->[	/\u{10000}[\u{10000}]/,	/\u{10000}[\u{10000}]/u,	/\u{10000}[\u{10000}]/v,] : RegExp<CapturingGroups, NamedCapturingGroups>[]
->                                                                             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>regexes : RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>[]
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>[	/\u{10000}[\u{10000}]/,	/\u{10000}[\u{10000}]/u,	/\u{10000}[\u{10000}]/v,] : any[]
+>                                                                             : ^^^^^
 
 	/\u{10000}[\u{10000}]/,
->/\u{10000}[\u{10000}]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->                       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\u{10000}[\u{10000}]/ : any
+>                       : ^^^
 
 	/\u{10000}[\u{10000}]/u,
->/\u{10000}[\u{10000}]/u : RegExp<CapturingGroups, NamedCapturingGroups>
->                        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\u{10000}[\u{10000}]/u : any
+>                        : ^^^
 
 	/\u{10000}[\u{10000}]/v,
->/\u{10000}[\u{10000}]/v : RegExp<CapturingGroups, NamedCapturingGroups>
->                        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\u{10000}[\u{10000}]/v : any
+>                        : ^^^
 
 ];
 

@@ -348,9 +348,10 @@ interface ReadonlyArray<T> {
     toLocaleString(locales: string | string[], options?: Intl.NumberFormatOptions & Intl.DateTimeFormatOptions): string;
 }
 
-interface RegExp<
+interface _RegExp<
     CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
     NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    Flags extends Partial<RegExpFlags> = RegExpFlags,
 > {
     /**
      * Returns a string indicating the flags of the regular expression in question. This field is read-only.
@@ -365,7 +366,9 @@ interface RegExp<
      * If no flags are set, the value is the empty string.
      */
     readonly flags: string;
+}
 
+interface RegExpFlags {
     /**
      * Returns a Boolean value indicating the state of the sticky flag (y) used with a regular
      * expression. Default is false. Read-only.
@@ -380,8 +383,31 @@ interface RegExp<
 }
 
 interface RegExpConstructor {
-    new <T extends RegExp = RegExp>(pattern: T | string, flags?: string): T;
-    <T extends RegExp = RegExp>(pattern: T | string, flags?: string): T;
+    new <
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    >(pattern: RegExp<CapturingGroups, NamedCapturingGroups> | string, flags: string): RegExp<CapturingGroups, NamedCapturingGroups>;
+
+    // The order is important - redeclaring this signature from `es5.d.ts` such that `Flags` are copied
+    new <T extends RegExp>(pattern: T | string): T;
+
+    new <
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    >(pattern: RegExp<CapturingGroups, NamedCapturingGroups> | string, flags?: string): RegExp<CapturingGroups, NamedCapturingGroups>;
+
+    <
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    >(pattern: RegExp<CapturingGroups, NamedCapturingGroups> | string, flags: string): RegExp<CapturingGroups, NamedCapturingGroups>;
+
+    // The order is important - redeclaring this signature from `es5.d.ts` such that `Flags` are copied
+    <T extends RegExp>(pattern: T | string): T;
+
+    <
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    >(pattern: RegExp<CapturingGroups, NamedCapturingGroups> | string, flags?: string): RegExp<CapturingGroups, NamedCapturingGroups>;
 }
 
 interface String {

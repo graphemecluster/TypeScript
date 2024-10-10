@@ -2,128 +2,104 @@
 
 === useRegexpGroups.ts ===
 let re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
->re : RegExp<CapturingGroups, NamedCapturingGroups>
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u : RegExp<CapturingGroups, NamedCapturingGroups>
->                                                : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>re : any
+>/(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u : any
 
 let result = re.exec("2015-01-02");
->result : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->re.exec("2015-01-02") : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
->                      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->re.exec : (string: string) => (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
->        : ^      ^^      ^^^^^^                                                                        ^       
->re : RegExp<CapturingGroups, NamedCapturingGroups>
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->exec : (string: string) => (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null
->     : ^      ^^      ^^^^^^                                                                        ^       
+>result : any
+>re.exec("2015-01-02") : any
+>re.exec : any
+>re : any
+>   : ^^^
+>exec : any
+>     : ^^^
 >"2015-01-02" : "2015-01-02"
 >             : ^^^^^^^^^^^^
 
 let date = result[0];
->date : string
->     : ^^^^^^
->result[0] : string
->          : ^^^^^^
->result : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>date : any
+>result[0] : any
+>result : any
 >0 : 0
 >  : ^
 
 let year1 = result.groups.year;
->year1 : string
->      : ^^^^^^
->result.groups.year : string
->                   : ^^^^^^
->result.groups : NamedCapturingGroups
->              : ^^^^^^^^^^^^^^^^^^^^
->result : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->groups : NamedCapturingGroups
->       : ^^^^^^^^^^^^^^^^^^^^
->year : string
->     : ^^^^^^
+>year1 : any
+>result.groups.year : any
+>result.groups : any
+>              : ^^^
+>result : any
+>       : ^^^
+>groups : any
+>       : ^^^
+>year : any
+>     : ^^^
 
 let year2 = result[1];
->year2 : string
->      : ^^^^^^
->result[1] : string
->          : ^^^^^^
->result : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>year2 : any
+>result[1] : any
+>result : any
 >1 : 1
 >  : ^
 
 let month1 = result.groups.month;
->month1 : string
->       : ^^^^^^
->result.groups.month : string
->                    : ^^^^^^
->result.groups : NamedCapturingGroups
->              : ^^^^^^^^^^^^^^^^^^^^
->result : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->groups : NamedCapturingGroups
->       : ^^^^^^^^^^^^^^^^^^^^
->month : string
->      : ^^^^^^
+>month1 : any
+>result.groups.month : any
+>result.groups : any
+>              : ^^^
+>result : any
+>       : ^^^
+>groups : any
+>       : ^^^
+>month : any
+>      : ^^^
 
 let month2 = result[2];
->month2 : string
->       : ^^^^^^
->result[2] : string
->          : ^^^^^^
->result : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>month2 : any
+>result[2] : any
+>result : any
 >2 : 2
 >  : ^
 
 let day1 = result.groups.day;
->day1 : string
->     : ^^^^^^
->result.groups.day : string
->                  : ^^^^^^
->result.groups : NamedCapturingGroups
->              : ^^^^^^^^^^^^^^^^^^^^
->result : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->groups : NamedCapturingGroups
->       : ^^^^^^^^^^^^^^^^^^^^
->day : string
->    : ^^^^^^
+>day1 : any
+>result.groups.day : any
+>result.groups : any
+>              : ^^^
+>result : any
+>       : ^^^
+>groups : any
+>       : ^^^
+>day : any
+>    : ^^^
 
 let day2 = result[3];
->day2 : string
->     : ^^^^^^
->result[3] : string
->          : ^^^^^^
->result : CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>day2 : any
+>result[3] : any
+>result : any
 >3 : 3
 >  : ^
 
 let foo = "foo".match(/(?<bar>foo)/)!.groups.foo;
->foo : any
->    : ^^^
->"foo".match(/(?<bar>foo)/)!.groups.foo : any
->                                       : ^^^
->"foo".match(/(?<bar>foo)/)!.groups : any
->                                   : ^^^
->"foo".match(/(?<bar>foo)/)! : RegExpMatchArray
->                            : ^^^^^^^^^^^^^^^^
->"foo".match(/(?<bar>foo)/) : RegExpMatchArray
->                           : ^^^^^^^^^^^^^^^^
->"foo".match : { <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>): RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null; <T>(matcher: { [Symbol.match](string: string): T; }): T; }
->            : ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^                   ^                                                                        ^       ^^^ ^^       ^^                                      ^^^ ^^^
+>foo : string
+>    : ^^^^^^
+>"foo".match(/(?<bar>foo)/)!.groups.foo : string
+>                                       : ^^^^^^
+>"foo".match(/(?<bar>foo)/)!.groups : { [name: string]: string; }
+>                                   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>"foo".match(/(?<bar>foo)/)! : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }, any>
+>                            : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>"foo".match(/(?<bar>foo)/) : RegExpExecArray<CapturingGroupsArray, { [name: string]: string; }, any>
+>                           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>"foo".match : { <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray>(regexp: RegExp<CapturingGroups, NamedCapturingGroupsObject, { readonly global: true; }>): RegExpMatchArray<CapturingGroups> | null; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> & { readonly global: false; } = RegExpFlags & { readonly global: false; }>(regexp: RegExp<CapturingGroups, NamedCapturingGroups, Flags>): RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags> | null; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags>(regexp: RegExp<CapturingGroups, NamedCapturingGroups, Flags> | string): RegExpMatchArray<CapturingGroups> | RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags> | null; <T>(matcher: { [Symbol.match](string: string): T; }): T; }
+>            : ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                                               ^^^                                        ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     ^^^^^^^^^                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     ^^^^^      ^^                                                    ^^^                                                                    ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     ^^^^^^^^^                    ^^^^^^^^^^^^^^^^      ^^                                                             ^^^                                                                                                        ^^^ ^^       ^^                                      ^^^ ^^^
 >"foo" : "foo"
 >      : ^^^^^
->match : { <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(regexp: string | RegExp<CapturingGroups, NamedCapturingGroups>): RegExpMatchArray | (CapturingGroups & RegExpExecArray<CapturingGroups, NamedCapturingGroups>) | null; <T>(matcher: { [Symbol.match](string: string): T; }): T; }
->      : ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                      ^^^                   ^                                                                        ^       ^^^ ^^       ^^                                      ^^^ ^^^
->/(?<bar>foo)/ : RegExp<CapturingGroups, NamedCapturingGroups>
->              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->groups : any
->       : ^^^
->foo : any
->    : ^^^
+>match : { <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray>(regexp: RegExp<CapturingGroups, NamedCapturingGroupsObject, { readonly global: true; }>): RegExpMatchArray<CapturingGroups> | null; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> & { readonly global: false; } = RegExpFlags & { readonly global: false; }>(regexp: RegExp<CapturingGroups, NamedCapturingGroups, Flags>): RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags> | null; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags>(regexp: RegExp<CapturingGroups, NamedCapturingGroups, Flags> | string): RegExpMatchArray<CapturingGroups> | RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags> | null; <T>(matcher: { [Symbol.match](string: string): T; }): T; }
+>      : ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^      ^^                                                                               ^^^                                        ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     ^^^^^^^^^                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     ^^^^^      ^^                                                    ^^^                                                                    ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     ^^^^^^^^^                    ^^^^^^^^^^^^^^^^      ^^                                                             ^^^                                                                                                        ^^^ ^^       ^^                                      ^^^ ^^^
+>/(?<bar>foo)/ : any
+>groups : { [name: string]: string; }
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>foo : string
+>    : ^^^^^^
 

@@ -30,22 +30,22 @@ module Bugs {
 >        : ^^^^^^
 >replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
 >        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
->/\{(\d+)\}/g : RegExp<CapturingGroups, NamedCapturingGroups>
->             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->function(match, ...rest) {      var index= rest[0];      return typeof args[index] !== 'undefined'        ? args[index]        : match;    } : (match: string | number | CapturingGroups[number], ...rest: [...capturingGroups: CapturingGroups, offset: number, input: string][number][]) => any
->                                                                                                                                             : ^     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->match : string | number | CapturingGroups[number]
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->rest : [...capturingGroups: CapturingGroups, offset: number, input: string][number][]
->     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\{(\d+)\}/g : any
+>             : ^^^
+>function(match, ...rest) {      var index= rest[0];      return typeof args[index] !== 'undefined'        ? args[index]        : match;    } : (match: string | number, ...rest: (string | number)[]) => any
+>                                                                                                                                             : ^     ^^^^^^^^^^^^^^^^^^^^^^    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>match : string | number
+>      : ^^^^^^^^^^^^^^^
+>rest : (string | number)[]
+>     : ^^^^^^^^^^^^^^^^^^^
 
       var index= rest[0];
->index : [...capturingGroups: CapturingGroups, offset: number, input: string][number]
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->rest[0] : [...capturingGroups: CapturingGroups, offset: number, input: string][number]
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->rest : [...capturingGroups: CapturingGroups, offset: number, input: string][number][]
->     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>index : string | number
+>      : ^^^^^^^^^^^^^^^
+>rest[0] : string | number
+>        : ^^^^^^^^^^^^^^^
+>rest : (string | number)[]
+>     : ^^^^^^^^^^^^^^^^^^^
 >0 : 0
 >  : ^
 
@@ -60,8 +60,8 @@ module Bugs {
 >            : ^^^
 >args : any[]
 >     : ^^^^^
->index : [...capturingGroups: CapturingGroups, offset: number, input: string][number]
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>index : string | number
+>      : ^^^^^^^^^^^^^^^
 >'undefined' : "undefined"
 >            : ^^^^^^^^^^^
 
@@ -70,12 +70,12 @@ module Bugs {
 >            : ^^^
 >args : any[]
 >     : ^^^^^
->index : [...capturingGroups: CapturingGroups, offset: number, input: string][number]
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>index : string | number
+>      : ^^^^^^^^^^^^^^^
 
         : match;
->match : string | number | CapturingGroups[number]
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>match : string | number
+>      : ^^^^^^^^^^^^^^^
 
     });
     return result;

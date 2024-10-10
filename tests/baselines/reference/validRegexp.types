@@ -2,22 +2,22 @@
 
 === validRegexp.ts ===
 var x = / [a - z /]$ / i;
->x : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/ [a - z /]$ / : RegExp<CapturingGroups, NamedCapturingGroups>
->               : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : any
+>  : ^^^
+>/ [a - z /]$ / : any
+>               : ^^^
 >i : any
 >  : ^^^
 
 var x1 = /[a-z/]$/i;
->x1 : RegExp<CapturingGroups, NamedCapturingGroups>
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/[a-z/]$/i : RegExp<CapturingGroups, NamedCapturingGroups>
->           : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x1 : any
+>   : ^^^
+>/[a-z/]$/i : any
+>           : ^^^
 
 var x2 = /[a-z/]$ /i;
->x2 : RegExp<CapturingGroups, NamedCapturingGroups>
->   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/[a-z/]$ /i : RegExp<CapturingGroups, NamedCapturingGroups>
->            : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x2 : any
+>   : ^^^
+>/[a-z/]$ /i : any
+>            : ^^^
 

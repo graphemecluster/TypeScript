@@ -190,16 +190,16 @@ do { }while('')
 >   : ^^
 
 if (/[a-z]/) { }
->/[a-z]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[a-z]/ : any
+>        : ^^^
 
 while (/[a-z]/) { }
->/[a-z]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[a-z]/ : any
+>        : ^^^
 
 do { }while(/[a-z]/)
->/[a-z]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[a-z]/ : any
+>        : ^^^
 
 if ([]) { }
 >[] : undefined[]
@@ -447,22 +447,22 @@ do { }while(f)
 >  : ^^^^^^
 
 var g = /[a-z]/
->g : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/[a-z]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>g : any
+>  : ^^^
+>/[a-z]/ : any
+>        : ^^^
 
 if (g) { }
->g : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>g : any
+>  : ^^^
 
 while (g) { }
->g : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>g : any
+>  : ^^^
 
 do { }while(g)
->g : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>g : any
+>  : ^^^
 
 var h = [];
 >h : any[]

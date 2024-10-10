@@ -2,22 +2,22 @@
 
 === regExpWithOpenBracketInCharClass.ts ===
 const regexes: RegExp[] = [
->regexes : RegExp<CapturingGroupsArray, { [name: string]: string; }>[]
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->[  /[[]/,  // Valid  /[[]/u, // Valid  /[[]/v, // Well-terminated regex with an incomplete character class] : RegExp<CapturingGroups, NamedCapturingGroups>[]
->                                                                                                            : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>regexes : RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>[]
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>[  /[[]/,  // Valid  /[[]/u, // Valid  /[[]/v, // Well-terminated regex with an incomplete character class] : any[]
+>                                                                                                            : ^^^^^
 
   /[[]/,  // Valid
->/[[]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[[]/ : any
+>      : ^^^
 
   /[[]/u, // Valid
->/[[]/u : RegExp<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[[]/u : any
+>       : ^^^
 
   /[[]/v, // Well-terminated regex with an incomplete character class
->/[[]/v : RegExp<CapturingGroups, NamedCapturingGroups>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[[]/v : any
+>       : ^^^
 
 ];
 

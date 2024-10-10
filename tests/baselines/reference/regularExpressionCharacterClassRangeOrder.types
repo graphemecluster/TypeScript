@@ -1,9 +1,5 @@
 //// [tests/cases/compiler/regularExpressionCharacterClassRangeOrder.ts] ////
 
-=== Performance Stats ===
-Type Count: 1,000
-Instantiation count: 2,500
-
 === regularExpressionCharacterClassRangeOrder.ts ===
 // The characters in the following regular expressions are ASCII-lookalike characters found in Unicode, including:
 // - 𝘈 (U+1D608 Mathematical Sans-Serif Italic Capital A)
@@ -11,46 +7,46 @@ Instantiation count: 2,500
 //
 // See https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols
 const regexes: RegExp[] = [
->regexes : RegExp<CapturingGroupsArray, { [name: string]: string; }>[]
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->[	/[𝘈-𝘡][𝘡-𝘈]/,	/[𝘈-𝘡][𝘡-𝘈]/u,	/[𝘈-𝘡][𝘡-𝘈]/v,	/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/,	/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/u,	/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/v,	/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/,	/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/u,	/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/v,] : RegExp<CapturingGroups, NamedCapturingGroups>[]
->                                                                                                                                                                                                                                                                                                                                                                                       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>regexes : RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>[]
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>[	/[𝘈-𝘡][𝘡-𝘈]/,	/[𝘈-𝘡][𝘡-𝘈]/u,	/[𝘈-𝘡][𝘡-𝘈]/v,	/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/,	/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/u,	/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/v,	/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/,	/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/u,	/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/v,] : any[]
+>                                                                                                                                                                                                                                                                                                                                                                                       : ^^^^^
 
 	/[𝘈-𝘡][𝘡-𝘈]/,
->/[𝘈-𝘡][𝘡-𝘈]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->                 : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[𝘈-𝘡][𝘡-𝘈]/ : any
+>                 : ^^^
 
 	/[𝘈-𝘡][𝘡-𝘈]/u,
->/[𝘈-𝘡][𝘡-𝘈]/u : RegExp<CapturingGroups, NamedCapturingGroups>
->                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[𝘈-𝘡][𝘡-𝘈]/u : any
+>                  : ^^^
 
 	/[𝘈-𝘡][𝘡-𝘈]/v,
->/[𝘈-𝘡][𝘡-𝘈]/v : RegExp<CapturingGroups, NamedCapturingGroups>
->                  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[𝘈-𝘡][𝘡-𝘈]/v : any
+>                  : ^^^
 
 	/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/,
->/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->                                             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/ : any
+>                                             : ^^^
 
 	/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/u,
->/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/u : RegExp<CapturingGroups, NamedCapturingGroups>
->                                              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/u : any
+>                                              : ^^^
 
 	/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/v,
->/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/v : RegExp<CapturingGroups, NamedCapturingGroups>
->                                              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[\u{1D608}-\u{1D621}][\u{1D621}-\u{1D608}]/v : any
+>                                              : ^^^
 
 	/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/,
->/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/ : RegExp<CapturingGroups, NamedCapturingGroups>
->                                                         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/ : any
+>                                                         : ^^^
 
 	/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/u,
->/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/u : RegExp<CapturingGroups, NamedCapturingGroups>
->                                                          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/u : any
+>                                                          : ^^^
 
 	/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/v,
->/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/v : RegExp<CapturingGroups, NamedCapturingGroups>
->                                                          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/[\uD835\uDE08-\uD835\uDE21][\uD835\uDE21-\uD835\uDE08]/v : any
+>                                                          : ^^^
 
 ];
 

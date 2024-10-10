@@ -1,12 +1,11 @@
 error TS2318: Cannot find global type 'Boolean'.
 error TS2318: Cannot find global type 'IArguments'.
 noDefaultLib.ts(4,11): error TS2317: Global type 'Array' must have 1 type parameter(s).
-noDefaultLib.ts(10,11): error TS2317: Global type 'RegExp' must have 2 type parameter(s).
 
 
 !!! error TS2318: Cannot find global type 'Boolean'.
 !!! error TS2318: Cannot find global type 'IArguments'.
-==== noDefaultLib.ts (2 errors) ====
+==== noDefaultLib.ts (1 errors) ====
     /// <reference no-default-lib="true"/>
     var x;
     
@@ -18,6 +17,3 @@ noDefaultLib.ts(10,11): error TS2317: Global type 'RegExp' must have 2 type para
     interface Object {}
     interface Date {}
     interface Function {}
-    interface RegExp {}
-              ~~~~~~
-!!! error TS2317: Global type 'RegExp' must have 2 type parameter(s).

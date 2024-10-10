@@ -1,13 +1,14 @@
 regexpExecAndMatchTypeUsages.ts(3,5): error TS2532: Object is possibly 'undefined'.
-regexpExecAndMatchTypeUsages.ts(4,17): error TS2551: Property 'index' does not exist on type 'RegExpMatchArray'. Did you mean 'indexOf'?
-regexpExecAndMatchTypeUsages.ts(5,17): error TS2339: Property 'input' does not exist on type 'RegExpMatchArray'.
-regexpExecAndMatchTypeUsages.ts(6,17): error TS2339: Property 'groups' does not exist on type 'RegExpMatchArray'.
-regexpExecAndMatchTypeUsages.ts(7,17): error TS2339: Property 'groups' does not exist on type 'RegExpMatchArray'.
+regexpExecAndMatchTypeUsages.ts(4,17): error TS2551: Property 'index' does not exist on type 'RegExpMatchArray<CapturingGroupsArray>'. Did you mean 'indexOf'?
+regexpExecAndMatchTypeUsages.ts(5,17): error TS2339: Property 'input' does not exist on type 'RegExpMatchArray<CapturingGroupsArray>'.
+regexpExecAndMatchTypeUsages.ts(6,17): error TS2339: Property 'groups' does not exist on type 'RegExpMatchArray<CapturingGroupsArray>'.
+regexpExecAndMatchTypeUsages.ts(7,17): error TS2339: Property 'groups' does not exist on type 'RegExpMatchArray<CapturingGroupsArray>'.
 regexpExecAndMatchTypeUsages.ts(10,5): error TS2532: Object is possibly 'undefined'.
 regexpExecAndMatchTypeUsages.ts(13,5): error TS18048: 'execResult.groups' is possibly 'undefined'.
 regexpExecAndMatchTypeUsages.ts(13,5): error TS2532: Object is possibly 'undefined'.
-regexpExecAndMatchTypeUsages.ts(17,9): error TS2322: Type 'RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject>' is not assignable to type 'RegExpMatchArray'.
-regexpExecAndMatchTypeUsages.ts(20,9): error TS2322: Type 'RegExpMatchArray' is not assignable to type 'RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject>'.
+regexpExecAndMatchTypeUsages.ts(17,9): error TS2322: Type 'RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject, RegExpFlags>' is not assignable to type 'RegExpMatchArray<CapturingGroupsArray>'.
+regexpExecAndMatchTypeUsages.ts(20,9): error TS2322: Type 'RegExpMatchArray<CapturingGroupsArray>' is not assignable to type 'RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject, RegExpFlags>'.
+  Type '[string, ...string[]]' is not assignable to type '_RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject>'.
 
 
 ==== regexpExecAndMatchTypeUsages.ts (10 errors) ====
@@ -18,17 +19,17 @@ regexpExecAndMatchTypeUsages.ts(20,9): error TS2322: Type 'RegExpMatchArray' is 
 !!! error TS2532: Object is possibly 'undefined'.
         matchResult.index + 0;
                     ~~~~~
-!!! error TS2551: Property 'index' does not exist on type 'RegExpMatchArray'. Did you mean 'indexOf'?
+!!! error TS2551: Property 'index' does not exist on type 'RegExpMatchArray<CapturingGroupsArray>'. Did you mean 'indexOf'?
 !!! related TS2728 lib.es5.d.ts:--:--: 'indexOf' is declared here.
         matchResult.input.length;
                     ~~~~~
-!!! error TS2339: Property 'input' does not exist on type 'RegExpMatchArray'.
+!!! error TS2339: Property 'input' does not exist on type 'RegExpMatchArray<CapturingGroupsArray>'.
         matchResult.groups["someVariable"].length;
                     ~~~~~~
-!!! error TS2339: Property 'groups' does not exist on type 'RegExpMatchArray'.
+!!! error TS2339: Property 'groups' does not exist on type 'RegExpMatchArray<CapturingGroupsArray>'.
         matchResult.groups = undefined;
                     ~~~~~~
-!!! error TS2339: Property 'groups' does not exist on type 'RegExpMatchArray'.
+!!! error TS2339: Property 'groups' does not exist on type 'RegExpMatchArray<CapturingGroupsArray>'.
     
         execResult[0].length;
         execResult[999].length;
@@ -46,12 +47,13 @@ regexpExecAndMatchTypeUsages.ts(20,9): error TS2322: Type 'RegExpMatchArray' is 
         if (Math.random()) {
             matchResult = execResult;
             ~~~~~~~~~~~
-!!! error TS2322: Type 'RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject>' is not assignable to type 'RegExpMatchArray'.
+!!! error TS2322: Type 'RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject, RegExpFlags>' is not assignable to type 'RegExpMatchArray<CapturingGroupsArray>'.
         }
         else {
             execResult = matchResult
             ~~~~~~~~~~
-!!! error TS2322: Type 'RegExpMatchArray' is not assignable to type 'RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject>'.
+!!! error TS2322: Type 'RegExpMatchArray<CapturingGroupsArray>' is not assignable to type 'RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject, RegExpFlags>'.
+!!! error TS2322:   Type '[string, ...string[]]' is not assignable to type '_RegExpExecArray<CapturingGroupsArray, NamedCapturingGroupsObject>'.
         }
     }
     

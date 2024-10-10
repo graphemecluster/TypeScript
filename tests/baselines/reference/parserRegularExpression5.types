@@ -4,14 +4,14 @@
 if (a) / (\\ ? | & ) rct = j / .test(c.href);
 >a : any
 >  : ^^^
->/ (\\ ? | & ) rct = j / .test(c.href) : boolean
->                                      : ^^^^^^^
->/ (\\ ? | & ) rct = j / .test : (string: string) => boolean
->                              : ^      ^^      ^^^^^       
->/ (\\ ? | & ) rct = j / : RegExp<CapturingGroups, NamedCapturingGroups>
->                        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->test : (string: string) => boolean
->     : ^      ^^      ^^^^^       
+>/ (\\ ? | & ) rct = j / .test(c.href) : any
+>                                      : ^^^
+>/ (\\ ? | & ) rct = j / .test : any
+>                              : ^^^
+>/ (\\ ? | & ) rct = j / : any
+>                        : ^^^
+>test : any
+>     : ^^^
 >c.href : any
 >       : ^^^
 >c : any

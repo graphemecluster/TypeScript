@@ -3,8 +3,8 @@
 === unicodeExtendedEscapesInRegularExpressions14.ts ===
 // Shouldn't work, negatives are not allowed.
 var x = /\u{-DDDD}/gu;
->x : RegExp<CapturingGroups, NamedCapturingGroups>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\u{-DDDD}/gu : RegExp<CapturingGroups, NamedCapturingGroups>
->              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : any
+>  : ^^^
+>/\u{-DDDD}/gu : any
+>              : ^^^
 
