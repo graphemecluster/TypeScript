@@ -310,7 +310,11 @@ const testRegExpFlags = /abc/g.flags;
 
 const testRegExpSticky = /abc/g.sticky;
 >testRegExpSticky : Symbol(testRegExpSticky, Decl(doYouNeedToChangeYourTargetLibraryES2015.ts, 89, 5))
+>/abc/g.sticky : Symbol(sticky)
+>sticky : Symbol(sticky)
 
 const testRegExpUnicode = /abc/g.unicode;
 >testRegExpUnicode : Symbol(testRegExpUnicode, Decl(doYouNeedToChangeYourTargetLibraryES2015.ts, 90, 5))
+>/abc/g.unicode : Symbol(unicode)
+>unicode : Symbol(unicode)
 

@@ -18616,8 +18616,8 @@ module TypeScript {
 >  : ^^^^^^
 >replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
 >        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
->/^\s+|\s+$/g : any
->             : ^^^
+>/^\s+|\s+$/g : RegExp<[string], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >'' : ""
 >   : ^^
                     }
@@ -18648,8 +18648,8 @@ module TypeScript {
 >        : ^^^^^^
 >replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
 >        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
->/^\s+|\s+$/g : any
->             : ^^^
+>/^\s+|\s+$/g : RegExp<[string], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >'' : ""
 >   : ^^
                 }

@@ -4,14 +4,14 @@
 if (a) / (\\ ? | & ) rct = j / .test(c.href);
 >a : any
 >  : ^^^
->/ (\\ ? | & ) rct = j / .test(c.href) : any
->                                      : ^^^
->/ (\\ ? | & ) rct = j / .test : any
->                              : ^^^
->/ (\\ ? | & ) rct = j / : any
->                        : ^^^
->test : any
->     : ^^^
+>/ (\\ ? | & ) rct = j / .test(c.href) : boolean
+>                                      : ^^^^^^^
+>/ (\\ ? | & ) rct = j / .test : (string: string) => boolean
+>                              : ^      ^^      ^^^^^       
+>/ (\\ ? | & ) rct = j / : RegExp<[" \\  rct = j " | " \\   rct = j " | "  &  rct = j ", "\\ " | "\\  " | " & "], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>                        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>test : (string: string) => boolean
+>     : ^      ^^      ^^^^^       
 >c.href : any
 >       : ^^^
 >c : any

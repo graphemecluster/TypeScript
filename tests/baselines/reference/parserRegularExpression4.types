@@ -20,8 +20,8 @@ if (Ca.test(c.href) || Ba.test(c.href) && /(\\?|&)adurl=/.test(c.href) && !/(\\?
 >     : ^^^
 >Ba.test(c.href) && /(\\?|&)adurl=/.test(c.href) && !/(\\?|&)q=/.test(c.href) : boolean
 >                                                                             : ^^^^^^^
->Ba.test(c.href) && /(\\?|&)adurl=/.test(c.href) : any
->                                                : ^^^
+>Ba.test(c.href) && /(\\?|&)adurl=/.test(c.href) : boolean
+>                                                : ^^^^^^^
 >Ba.test(c.href) : any
 >                : ^^^
 >Ba.test : any
@@ -36,14 +36,14 @@ if (Ca.test(c.href) || Ba.test(c.href) && /(\\?|&)adurl=/.test(c.href) && !/(\\?
 >  : ^^^
 >href : any
 >     : ^^^
->/(\\?|&)adurl=/.test(c.href) : any
->                             : ^^^
->/(\\?|&)adurl=/.test : any
->                     : ^^^
->/(\\?|&)adurl=/ : any
->                : ^^^
->test : any
->     : ^^^
+>/(\\?|&)adurl=/.test(c.href) : boolean
+>                             : ^^^^^^^
+>/(\\?|&)adurl=/.test : (string: string) => boolean
+>                     : ^      ^^      ^^^^^       
+>/(\\?|&)adurl=/ : RegExp<["adurl=" | "\\adurl=" | "&adurl=", "" | "\\" | "&"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>                : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>test : (string: string) => boolean
+>     : ^      ^^      ^^^^^       
 >c.href : any
 >       : ^^^
 >c : any
@@ -52,14 +52,14 @@ if (Ca.test(c.href) || Ba.test(c.href) && /(\\?|&)adurl=/.test(c.href) && !/(\\?
 >     : ^^^
 >!/(\\?|&)q=/.test(c.href) : boolean
 >                          : ^^^^^^^
->/(\\?|&)q=/.test(c.href) : any
->                         : ^^^
->/(\\?|&)q=/.test : any
->                 : ^^^
->/(\\?|&)q=/ : any
->            : ^^^
->test : any
->     : ^^^
+>/(\\?|&)q=/.test(c.href) : boolean
+>                         : ^^^^^^^
+>/(\\?|&)q=/.test : (string: string) => boolean
+>                 : ^      ^^      ^^^^^       
+>/(\\?|&)q=/ : RegExp<["q=" | "\\q=" | "&q=", "" | "\\" | "&"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>            : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>test : (string: string) => boolean
+>     : ^      ^^      ^^^^^       
 >c.href : any
 >       : ^^^
 >c : any
@@ -70,16 +70,16 @@ if (Ca.test(c.href) || Ba.test(c.href) && /(\\?|&)adurl=/.test(c.href) && !/(\\?
 >                                                                                                                                                                                                    : ^^^^
 >/ (\\ ? | & ) rct = j / .test(c.href) || (d += "&rct=j"), /(\\?|&)q=/.test(c.href) || (d += "&q=" + encodeURIComponent(W("q") || W("as_q") || A), d = d.substring(0, 1948 - c.href.length)) : any
 >                                                                                                                                                                                            : ^^^
->/ (\\ ? | & ) rct = j / .test(c.href) || (d += "&rct=j") : any
->                                                         : ^^^
->/ (\\ ? | & ) rct = j / .test(c.href) : any
->                                      : ^^^
->/ (\\ ? | & ) rct = j / .test : any
->                              : ^^^
->/ (\\ ? | & ) rct = j / : any
->                        : ^^^
->test : any
->     : ^^^
+>/ (\\ ? | & ) rct = j / .test(c.href) || (d += "&rct=j") : string | true
+>                                                         : ^^^^^^^^^^^^^
+>/ (\\ ? | & ) rct = j / .test(c.href) : boolean
+>                                      : ^^^^^^^
+>/ (\\ ? | & ) rct = j / .test : (string: string) => boolean
+>                              : ^      ^^      ^^^^^       
+>/ (\\ ? | & ) rct = j / : RegExp<[" \\  rct = j " | " \\   rct = j " | "  &  rct = j ", "\\ " | "\\  " | " & "], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>                        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>test : (string: string) => boolean
+>     : ^      ^^      ^^^^^       
 >c.href : any
 >       : ^^^
 >c : any
@@ -96,14 +96,14 @@ if (Ca.test(c.href) || Ba.test(c.href) && /(\\?|&)adurl=/.test(c.href) && !/(\\?
 >         : ^^^^^^^^
 >/(\\?|&)q=/.test(c.href) || (d += "&q=" + encodeURIComponent(W("q") || W("as_q") || A), d = d.substring(0, 1948 - c.href.length)) : any
 >                                                                                                                                  : ^^^
->/(\\?|&)q=/.test(c.href) : any
->                         : ^^^
->/(\\?|&)q=/.test : any
->                 : ^^^
->/(\\?|&)q=/ : any
->            : ^^^
->test : any
->     : ^^^
+>/(\\?|&)q=/.test(c.href) : boolean
+>                         : ^^^^^^^
+>/(\\?|&)q=/.test : (string: string) => boolean
+>                 : ^      ^^      ^^^^^       
+>/(\\?|&)q=/ : RegExp<["q=" | "\\q=" | "&q=", "" | "\\" | "&"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>            : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>test : (string: string) => boolean
+>     : ^      ^^      ^^^^^       
 >c.href : any
 >       : ^^^
 >c : any

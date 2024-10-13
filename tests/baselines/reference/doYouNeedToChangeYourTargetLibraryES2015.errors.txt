@@ -79,9 +79,10 @@ doYouNeedToChangeYourTargetLibraryES2015.ts(85,26): error TS2550: Property 'sub'
 doYouNeedToChangeYourTargetLibraryES2015.ts(86,26): error TS2550: Property 'sup' does not exist on type '""'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.
 doYouNeedToChangeYourTargetLibraryES2015.ts(87,51): error TS2550: Property 'fromCodePoint' does not exist on type 'StringConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.
 doYouNeedToChangeYourTargetLibraryES2015.ts(88,41): error TS2550: Property 'raw' does not exist on type 'StringConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.
+doYouNeedToChangeYourTargetLibraryES2015.ts(89,32): error TS2339: Property 'flags' does not exist on type 'RegExp<["abc"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>'.
 
 
-==== doYouNeedToChangeYourTargetLibraryES2015.ts (81 errors) ====
+==== doYouNeedToChangeYourTargetLibraryES2015.ts (82 errors) ====
     // es2015
     const noOp = () => {};
     const testReflectApply = Reflect.apply(noOp, this, []);
@@ -333,6 +334,8 @@ doYouNeedToChangeYourTargetLibraryES2015.ts(88,41): error TS2550: Property 'raw'
                                             ~~~
 !!! error TS2550: Property 'raw' does not exist on type 'StringConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.
     const testRegExpFlags = /abc/g.flags;
+                                   ~~~~~
+!!! error TS2339: Property 'flags' does not exist on type 'RegExp<["abc"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>'.
     const testRegExpSticky = /abc/g.sticky;
     const testRegExpUnicode = /abc/g.unicode;
     

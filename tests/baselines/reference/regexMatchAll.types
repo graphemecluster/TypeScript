@@ -2,10 +2,14 @@
 
 === regexMatchAll.ts ===
 const matches = /\w/g[Symbol.matchAll]("matchAll");
->matches : any
->/\w/g[Symbol.matchAll]("matchAll") : any
->/\w/g[Symbol.matchAll] : any
->/\w/g : any
+>matches : RegExpStringIterator<RegExpMatchArray<[string]>>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\w/g[Symbol.matchAll]("matchAll") : RegExpStringIterator<RegExpMatchArray<[string]>>
+>                                   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\w/g[Symbol.matchAll] : (str: string) => RegExpStringIterator<RegExpMatchArray<[string]>>
+>                       : ^   ^^      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\w/g : RegExp<[string], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >Symbol.matchAll : unique symbol
 >                : ^^^^^^^^^^^^^
 >Symbol : SymbolConstructor
@@ -16,21 +20,24 @@ const matches = /\w/g[Symbol.matchAll]("matchAll");
 >           : ^^^^^^^^^^
 
 const array = [...matches];
->array : any[]
->      : ^^^^^
->[...matches] : any[]
->             : ^^^^^
->...matches : any
->matches : any
+>array : RegExpMatchArray<[string]>[]
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>[...matches] : RegExpMatchArray<[string]>[]
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>...matches : RegExpMatchArray<[string]>
+>           : ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>matches : RegExpStringIterator<RegExpMatchArray<[string]>>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 const { index, input } = array[0];
 >index : any
 >      : ^^^
 >input : any
 >      : ^^^
->array[0] : any
->array : any[]
->      : ^^^^^
+>array[0] : RegExpMatchArray<[string]>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>array : RegExpMatchArray<[string]>[]
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >0 : 0
 >  : ^
 

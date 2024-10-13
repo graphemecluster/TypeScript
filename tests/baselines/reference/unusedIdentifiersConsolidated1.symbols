@@ -93,7 +93,9 @@ namespace Validation {
 >s2 : Symbol(s2, Decl(unusedIdentifiersConsolidated1.ts, 39, 21))
 
             return lettersRegexp.test(s2);
+>lettersRegexp.test : Symbol(_RegExp.test, Decl(lib.es5.d.ts, --, --))
 >lettersRegexp : Symbol(lettersRegexp, Decl(unusedIdentifiersConsolidated1.ts, 35, 9))
+>test : Symbol(_RegExp.test, Decl(lib.es5.d.ts, --, --))
 >s2 : Symbol(s2, Decl(unusedIdentifiersConsolidated1.ts, 39, 21))
         }
 

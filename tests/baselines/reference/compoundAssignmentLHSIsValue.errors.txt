@@ -27,7 +27,7 @@ compoundAssignmentLHSIsValue.ts(50,1): error TS2364: The left-hand side of an as
 compoundAssignmentLHSIsValue.ts(51,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
 compoundAssignmentLHSIsValue.ts(52,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundAssignmentLHSIsValue.ts(53,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
-compoundAssignmentLHSIsValue.ts(54,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
+compoundAssignmentLHSIsValue.ts(54,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundAssignmentLHSIsValue.ts(55,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
 compoundAssignmentLHSIsValue.ts(58,9): error TS1128: Declaration or statement expected.
 compoundAssignmentLHSIsValue.ts(59,9): error TS1128: Declaration or statement expected.
@@ -64,7 +64,7 @@ compoundAssignmentLHSIsValue.ts(109,1): error TS2364: The left-hand side of an a
 compoundAssignmentLHSIsValue.ts(110,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
 compoundAssignmentLHSIsValue.ts(111,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundAssignmentLHSIsValue.ts(112,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
-compoundAssignmentLHSIsValue.ts(113,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
+compoundAssignmentLHSIsValue.ts(113,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundAssignmentLHSIsValue.ts(114,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
 compoundAssignmentLHSIsValue.ts(115,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 compoundAssignmentLHSIsValue.ts(116,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
@@ -190,7 +190,7 @@ compoundAssignmentLHSIsValue.ts(122,1): error TS2364: The left-hand side of an a
 !!! error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
     /d+/ *= value;
     ~~~~
-!!! error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
+!!! error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
     /d+/ += value;
     ~~~~
 !!! error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
@@ -323,7 +323,7 @@ compoundAssignmentLHSIsValue.ts(122,1): error TS2364: The left-hand side of an a
 !!! error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
     (/d+/) *= value;
     ~~~~~~
-!!! error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
+!!! error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
     (/d+/) += value;
     ~~~~~~
 !!! error TS2364: The left-hand side of an assignment expression must be a variable or a property access.

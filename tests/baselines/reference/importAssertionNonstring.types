@@ -18,8 +18,8 @@ import * as thing3 from "./mod.mjs" assert {field: /a/g};
 >       : ^^^^^^^^^^^^^
 >field : any
 >      : ^^^
->/a/g : any
->     : ^^^
+>/a/g : RegExp<["a"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 import * as thing4 from "./mod.mjs" assert {field: ["a"]};
 >thing4 : typeof thing1

@@ -49,9 +49,13 @@ const testRegExpMatchArrayGroups = "2019-04-30".match(/(?<year>[0-9]{4})-(?<mont
 
 const testRegExpExecArrayGroups = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/g.exec("2019-04-30").groups;
 >testRegExpExecArrayGroups : Symbol(testRegExpExecArrayGroups, Decl(doYouNeedToChangeYourTargetLibraryES2016Plus.ts, 16, 5))
+>/(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/g.exec : Symbol(_RegExp.exec, Decl(lib.es5.d.ts, --, --))
+>exec : Symbol(_RegExp.exec, Decl(lib.es5.d.ts, --, --))
 
 const testRegExpDotAll = /foo/g.dotAll;
 >testRegExpDotAll : Symbol(testRegExpDotAll, Decl(doYouNeedToChangeYourTargetLibraryES2016Plus.ts, 17, 5))
+>/foo/g.dotAll : Symbol(dotAll)
+>dotAll : Symbol(dotAll)
 
 const testIntlPluralRules = new Intl.PluralRules("ar-EG").select(0);
 >testIntlPluralRules : Symbol(testIntlPluralRules, Decl(doYouNeedToChangeYourTargetLibraryES2016Plus.ts, 18, 5))

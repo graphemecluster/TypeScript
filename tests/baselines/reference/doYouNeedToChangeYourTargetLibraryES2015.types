@@ -1151,28 +1151,28 @@ const testRegExpFlags = /abc/g.flags;
 >                : ^^^
 >/abc/g.flags : any
 >             : ^^^
->/abc/g : any
->       : ^^^
+>/abc/g : RegExp<["abc"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >flags : any
 >      : ^^^
 
 const testRegExpSticky = /abc/g.sticky;
->testRegExpSticky : any
->                 : ^^^
->/abc/g.sticky : any
->              : ^^^
->/abc/g : any
->       : ^^^
->sticky : any
->       : ^^^
+>testRegExpSticky : false
+>                 : ^^^^^
+>/abc/g.sticky : false
+>              : ^^^^^
+>/abc/g : RegExp<["abc"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>sticky : false
+>       : ^^^^^
 
 const testRegExpUnicode = /abc/g.unicode;
->testRegExpUnicode : any
->                  : ^^^
->/abc/g.unicode : any
->               : ^^^
->/abc/g : any
->       : ^^^
->unicode : any
->        : ^^^
+>testRegExpUnicode : false
+>                  : ^^^^^
+>/abc/g.unicode : false
+>               : ^^^^^
+>/abc/g : RegExp<["abc"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>unicode : false
+>        : ^^^^^
 

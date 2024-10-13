@@ -30,52 +30,49 @@ module Bugs {
 >        : ^^^^^^
 >replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
 >        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
->/\{(\d+)\}/g : any
->             : ^^^
->function(match, ...rest) {      var index= rest[0];      return typeof args[index] !== 'undefined'        ? args[index]        : match;    } : (match: string | number, ...rest: (string | number)[]) => any
->                                                                                                                                             : ^     ^^^^^^^^^^^^^^^^^^^^^^    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->match : string | number
->      : ^^^^^^^^^^^^^^^
->rest : (string | number)[]
->     : ^^^^^^^^^^^^^^^^^^^
+>/\{(\d+)\}/g : RegExp<[`{${string}}`, string], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>function(match, ...rest) {      var index= rest[0];      return typeof args[index] !== 'undefined'        ? args[index]        : match;    } : (match: `{${string}}`, rest_0: string, offset: number, input: string) => any
+>                                                                                                                                             : ^     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>match : `{${string}}`
+>      : ^^^^^^^^^^^^^
+>rest : [string, offset: number, input: string]
+>     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
       var index= rest[0];
->index : string | number
->      : ^^^^^^^^^^^^^^^
->rest[0] : string | number
->        : ^^^^^^^^^^^^^^^
->rest : (string | number)[]
->     : ^^^^^^^^^^^^^^^^^^^
+>index : string
+>      : ^^^^^^
+>rest[0] : string
+>        : ^^^^^^
+>rest : [string, offset: number, input: string]
+>     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >0 : 0
 >  : ^
 
       return typeof args[index] !== 'undefined'
->typeof args[index] !== 'undefined'        ? args[index]        : match : any
->                                                                       : ^^^
+>typeof args[index] !== 'undefined'        ? args[index]        : match : error
 >typeof args[index] !== 'undefined' : boolean
 >                                   : ^^^^^^^
 >typeof args[index] : "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function"
 >                   : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->args[index] : any
->            : ^^^
+>args[index] : error
 >args : any[]
 >     : ^^^^^
->index : string | number
->      : ^^^^^^^^^^^^^^^
+>index : string
+>      : ^^^^^^
 >'undefined' : "undefined"
 >            : ^^^^^^^^^^^
 
         ? args[index]
->args[index] : any
->            : ^^^
+>args[index] : error
 >args : any[]
 >     : ^^^^^
->index : string | number
->      : ^^^^^^^^^^^^^^^
+>index : string
+>      : ^^^^^^
 
         : match;
->match : string | number
->      : ^^^^^^^^^^^^^^^
+>match : `{${string}}`
+>      : ^^^^^^^^^^^^^
 
     });
     return result;

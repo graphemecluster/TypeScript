@@ -114,14 +114,14 @@ x = <foo>x</foo>, x = <foo/>;
 >    : ^^^^^^^^^^
 >/foo/.test(x) ? <foo><foo></foo> : <foo><foo></foo>}</foo>}</foo> : any
 >                                                                  : ^^^
->/foo/.test(x) : any
->              : ^^^
->/foo/.test : any
->           : ^^^
->/foo/ : any
->      : ^^^
->test : any
->     : ^^^
+>/foo/.test(x) : boolean
+>              : ^^^^^^^
+>/foo/.test : (string: string) => boolean
+>           : ^      ^^      ^^^^^       
+>/foo/ : RegExp<["foo"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>test : (string: string) => boolean
+>     : ^      ^^      ^^^^^       
 >x : any
 >  : ^^^
 ><foo><foo></foo> : <foo><foo></foo>}</foo>}</foo> : any
