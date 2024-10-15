@@ -1,33 +1,11 @@
 parserArgumentList1.ts(2,42): error TS2304: Cannot find name '_classNameRegexp'.
-parserArgumentList1.ts(2,71): error TS2345: Argument of type '(everything: string | number, leftDelimiter: string | number, name: string | number, rightDelimiter: string | number) => " " | ""' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
-  Type '(everything: string | number, leftDelimiter: string | number, name: string | number, rightDelimiter: string | number) => " " | ""' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
-    Types of parameters 'everything' and 'capturingGroups' are incompatible.
-      Type '[...capturingGroups: string[], offset: number, input: string]' is not assignable to type '[everything: string | number, leftDelimiter: string | number, name: string | number, rightDelimiter: string | number]'.
-        Target requires 4 element(s) but source may have fewer.
-parserArgumentList1.ts(3,24): error TS2339: Property 'length' does not exist on type 'string | number'.
-  Property 'length' does not exist on type 'number'.
-parserArgumentList1.ts(3,48): error TS2339: Property 'length' does not exist on type 'string | number'.
-  Property 'length' does not exist on type 'number'.
 
 
-==== parserArgumentList1.ts (4 errors) ====
+==== parserArgumentList1.ts (1 errors) ====
     export function removeClass (node:HTMLElement, className:string) {
     	node.className = node.className.replace(_classNameRegexp(className), function (everything, leftDelimiter, name, rightDelimiter) {
     	                                        ~~~~~~~~~~~~~~~~
 !!! error TS2304: Cannot find name '_classNameRegexp'.
-    	                                                                     ~~~~~~~~
-!!! error TS2345: Argument of type '(everything: string | number, leftDelimiter: string | number, name: string | number, rightDelimiter: string | number) => " " | ""' is not assignable to parameter of type 'string | StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
-!!! error TS2345:   Type '(everything: string | number, leftDelimiter: string | number, name: string | number, rightDelimiter: string | number) => " " | ""' is not assignable to type 'StringReplaceCallbackSignature<CapturingGroupsArray, { [name: string]: string; }>'.
-!!! error TS2345:     Types of parameters 'everything' and 'capturingGroups' are incompatible.
-!!! error TS2345:       Type '[...capturingGroups: string[], offset: number, input: string]' is not assignable to type '[everything: string | number, leftDelimiter: string | number, name: string | number, rightDelimiter: string | number]'.
-!!! error TS2345:         Target requires 4 element(s) but source may have fewer.
-!!! related TS6212 parserArgumentList1.ts:2:71: Did you mean to call this expression?
     		return leftDelimiter.length + rightDelimiter.length === 2 ? ' ' : '';
-    		                     ~~~~~~
-!!! error TS2339: Property 'length' does not exist on type 'string | number'.
-!!! error TS2339:   Property 'length' does not exist on type 'number'.
-    		                                             ~~~~~~
-!!! error TS2339: Property 'length' does not exist on type 'string | number'.
-!!! error TS2339:   Property 'length' does not exist on type 'number'.
     	});
     }

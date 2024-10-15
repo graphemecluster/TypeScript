@@ -1,5 +1,9 @@
 //// [tests/cases/conformance/es6/unicodeExtendedEscapes/unicodeExtendedEscapesInRegularExpressions17.ts] ////
 
+=== Performance Stats ===
+Type Count: 1,000
+Instantiation count: 5,000
+
 === unicodeExtendedEscapesInRegularExpressions17.ts ===
 var x = /\u{r}\u{n}\u{t}/gu;
 >x : RegExp<["\\u{r}\\u{n}\\u{t}"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: true; readonly unicodeSets: false; readonly sticky: false; }>

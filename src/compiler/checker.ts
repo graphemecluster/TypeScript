@@ -965,7 +965,6 @@ import {
     reduceLeft,
     RegExpAnyString,
     RegularExpressionBackreference,
-    RegularExpressionCapturingGroup,
     RegularExpressionFlags,
     RegularExpressionLiteral,
     RegularExpressionPatternUnion,
@@ -2104,7 +2103,7 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
     var stringNumberSymbolType = getUnionType([stringType, numberType, esSymbolType]);
     var numberOrBigIntType = getUnionType([numberType, bigintType]);
     var templateConstraintType = getUnionType([stringType, numberType, booleanType, bigintType, nullType, undefinedType]) as UnionType;
-    var numericStringType = getTemplateLiteralType(["", ""], [numberType]); // The `${number}` type
+    var numericStringType = getTemplateLiteralType(/*texts*/ undefined, [numberType]); // The `${number}` type
 
     var restrictiveMapper: TypeMapper = makeFunctionTypeMapper(t => t.flags & TypeFlags.TypeParameter ? getRestrictiveTypeParameter(t as TypeParameter) : t, () => "(restrictive mapper)");
     var permissiveMapper: TypeMapper = makeFunctionTypeMapper(t => t.flags & TypeFlags.TypeParameter ? wildcardType : t, () => "(permissive mapper)");
@@ -18095,11 +18094,13 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
         return reduceLeft(types, (n, t) => t.flags & TypeFlags.Union ? n * (t as UnionType).types.length : t.flags & TypeFlags.Never ? 0 : n, 1);
     }
 
-    function checkCrossProductUnion(types: readonly Type[]) {
+    function checkCrossProductUnion(types: readonly Type[], isRegularExpression?: boolean) {
         const size = getCrossProductUnionSize(types);
         if (size >= 100000) {
-            tracing?.instant(tracing.Phase.CheckTypes, "checkCrossProductUnion_DepthLimit", { typeIds: types.map(t => t.id), size });
-            error(currentNode, Diagnostics.Expression_produces_a_union_type_that_is_too_complex_to_represent);
+            if (!isRegularExpression) {
+                tracing?.instant(tracing.Phase.CheckTypes, "checkCrossProductUnion_DepthLimit", { typeIds: types.map(t => t.id), size });
+                error(currentNode, Diagnostics.Expression_produces_a_union_type_that_is_too_complex_to_represent);
+            }
             return false;
         }
         return true;
@@ -18352,19 +18353,19 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
         return links.resolvedType;
     }
 
-    function getTemplateLiteralType(texts: readonly string[], types: readonly Type[]): Type {
+    function getTemplateLiteralType(texts: readonly string[] | undefined, types: readonly Type[], isRegularExpression?: boolean): Type {
         const unionIndex = findIndex(types, t => !!(t.flags & (TypeFlags.Never | TypeFlags.Union)));
         if (unionIndex >= 0) {
-            return checkCrossProductUnion(types) ?
+            return checkCrossProductUnion(types, isRegularExpression) ?
                 mapType(types[unionIndex], t => getTemplateLiteralType(texts, replaceElement(types, unionIndex, t))) :
-                errorType;
+                isRegularExpression ? stringType : errorType;
         }
         if (contains(types, wildcardType)) {
             return wildcardType;
         }
         const newTypes: Type[] = [];
         const newTexts: string[] = [];
-        let text = texts[0];
+        let text = texts ? texts[0] : "";
         if (!addSpans(texts, types)) {
             return stringType;
         }
@@ -18388,75 +18389,33 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
         }
         return type;
 
-        function addSpans(texts: readonly string[], types: readonly Type[]): boolean {
+        function addSpans(texts: readonly string[] | undefined, types: readonly Type[]): boolean {
             for (let i = 0; i < types.length; i++) {
                 const t = types[i];
                 if (t.flags & (TypeFlags.Literal | TypeFlags.Null | TypeFlags.Undefined)) {
                     text += getTemplateStringForType(t) || "";
-                    text += texts[i + 1];
+                    if (texts) text += texts[i + 1];
                 }
                 else if (t.flags & TypeFlags.TemplateLiteral) {
                     text += (t as TemplateLiteralType).texts[0];
                     if (!addSpans((t as TemplateLiteralType).texts, (t as TemplateLiteralType).types)) return false;
-                    text += texts[i + 1];
+                    if (texts) text += texts[i + 1];
                 }
                 else if (isGenericIndexType(t) || isPatternLiteralPlaceholderType(t)) {
-                    newTypes.push(t);
-                    newTexts.push(text);
-                    text = texts[i + 1];
+                    if (!text && lastOrUndefined(newTypes) === stringType && t === stringType) {
+                        // Quickly collapse consecutive `${string}${string}` for calls from regular expressions
+                    }
+                    else {
+                        newTypes.push(t);
+                        newTexts.push(text);
+                    }
+                    text = texts ? texts[i + 1] : "";
                 }
                 else {
                     return false;
                 }
             }
             return true;
-        }
-    }
-
-    function getTemplateLiteralTypeFromRegularExpressionTypes(types: readonly Type[]): Type {
-        const unionIndex = findIndex(types, t => !!(t.flags & (TypeFlags.Never | TypeFlags.Union)));
-        if (unionIndex >= 0) {
-            return getCrossProductUnionSize(types) < 100000 ?
-                mapType(types[unionIndex], t => getTemplateLiteralTypeFromRegularExpressionTypes(replaceElement(types, unionIndex, t))) :
-                stringType;
-        }
-        const newTypes: Type[] = [];
-        const newTexts: string[] = [];
-        let text = "";
-        addSpans(types);
-        if (!newTypes.length) {
-            return getStringLiteralType(text);
-        }
-        newTexts.push(text);
-        if (every(newTexts, t => !t) && every(newTypes, t => !!(t.flags & TypeFlags.String))) {
-            return stringType;
-        }
-        const id = `${getTypeListId(newTypes)}|${map(newTexts, t => t.length).join(",")}|${newTexts.join("")}`;
-        let type = templateLiteralTypes.get(id);
-        if (!type) {
-            templateLiteralTypes.set(id, type = createTemplateLiteralType(newTexts, newTypes));
-        }
-        return type;
-
-        function addSpans(types: readonly Type[]) {
-            for (const t of types) {
-                if (t.flags & TypeFlags.StringLiteral) {
-                    text += (t as StringLiteralType).value;
-                }
-                else if (t.flags & TypeFlags.String) {
-                    if (text || !newTypes.length) {
-                        newTexts.push(text);
-                        text = "";
-                        newTypes.push(t);
-                    }
-                }
-                else if (t.flags & TypeFlags.TemplateLiteral) {
-                    addSpans((t as TemplateLiteralType).types);
-                }
-                else {
-                    Debug.fail();
-                }
-            }
         }
     }
 
@@ -18483,7 +18442,7 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
             type.flags & TypeFlags.StringMapping && symbol === type.symbol ? type :
             type.flags & (TypeFlags.Any | TypeFlags.String | TypeFlags.StringMapping) || isGenericIndexType(type) ? getStringMappingTypeForGenericType(symbol, type) :
             // This handles Mapping<`${number}`> and Mapping<`${bigint}`>
-            isPatternLiteralPlaceholderType(type) ? getStringMappingTypeForGenericType(symbol, getTemplateLiteralType(["", ""], [type])) :
+            isPatternLiteralPlaceholderType(type) ? getStringMappingTypeForGenericType(symbol, getTemplateLiteralType(/*texts*/ undefined, [type])) :
             type;
     }
 
@@ -25967,7 +25926,7 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
     }
 
     function getStringLikeTypeForType(type: Type) {
-        return type.flags & (TypeFlags.Any | TypeFlags.StringLike) ? type : getTemplateLiteralType(["", ""], [type]);
+        return type.flags & (TypeFlags.Any | TypeFlags.StringLike) ? type : getTemplateLiteralType(/*texts*/ undefined, [type]);
     }
 
     // This function infers from the text parts and type parts of a source literal to a target template literal. The number
@@ -32498,12 +32457,11 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
                 scanner.setOnError(/*onError*/ undefined);
             }
 
+            const regExpCapturingGroups = scanner.getRegExpCapturingGroups();
+            const regExpCapturingGroupSpecifiers = scanner.getRegExpCapturingGroupSpecifiers();
             const patternUnionTypeCache = new WeakMap<RegularExpressionPatternUnion, Type>();
 
-            const regExpCapturingGroups = scanner.getRegExpCapturingGroups();
             const capturingGroupsType = createTupleType(map(regExpCapturingGroups, getTypeFromPatternUnion));
-
-            const regExpCapturingGroupSpecifiers = scanner.getRegExpCapturingGroupSpecifiers();
             let namedCapturingGroupsType: Type;
             if (regExpCapturingGroupSpecifiers.size) {
                 const namedCapturingGroupsTypeMembers = createSymbolTable();
@@ -32534,27 +32492,31 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
                         if (typeof pattern === "string") {
                             return getStringLiteralType(pattern);
                         }
-                        return getTemplateLiteralTypeFromRegularExpressionTypes(map(pattern, content => {
-                            if (typeof content === "string") {
-                                return getStringLiteralType(content);
-                            }
-                            if (content === RegExpAnyString) {
-                                return stringType;
-                            }
-                            if (content instanceof Set) {
-                                return getTypeFromPatternUnion(content);
-                            }
-                            if (typeof content !== "string" && hasProperty(content, "backreference")) {
-                                const { backreference } = content as RegularExpressionBackreference;
-                                if (typeof backreference === "string") {
-                                    return getUnionType(map(regExpCapturingGroupSpecifiers.get(backreference)!, getTypeFromPatternUnion));
+                        return getTemplateLiteralType(
+                            /*texts*/ undefined,
+                            /*types*/ map(pattern, content => {
+                                if (typeof content === "string") {
+                                    return getStringLiteralType(content);
                                 }
-                                return getTypeFromPatternUnion(regExpCapturingGroups[backreference]);
-                            }
-                            Debug.fail();
-                        }));
+                                if (content === RegExpAnyString) {
+                                    return stringType;
+                                }
+                                if (content instanceof Set) {
+                                    return getTypeFromPatternUnion(content);
+                                }
+                                if (typeof content !== "string" && hasProperty(content, "backreference")) {
+                                    const { backreference } = content as RegularExpressionBackreference;
+                                    if (typeof backreference === "string") {
+                                        return getUnionType(map(regExpCapturingGroupSpecifiers.get(backreference)!, getTypeFromPatternUnion));
+                                    }
+                                    return getTypeFromPatternUnion(regExpCapturingGroups[backreference]);
+                                }
+                                Debug.fail();
+                            }),
+                            /*isRegularExpression*/ true,
+                        );
                     });
-                    if ((patternUnion as RegularExpressionCapturingGroup).isPossiblyUndefined) {
+                    if (patternUnion.isPossiblyUndefined) {
                         types.push(undefinedType);
                     }
                     patternUnionType = getUnionType(types);

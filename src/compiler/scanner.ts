@@ -32,7 +32,6 @@ import {
     PunctuationOrKeywordSyntaxKind,
     RegularExpressionAnyString,
     RegularExpressionBackreference,
-    RegularExpressionCapturingGroup,
     RegularExpressionFlags,
     RegularExpressionPattern,
     RegularExpressionPatternContent,
@@ -74,9 +73,9 @@ export interface Scanner {
     /** @internal */
     getRegExpFlags(): RegularExpressionFlags;
     /** @internal */
-    getRegExpCapturingGroups(): RegularExpressionCapturingGroup[];
+    getRegExpCapturingGroups(): RegularExpressionPatternUnion[];
     /** @internal */
-    getRegExpCapturingGroupSpecifiers(): MultiMap<string, RegularExpressionCapturingGroup>;
+    getRegExpCapturingGroupSpecifiers(): MultiMap<string, RegularExpressionPatternUnion>;
     hasUnicodeEscape(): boolean;
     hasExtendedUnicodeEscape(): boolean;
     hasPrecedingLineBreak(): boolean;
@@ -1070,8 +1069,8 @@ export function createScanner(
     var tokenFlags: TokenFlags;
 
     var regExpFlags: RegularExpressionFlags;
-    var regExpCapturingGroups: RegularExpressionCapturingGroup[];
-    var regExpCapturingGroupSpecifiers: MultiMap<string, RegularExpressionCapturingGroup>;
+    var regExpCapturingGroups: RegularExpressionPatternUnion[];
+    var regExpCapturingGroupSpecifiers: MultiMap<string, RegularExpressionPatternUnion>;
 
     var commentDirectives: CommentDirective[] | undefined;
     var skipJsDocLeadingAsterisks = 0;
@@ -2673,6 +2672,19 @@ export function createScanner(
         regExpCapturingGroups = [];
         regExpCapturingGroupSpecifiers = createMultiMap();
 
+        function markAllInnerPatternUnionsAsPossiblyUndefined(patternUnion: RegularExpressionPatternUnion) {
+            for (const pattern of patternUnion) {
+                if (typeof pattern === "string") continue;
+                for (const content of pattern) {
+                    // if a pattern union is already marked, as do all pattern unions inside it
+                    if (content instanceof Set && !content.isPossiblyUndefined) {
+                        content.isPossiblyUndefined = true;
+                        markAllInnerPatternUnionsAsPossiblyUndefined(content);
+                    }
+                }
+            }
+        }
+
         // Disjunction ::= Alternative ('|' Alternative)*
         function scanDisjunction(isInGroup: boolean): RegularExpressionPatternUnion {
             const patternUnion = new Set() as RegularExpressionPatternUnion;
@@ -2682,6 +2694,9 @@ export function createScanner(
                 patternUnion.add(scanAlternative(isInGroup));
                 topNamedCapturingGroupsScope = namedCapturingGroupsScopeStack.pop();
                 if (charCodeChecked(pos) !== CharacterCodes.bar) {
+                    if (patternUnion.size > 1) {
+                        markAllInnerPatternUnionsAsPossiblyUndefined(patternUnion);
+                    }
                     return patternUnion;
                 }
                 pos++;
@@ -2749,8 +2764,7 @@ export function createScanner(
                     case CharacterCodes.openParen:
                         pos++;
                         const prevIsCaseInsensitive = isCaseInsensitive;
-                        let isAssertion = false;
-                        let isCapturingGroup = false;
+                        let groupNumber: number | undefined;
                         let groupName: string | undefined;
                         if (charCodeChecked(pos) === CharacterCodes.question) {
                             pos++;
@@ -2758,9 +2772,11 @@ export function createScanner(
                                 case CharacterCodes.equals:
                                 case CharacterCodes.exclamation:
                                     pos++;
-                                    isAssertion = true;
-                                    // In Annex B, `(?=Disjunction)` and `(?!Disjunction)` are quantifiable
-                                    isPreviousTermQuantifiable = !anyUnicodeModeOrNonAnnexB;
+                                    // Although `(?=Disjunction)` and `(?!Disjunction)` are quantifiable in Annex B,
+                                    // it's mostly likely a mistake to repeat an assertion.
+                                    // Additionally, the term prior to the assertion will be incorrectly replicated and
+                                    // fed into `pattern` by the quantifier below if the assertion is made quantifiable.
+                                    isPreviousTermQuantifiable = false;
                                     break;
                                 case CharacterCodes.lessThan:
                                     const groupNameStart = pos;
@@ -2777,8 +2793,7 @@ export function createScanner(
                                             if (languageVersion < ScriptTarget.ES2018) {
                                                 error(Diagnostics.Named_capturing_groups_are_only_available_when_targeting_ES2018_or_later, groupNameStart, pos - groupNameStart);
                                             }
-                                            isCapturingGroup = true;
-                                            numberOfCapturingGroups++;
+                                            groupNumber = ++numberOfCapturingGroups;
                                             isPreviousTermQuantifiable = true;
                                             break;
                                     }
@@ -2799,16 +2814,16 @@ export function createScanner(
                             }
                         }
                         else {
-                            isCapturingGroup = true;
-                            numberOfCapturingGroups++;
+                            groupNumber = ++numberOfCapturingGroups;
                             isPreviousTermQuantifiable = true;
                         }
                         const patternUnion = scanDisjunction(/*isInGroup*/ true);
                         isCaseInsensitive = prevIsCaseInsensitive;
-                        if (!isAssertion) {
+                        if (isPreviousTermQuantifiable) {
+                            // not an assertion
                             pattern.push(patternUnion);
-                            if (isCapturingGroup) {
-                                regExpCapturingGroups[numberOfCapturingGroups] = patternUnion;
+                            if (groupNumber) {
+                                regExpCapturingGroups[groupNumber] = patternUnion;
                                 if (groupName) {
                                     regExpCapturingGroupSpecifiers.add(groupName, patternUnion);
                                 }
@@ -2876,7 +2891,8 @@ export function createScanner(
                                 const minValue = Number.parseInt(min);
                                 if (minValue === 0) {
                                     if (lastTerm instanceof Set) {
-                                        (lastTerm as RegularExpressionCapturingGroup).isPossiblyUndefined = true;
+                                        lastTerm.isPossiblyUndefined = true;
+                                        markAllInnerPatternUnionsAsPossiblyUndefined(lastTerm);
                                     }
                                     pattern.pop();
                                 }
@@ -2912,7 +2928,8 @@ export function createScanner(
                                 case CharacterCodes.asterisk:
                                     const lastTerm = last(pattern);
                                     if (lastTerm instanceof Set) {
-                                        (lastTerm as RegularExpressionCapturingGroup).isPossiblyUndefined = true;
+                                        lastTerm.isPossiblyUndefined = true;
+                                        markAllInnerPatternUnionsAsPossiblyUndefined(lastTerm);
                                     }
                                     if (ch === CharacterCodes.question) {
                                         setLast(pattern, new Set([[], [lastTerm]]) as RegularExpressionPatternUnion);
@@ -3003,29 +3020,23 @@ export function createScanner(
         function scanAtomEscape(): RegularExpressionPatternContent | RegularExpressionBackreference | undefined {
             Debug.assertEqual(charCodeUnchecked(pos - 1), CharacterCodes.backslash);
             const ch = charCodeChecked(pos);
-            switch (ch) {
-                case CharacterCodes.k:
+            if (ch === CharacterCodes.k && (anyUnicodeModeOrNonAnnexB || hasNamedCapturingGroups)) {
+                pos++;
+                if (charCodeChecked(pos) === CharacterCodes.lessThan) {
                     pos++;
-                    if (charCodeChecked(pos) === CharacterCodes.lessThan) {
-                        pos++;
-                        const groupName = scanGroupName(/*isReference*/ true);
-                        scanExpectedChar(CharacterCodes.greaterThan);
-                        return groupName ? { backreference: groupName } as RegularExpressionBackreference : undefined;
-                    }
-                    else if (anyUnicodeModeOrNonAnnexB || hasNamedCapturingGroups) {
-                        error(Diagnostics.k_must_be_followed_by_a_capturing_group_name_enclosed_in_angle_brackets, pos - 2, 2);
-                    }
-                    return getCharacterEquivalents(String.fromCharCode(ch));
-                case CharacterCodes.q:
-                    if (unicodeSetsMode) {
-                        pos++;
-                        error(Diagnostics.q_is_only_available_inside_character_class, pos - 2, 2);
-                        return getCharacterEquivalents(String.fromCharCode(ch));
-                    }
-                // falls through
-                default:
-                    return scanCharacterClassEscape() || scanDecimalEscape() || scanCharacterEscape(/*atomEscape*/ true);
+                    const groupName = scanGroupName(/*isReference*/ true);
+                    scanExpectedChar(CharacterCodes.greaterThan);
+                    return groupName ? { backreference: groupName } as RegularExpressionBackreference : undefined;
+                }
+                error(Diagnostics.k_must_be_followed_by_a_capturing_group_name_enclosed_in_angle_brackets, pos - 2, 2);
+                return getCharacterEquivalents(String.fromCharCode(ch));
             }
+            else if (ch === CharacterCodes.q && unicodeSetsMode) {
+                pos++;
+                error(Diagnostics.q_is_only_available_inside_character_class, pos - 2, 2);
+                return getCharacterEquivalents(String.fromCharCode(ch));
+            }
+            return scanCharacterClassEscape() || scanDecimalEscape() || scanCharacterEscape(/*atomEscape*/ true);
         }
 
         // DecimalEscape ::= [1-9] [0-9]*
@@ -3767,6 +3778,12 @@ export function createScanner(
 
         function getCharacterEquivalents(ch: string): RegularExpressionPatternContent {
             if (!isCaseInsensitive) return ch;
+            // In any Unicode mode, a character is canonicalized by the `toCasefold` method of the Unicode Default Case Folding algorithm.
+            // The simple case folding variant of the algorithm does not perform a full (one-to-many characters) case folding and
+            // only takes account of the Simple_Case_Folding property.
+            // In non-Unicode mode, the `toUppercase` method of the Unicode Default Case Conversion algorithm is used instead.
+            // However, it does not perform a full case conversion and only takes account of the Simple_Uppercase_Mapping property.
+            // See `caseFoldEquivalents` and `upperCaseEquivalents` for full descriptions.
             const equivalents = anyUnicodeMode ? caseFoldEquivalents[codePointAt(ch, 0)] : upperCaseEquivalents[ch.charCodeAt(0)];
             if (!equivalents) return ch;
             if (typeof equivalents === "number") return new Set([ch, String.fromCodePoint(equivalents)]) as RegularExpressionPatternUnion;

@@ -13,9 +13,7 @@
 // | (method) String.match<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray>(regexp: RegExp<CapturingGroups, NamedCapturingGroupsObject, {
 // |     readonly global: true;
 // | }>): RegExpMatchArray<CapturingGroups> | null (+2 overloads)
-// | (method) String.replace<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = {
-// |     [name: string]: string;
-// | }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string
+// | (method) String.replace<T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string (+1 overload)
 // | (method) String.search(regexp: string | RegExp): number
 // | (method) String.slice(start?: number, end?: number): string
 // | (method) String.split(separator: string | RegExp, limit?: number): string[]
@@ -213,7 +211,7 @@
           ],
           "documentation": [
             {
-              "text": "Returns the Unicode value of the character at the specified location.",
+              "text": "Returns a non-negative integer less than 65536 (0x10000) that is the code unit value of the character at the specified index,\nor `NaN` if there is no character at the specified index.",
               "kind": "text"
             }
           ],
@@ -230,7 +228,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "The zero-based index of the desired character. If there is no character at the specified index, NaN is returned.",
+                  "text": "The zero-based index of the desired character.",
                   "kind": "text"
                 }
               ]
@@ -322,7 +320,7 @@
           ],
           "documentation": [
             {
-              "text": "Returns a string that contains the concatenation of two or more strings.",
+              "text": "Returns a string that contains the concatenation of the string and the arguments.",
               "kind": "text"
             }
           ],
@@ -447,7 +445,7 @@
           ],
           "documentation": [
             {
-              "text": "Returns the position of the first occurrence of a substring.",
+              "text": "Returns the index of the first occurrence of a substring in the string.",
               "kind": "text"
             }
           ],
@@ -464,7 +462,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "The substring to search for in the string",
+                  "text": "The substring to search for.",
                   "kind": "text"
                 }
               ]
@@ -481,7 +479,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "The index at which to begin searching the String object. If omitted, search starts at the beginning of the string.",
+                  "text": "The index at which to begin searching the string. If omitted, search starts at the beginning of the string.",
                   "kind": "text"
                 }
               ]
@@ -589,7 +587,7 @@
           ],
           "documentation": [
             {
-              "text": "Returns the last occurrence of a substring in the string.",
+              "text": "Returns the index of the last occurrence of a substring in the string.",
               "kind": "text"
             }
           ],
@@ -679,7 +677,7 @@
           ],
           "documentation": [
             {
-              "text": "Returns the length of a String object.",
+              "text": "Returns the number of code units of the string.",
               "kind": "text"
             }
           ]
@@ -785,7 +783,7 @@
           ],
           "documentation": [
             {
-              "text": "Determines whether two strings are equivalent in the current locale.",
+              "text": "Determines whether the reference string comes before, after or is equivalent to the specified string in the host environment's current locale.\nReturns a negative integer if it comes before, a positive number if it comes after, and 0 if they are equivalent.",
               "kind": "text"
             }
           ],
@@ -802,7 +800,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "String to compare to target string",
+                  "text": "The string to compare to.",
                   "kind": "text"
                 }
               ]
@@ -1062,7 +1060,7 @@
           ],
           "documentation": [
             {
-              "text": "Matches a string with a regular expression.",
+              "text": "Matches the string with a regular expression.",
               "kind": "text"
             }
           ],
@@ -1092,7 +1090,7 @@
                   "kind": "text"
                 },
                 {
-                  "text": "{@link ",
+                  "text": "{@linkcode ",
                   "kind": "link"
                 },
                 {
@@ -1111,7 +1109,7 @@
                   "kind": "link"
                 },
                 {
-                  "text": " that contains all the matches, or `null` if no matches are present.",
+                  "text": " that contains all the matched substrings, or `null` if no matches are present.",
                   "kind": "text"
                 }
               ]
@@ -1157,7 +1155,7 @@
               "kind": "punctuation"
             },
             {
-              "text": "CapturingGroups",
+              "text": "T",
               "kind": "typeParameterName"
             },
             {
@@ -1173,124 +1171,8 @@
               "kind": "space"
             },
             {
-              "text": "CapturingGroupsArray",
-              "kind": "aliasName"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "=",
-              "kind": "operator"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "CapturingGroupsArray",
-              "kind": "aliasName"
-            },
-            {
-              "text": ",",
-              "kind": "punctuation"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "NamedCapturingGroups",
-              "kind": "typeParameterName"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "extends",
-              "kind": "keyword"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "NamedCapturingGroupsObject",
-              "kind": "aliasName"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "=",
-              "kind": "operator"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "{",
-              "kind": "punctuation"
-            },
-            {
-              "text": "\n",
-              "kind": "lineBreak"
-            },
-            {
-              "text": "    ",
-              "kind": "space"
-            },
-            {
-              "text": "[",
-              "kind": "punctuation"
-            },
-            {
-              "text": "name",
-              "kind": "parameterName"
-            },
-            {
-              "text": ":",
-              "kind": "punctuation"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
               "text": "string",
               "kind": "keyword"
-            },
-            {
-              "text": "]",
-              "kind": "punctuation"
-            },
-            {
-              "text": ":",
-              "kind": "punctuation"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "string",
-              "kind": "keyword"
-            },
-            {
-              "text": ";",
-              "kind": "punctuation"
-            },
-            {
-              "text": "\n",
-              "kind": "lineBreak"
-            },
-            {
-              "text": "}",
-              "kind": "punctuation"
             },
             {
               "text": ">",
@@ -1313,48 +1195,8 @@
               "kind": "space"
             },
             {
-              "text": "string",
-              "kind": "keyword"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "|",
-              "kind": "punctuation"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "RegExp",
-              "kind": "localName"
-            },
-            {
-              "text": "<",
-              "kind": "punctuation"
-            },
-            {
-              "text": "CapturingGroups",
+              "text": "T",
               "kind": "typeParameterName"
-            },
-            {
-              "text": ",",
-              "kind": "punctuation"
-            },
-            {
-              "text": " ",
-              "kind": "space"
-            },
-            {
-              "text": "NamedCapturingGroups",
-              "kind": "typeParameterName"
-            },
-            {
-              "text": ">",
-              "kind": "punctuation"
             },
             {
               "text": ",",
@@ -1401,8 +1243,28 @@
               "kind": "punctuation"
             },
             {
-              "text": "CapturingGroups",
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "searchValue",
+              "kind": "text"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "T",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
             },
             {
               "text": ",",
@@ -1413,8 +1275,8 @@
               "kind": "space"
             },
             {
-              "text": "NamedCapturingGroups",
-              "kind": "typeParameterName"
+              "text": "undefined",
+              "kind": "keyword"
             },
             {
               "text": ">",
@@ -1435,11 +1297,39 @@
             {
               "text": "string",
               "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "(",
+              "kind": "punctuation"
+            },
+            {
+              "text": "+",
+              "kind": "operator"
+            },
+            {
+              "text": "1",
+              "kind": "numericLiteral"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "overload",
+              "kind": "text"
+            },
+            {
+              "text": ")",
+              "kind": "punctuation"
             }
           ],
           "documentation": [
             {
-              "text": "Replaces text in a string, using a regular expression or search string.",
+              "text": "Replaces the first occurrence of a search string in the target string.",
               "kind": "text"
             }
           ],
@@ -1456,7 +1346,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "A string or regular expression to search for.",
+                  "text": "A string to search for.",
                   "kind": "text"
                 }
               ]
@@ -1473,53 +1363,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "A string containing the text to replace. When the ",
-                  "kind": "text"
-                },
-                {
-                  "text": "{@linkcode ",
-                  "kind": "link"
-                },
-                {
-                  "text": "searchValue",
-                  "kind": "linkName",
-                  "target": {
-                    "fileName": "lib.d.ts",
-                    "textSpan": {
-                      "start": "--",
-                      "length": "--"
-                    }
-                  }
-                },
-                {
-                  "text": "}",
-                  "kind": "link"
-                },
-                {
-                  "text": " is a `RegExp`, all matches are replaced if the `g` flag is set (or only those matches at the beginning, if the `y` flag is also present). Otherwise, only the first match of ",
-                  "kind": "text"
-                },
-                {
-                  "text": "{@linkcode ",
-                  "kind": "link"
-                },
-                {
-                  "text": "searchValue",
-                  "kind": "linkName",
-                  "target": {
-                    "fileName": "lib.d.ts",
-                    "textSpan": {
-                      "start": "--",
-                      "length": "--"
-                    }
-                  }
-                },
-                {
-                  "text": "}",
-                  "kind": "link"
-                },
-                {
-                  "text": " is replaced.",
+                  "text": "The replacement text, or a callback function that returns the replacement text.",
                   "kind": "text"
                 }
               ]
@@ -1615,7 +1459,7 @@
           ],
           "documentation": [
             {
-              "text": "Finds the first substring match in a regular expression search.",
+              "text": "Returns the index of the first occurrence that match a regular expression, or `-1` if no matches are present.",
               "kind": "text"
             }
           ],
@@ -1632,7 +1476,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "The regular expression pattern and applicable flags.",
+                  "text": "The regular expression for searching. If the provided value is not a RegExp,\nit is implicitly converted to a RegExp without flags by `new RegExp(regexp)`.",
                   "kind": "text"
                 }
               ]
@@ -1744,7 +1588,7 @@
           ],
           "documentation": [
             {
-              "text": "Returns a section of a string.",
+              "text": "Returns a section of the string.",
               "kind": "text"
             }
           ],
@@ -1761,7 +1605,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "The index to the beginning of the specified portion of stringObj.",
+                  "text": "The index to the beginning of the specified portion of the string.",
                   "kind": "text"
                 }
               ]
@@ -1778,7 +1622,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "The index to the end of the specified portion of stringObj. The substring includes the characters up to, but not including, the character indicated by end.\nIf this value is not specified, the substring continues to the end of stringObj.",
+                  "text": "The index to the end of the specified portion of the string. The substring includes the characters up to, but not including, the character indicated by end.\nIf this value is not specified, the substring continues to the end of the string.",
                   "kind": "text"
                 }
               ]
@@ -1910,7 +1754,7 @@
           ],
           "documentation": [
             {
-              "text": "Split a string into substrings using the specified separator and return them as an array.",
+              "text": "Returns an array of substrings that were delimited by separators in the string.",
               "kind": "text"
             }
           ],
@@ -1927,7 +1771,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "A string that identifies character or characters to use in separating the string. If omitted, a single-element array containing the entire string is returned.",
+                  "text": "A string or a regular expression that identifies character(s) to use in separating the string.\nIf omitted, a single-element array containing the entire string is returned.\n\nIf the regular expression contains capturing parentheses, then each time this\nregular expression matches, the results (including any undefined results) of the\ncapturing parentheses are spliced.",
                   "kind": "text"
                 }
               ]
@@ -1944,7 +1788,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "A value used to limit the number of elements returned in the array.",
+                  "text": "If specified, the output array is truncated so that it contains no more than `limit` elements.",
                   "kind": "text"
                 }
               ]
@@ -2052,7 +1896,7 @@
           ],
           "documentation": [
             {
-              "text": "Returns the substring at the specified location within a String object.",
+              "text": "Returns the substring beginning at the specified index within a string.",
               "kind": "text"
             }
           ],
@@ -2069,7 +1913,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "The zero-based index number indicating the beginning of the substring.",
+                  "text": "The zero-based index indicating the beginning of the substring.",
                   "kind": "text"
                 }
               ]
@@ -2086,7 +1930,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "Zero-based index number indicating the end of the substring. The substring includes the characters up to, but not including, the character indicated by end.\nIf end is omitted, the characters from start through the end of the original string are returned.",
+                  "text": "The zero-based index indicating the end of the substring. The substring includes the characters up to, but not including, the character indicated by end.\nIf end is omitted, the characters from start through the end of the original string are returned.",
                   "kind": "text"
                 }
               ]
@@ -2194,8 +2038,27 @@
           ],
           "documentation": [
             {
-              "text": "Converts all alphabetic characters to lowercase, taking into account the host environment's current locale.",
+              "text": "Converts all alphabetic characters in a string to lowercase, taking locale-specific conversion rules into account.",
               "kind": "text"
+            }
+          ],
+          "tags": [
+            {
+              "name": "param",
+              "text": [
+                {
+                  "text": "locales",
+                  "kind": "parameterName"
+                },
+                {
+                  "text": " ",
+                  "kind": "space"
+                },
+                {
+                  "text": "One or more locales that the conversion should take into account. Defaults to the host environment's current locale.",
+                  "kind": "text"
+                }
+              ]
             }
           ]
         },
@@ -2300,8 +2163,27 @@
           ],
           "documentation": [
             {
-              "text": "Returns a string where all alphabetic characters have been converted to uppercase, taking into account the host environment's current locale.",
+              "text": "Converts all alphabetic characters in a string to uppercase, taking locale-specific conversion rules into account.",
               "kind": "text"
+            }
+          ],
+          "tags": [
+            {
+              "name": "param",
+              "text": [
+                {
+                  "text": "locales",
+                  "kind": "parameterName"
+                },
+                {
+                  "text": " ",
+                  "kind": "space"
+                },
+                {
+                  "text": "One or more locales that the conversion should take into account. Defaults to the host environment's current locale.",
+                  "kind": "text"
+                }
+              ]
             }
           ]
         },
@@ -2362,7 +2244,7 @@
           ],
           "documentation": [
             {
-              "text": "Converts all the alphabetic characters in a string to lowercase.",
+              "text": "Converts all alphabetic characters in a string to lowercase.",
               "kind": "text"
             }
           ]
@@ -2424,7 +2306,7 @@
           ],
           "documentation": [
             {
-              "text": "Returns a string representation of a string.",
+              "text": "Returns a string representation of the string, which in this case is the string itself.",
               "kind": "text"
             }
           ]
@@ -2486,7 +2368,7 @@
           ],
           "documentation": [
             {
-              "text": "Converts all the alphabetic characters in a string to uppercase.",
+              "text": "Converts all alphabetic characters in a string to uppercase.",
               "kind": "text"
             }
           ]
@@ -2610,7 +2492,7 @@
           ],
           "documentation": [
             {
-              "text": "Returns the primitive value of the specified object.",
+              "text": "Returns the primitive value of the specified object, which in this case is the string itself.",
               "kind": "text"
             }
           ]
@@ -2716,7 +2598,7 @@
           ],
           "documentation": [
             {
-              "text": "Gets a substring beginning at the specified location and having the specified length.",
+              "text": "Gets a substring beginning at the specified index and having the specified length.",
               "kind": "text"
             }
           ],
@@ -2742,7 +2624,7 @@
                   "kind": "space"
                 },
                 {
-                  "text": "The starting position of the desired substring. The index of the first character in the string is zero.",
+                  "text": "The starting index of the desired substring. The index of the first character in the string is zero.",
                   "kind": "text"
                 }
               ]

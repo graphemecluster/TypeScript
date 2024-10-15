@@ -2819,10 +2819,6 @@ export interface RegularExpressionPattern extends Array<RegularExpressionPattern
 /** @internal */
 export interface RegularExpressionPatternUnion extends Set<string | RegularExpressionPattern> {
     _regularExpressionPatternUnionBrand: any;
-}
-
-/** @internal */
-export interface RegularExpressionCapturingGroup extends RegularExpressionPatternUnion {
     isPossiblyUndefined?: boolean;
 }
 

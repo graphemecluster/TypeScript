@@ -1,19 +1,9 @@
-assignFromStringInterface2.ts(44,1): error TS2322: Type 'String' is not assignable to type 'NotString'.
-  Types of property 'replace' are incompatible.
-    Type '<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups, RegExpFlags>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string' is not assignable to type '{ (searchValue: string, replaceValue: string): string; (searchValue: string, replaceValue: (substring: string, ...args: any[]) => string): string; (searchValue: RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>, replaceValue: string): string; (searchValue: RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>, replaceValue: (substring: string, ...args: any[]) => string): string; }'.
-      Types of parameters 'replaceValue' and 'replaceValue' are incompatible.
-        Type '(substring: string, ...args: any[]) => string' is not assignable to type 'string | StringReplaceCallbackSignature<any, any>'.
-          Type '(substring: string, ...args: any[]) => string' is not assignable to type 'StringReplaceCallbackSignature<any, any>'.
-            Types of parameters 'substring' and 'capturingGroups' are incompatible.
-              Type '[...capturingGroups: any[], offset: number, input: string]' is not assignable to type '[substring: string, ...args: any[]]'.
-                Source provides no match for required element at position 0 in target.
-assignFromStringInterface2.ts(45,1): error TS2322: Type 'string' is not assignable to type 'NotString'.
 assignFromStringInterface2.ts(47,1): error TS2322: Type 'String' is not assignable to type 'string'.
   'string' is a primitive, but 'String' is a wrapper object. Prefer using 'string' when possible.
 assignFromStringInterface2.ts(48,1): error TS2322: Type 'NotString' is not assignable to type 'string'.
 
 
-==== assignFromStringInterface2.ts (4 errors) ====
+==== assignFromStringInterface2.ts (2 errors) ====
     interface String {
         doStuff(): string;
     }
@@ -58,19 +48,7 @@ assignFromStringInterface2.ts(48,1): error TS2322: Type 'NotString' is not assig
     a = b;
     
     b = a;
-    ~
-!!! error TS2322: Type 'String' is not assignable to type 'NotString'.
-!!! error TS2322:   Types of property 'replace' are incompatible.
-!!! error TS2322:     Type '<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups, RegExpFlags>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string' is not assignable to type '{ (searchValue: string, replaceValue: string): string; (searchValue: string, replaceValue: (substring: string, ...args: any[]) => string): string; (searchValue: RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>, replaceValue: string): string; (searchValue: RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>, replaceValue: (substring: string, ...args: any[]) => string): string; }'.
-!!! error TS2322:       Types of parameters 'replaceValue' and 'replaceValue' are incompatible.
-!!! error TS2322:         Type '(substring: string, ...args: any[]) => string' is not assignable to type 'string | StringReplaceCallbackSignature<any, any>'.
-!!! error TS2322:           Type '(substring: string, ...args: any[]) => string' is not assignable to type 'StringReplaceCallbackSignature<any, any>'.
-!!! error TS2322:             Types of parameters 'substring' and 'capturingGroups' are incompatible.
-!!! error TS2322:               Type '[...capturingGroups: any[], offset: number, input: string]' is not assignable to type '[substring: string, ...args: any[]]'.
-!!! error TS2322:                 Source provides no match for required element at position 0 in target.
     b = x;
-    ~
-!!! error TS2322: Type 'string' is not assignable to type 'NotString'.
     
     x = a; // expected error
     ~

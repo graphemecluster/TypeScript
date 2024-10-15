@@ -1,5 +1,9 @@
 //// [tests/cases/conformance/es6/unicodeExtendedEscapes/unicodeExtendedEscapesInRegularExpressions03.ts] ////
 
+=== Performance Stats ===
+Type Count: 1,000
+Instantiation count: 5,000
+
 === unicodeExtendedEscapesInRegularExpressions03.ts ===
 var x = /\u{0000}/gu;
 >x : RegExp<["\0"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: true; readonly unicodeSets: false; readonly sticky: false; }>

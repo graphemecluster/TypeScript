@@ -8,6 +8,6 @@ interface _RegExpExecArray<
 }
 
 interface RegExpFlags {
-    /** A Boolean value indicating the state of the dotAll flag (s) used with a regular expression. Read-only. */
+    /** A Boolean value indicating the state of the dotAll flag (s) on the regular expression. Read-only. */
     readonly dotAll: boolean;
 }

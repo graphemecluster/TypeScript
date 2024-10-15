@@ -1,4 +1,4 @@
 interface RegExpFlags {
-    /** A Boolean value indicating the state of the unicodeSets flag (v) used with a regular expression. Read-only. */
+    /** A Boolean value indicating the state of the unicodeSets flag (v) on the regular expression. Read-only. */
     readonly unicodeSets: boolean;
 }

@@ -20,32 +20,32 @@ export function removeClass (node:HTMLElement, className:string) {
 >          : ^^^^^^
 >node.className.replace(_classNameRegexp(className), function (everything, leftDelimiter, name, rightDelimiter) {		return leftDelimiter.length + rightDelimiter.length === 2 ? ' ' : '';	}) : string
 >                                                                                                                                                                                           : ^^^^^^
->node.className.replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
->                       : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
+>node.className.replace : { <T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string; }
+>                       : ^^^ ^^^^^^^^^      ^^           ^^ ^^            ^^                                                                    ^^^      ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^      ^^^
 >node.className : string
 >               : ^^^^^^
 >node : HTMLElement
 >     : ^^^^^^^^^^^
 >className : string
 >          : ^^^^^^
->replace : <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>) => string
->        : ^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^^^      
+>replace : { <T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string; }
+>        : ^^^ ^^^^^^^^^      ^^           ^^ ^^            ^^                                                                    ^^^      ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^      ^^^
 >_classNameRegexp(className) : any
 >                            : ^^^
 >_classNameRegexp : any
 >                 : ^^^
 >className : string
 >          : ^^^^^^
->function (everything, leftDelimiter, name, rightDelimiter) {		return leftDelimiter.length + rightDelimiter.length === 2 ? ' ' : '';	} : (everything: string | number, leftDelimiter: string | number, name: string | number, rightDelimiter: string | number) => " " | ""
->                                                                                                                                      : ^          ^^^^^^^^^^^^^^^^^^^             ^^^^^^^^^^^^^^^^^^^    ^^^^^^^^^^^^^^^^^^^              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->everything : string | number
->           : ^^^^^^^^^^^^^^^
->leftDelimiter : string | number
->              : ^^^^^^^^^^^^^^^
->name : string | number
->     : ^^^^^^^^^^^^^^^
->rightDelimiter : string | number
->               : ^^^^^^^^^^^^^^^
+>function (everything, leftDelimiter, name, rightDelimiter) {		return leftDelimiter.length + rightDelimiter.length === 2 ? ' ' : '';	} : (everything: any, leftDelimiter: any, name: any, rightDelimiter: any) => " " | ""
+>                                                                                                                                      : ^          ^^^^^^^             ^^^^^^^    ^^^^^^^              ^^^^^^^^^^^^^^^^^^
+>everything : any
+>           : ^^^
+>leftDelimiter : any
+>              : ^^^
+>name : any
+>     : ^^^
+>rightDelimiter : any
+>               : ^^^
 
 		return leftDelimiter.length + rightDelimiter.length === 2 ? ' ' : '';
 >leftDelimiter.length + rightDelimiter.length === 2 ? ' ' : '' : "" | " "
@@ -56,14 +56,14 @@ export function removeClass (node:HTMLElement, className:string) {
 >                                             : ^^^
 >leftDelimiter.length : any
 >                     : ^^^
->leftDelimiter : string | number
->              : ^^^^^^^^^^^^^^^
+>leftDelimiter : any
+>              : ^^^
 >length : any
 >       : ^^^
 >rightDelimiter.length : any
 >                      : ^^^
->rightDelimiter : string | number
->               : ^^^^^^^^^^^^^^^
+>rightDelimiter : any
+>               : ^^^
 >length : any
 >       : ^^^
 >2 : 2

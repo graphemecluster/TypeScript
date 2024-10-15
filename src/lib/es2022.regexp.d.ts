@@ -1,4 +1,4 @@
-type RegExpGroupsValueToIndices<T> = { [K in keyof T]: T[K] extends string ? [number, number] : T[K]; };
+type RegExpGroupsValueToIndices<T> = { [K in keyof T]: T[K] extends string ? [startIndex: number, endIndex: number] : T[K]; };
 
 interface RegExpIndices<
     CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
@@ -8,6 +8,6 @@ interface RegExpIndices<
 }
 
 interface RegExpFlags {
-    /** A Boolean value indicating the state of the hasIndices flag (d) used with a regular expression. Read-only. */
+    /** A Boolean value indicating the state of the hasIndices flag (d) on the regular expression. Read-only. */
     readonly hasIndices: boolean;
 }
