@@ -2,16 +2,16 @@
 
 === parseRegularExpressionMixedWithComments.ts ===
 var regex1 = / asdf /;
->regex1 : RegExp<[" asdf "], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/ asdf / : RegExp<[" asdf "], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>regex1 : RegExp<[" asdf "], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/ asdf / : RegExp<[" asdf "], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 var regex2 = /**// asdf /;
->regex2 : RegExp<[" asdf "], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/ asdf / : RegExp<[" asdf "], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>regex2 : RegExp<[" asdf "], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/ asdf / : RegExp<[" asdf "], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 var regex3 = /**///**/ asdf /       // should be a comment line
 >regex3 : number
@@ -26,18 +26,18 @@ var regex4 = /**// /**/asdf /;
 >       : ^^^^^^
 >/ /**/asdf / : number
 >             : ^^^^^^
->/ / : RegExp<[" "], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/asdf / : RegExp<["asdf "], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/ / : RegExp<[" "], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/asdf / : RegExp<["asdf "], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 var regex5 = /**// asdf/**/ /;
 >regex5 : number
 >       : ^^^^^^
 >/ asdf/**/ / : number
 >             : ^^^^^^
->/ asdf/ : RegExp<[" asdf"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/ / : RegExp<[" "], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/ asdf/ : RegExp<[" asdf"], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/ / : RegExp<[" "], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

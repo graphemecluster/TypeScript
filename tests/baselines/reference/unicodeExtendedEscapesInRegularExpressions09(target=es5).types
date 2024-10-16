@@ -5,8 +5,8 @@
 //  2. If cp ≤ 65535, return cp.
 // (10000 == 65536)
 var x = /\u{10000}/gu;
->x : RegExp<["𐀀"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: true; readonly unicodeSets: false; readonly sticky: false; }>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\u{10000}/gu : RegExp<["𐀀"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: true; readonly unicodeSets: false; readonly sticky: false; }>
->              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : RegExp<["𐀀"], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: true; unicodeSets: false; sticky: false; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\u{10000}/gu : RegExp<["𐀀"], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: true; unicodeSets: false; sticky: false; }>
+>              : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

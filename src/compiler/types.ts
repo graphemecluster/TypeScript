@@ -2798,21 +2798,21 @@ export const enum RegularExpressionFlags {
 }
 
 /** @internal */
-export interface RegularExpressionAnyString {
-    _regularExpressionAnyStringBrand: any;
+export interface RegularExpressionDisjunctionScope {
+    groups?: RegularExpressionPatternUnion[];
+    groupSpecifiers?: MultiMap<string, RegularExpressionPatternUnion>;
 }
 
 /** @internal */
-export interface RegularExpressionBackreference {
-    _regularExpressionBackreferenceBrand: any;
-    backreference: string | number;
+export interface RegularExpressionAnyString {
+    _regularExpressionAnyStringBrand: any;
 }
 
 /** @internal */
 export type RegularExpressionPatternContent = string | RegularExpressionAnyString | RegularExpressionPatternUnion;
 
 /** @internal */
-export interface RegularExpressionPattern extends Array<RegularExpressionPatternContent | RegularExpressionBackreference> {
+export interface RegularExpressionPattern extends Array<RegularExpressionPatternContent> {
     _regularExpressionPatternBrand: any;
 }
 
@@ -2820,6 +2820,7 @@ export interface RegularExpressionPattern extends Array<RegularExpressionPattern
 export interface RegularExpressionPatternUnion extends Set<string | RegularExpressionPattern> {
     _regularExpressionPatternUnionBrand: any;
     isPossiblyUndefined?: boolean;
+    isCharacterEquivalents?: boolean;
 }
 
 export interface NoSubstitutionTemplateLiteral extends LiteralExpression, TemplateLiteralLikeNode, Declaration {

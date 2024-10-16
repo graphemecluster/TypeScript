@@ -126,16 +126,16 @@ x; // string | boolean
 >                        : ^^^^^^^^^^^^^^^
 >{y: x = /a/} = {y: 1} : { y?: number; }
 >                      : ^^^^^^^^^^^^^^^
->{y: x = /a/} : { y?: RegExp<["a"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>; }
->             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->y : RegExp<["a"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->x = /a/ : RegExp<["a"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>{y: x = /a/} : { y?: RegExp<["a"], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>; }
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>y : RegExp<["a"], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x = /a/ : RegExp<["a"], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>        : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >x : string | number | boolean | RegExp<CapturingGroupsArray, { [name: string]: string; }, RegExpFlags>
 >  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/a/ : RegExp<["a"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/a/ : RegExp<["a"], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>    : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >{y: 1} : { y?: number; }
 >       : ^^^^^^^^^^^^^^^
 >y : number

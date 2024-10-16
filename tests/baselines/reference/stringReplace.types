@@ -12,8 +12,8 @@
 >      : ^^^^^
 >replace : { <T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string; }
 >        : ^^^ ^^^^^^^^^      ^^           ^^ ^^            ^^                                                                    ^^^      ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^      ^^^
->Math.random() >= 0.5 ? "foo" : /foo/ : "foo" | RegExp<["foo"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->                                     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>Math.random() >= 0.5 ? "foo" : /foo/ : "foo" | RegExp<["foo"], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>                                     : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >Math.random() >= 0.5 : boolean
 >                     : ^^^^^^^
 >Math.random() : number
@@ -28,8 +28,8 @@
 >    : ^^^
 >"foo" : "foo"
 >      : ^^^^^
->/foo/ : RegExp<["foo"], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/foo/ : RegExp<["foo"], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >Math.random() >= 0.5 ? "bar" : () => "bar" : "bar" | (() => string)
 >                                           : ^^^^^^^^^^^^^^^^^^^^^^
 >Math.random() >= 0.5 : boolean

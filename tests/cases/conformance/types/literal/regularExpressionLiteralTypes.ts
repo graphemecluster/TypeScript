@@ -22,20 +22,20 @@
 
     /(get|set)_\d_value/;
     /(get|set)_\d{1}_value/;
+    /(get|set)_\d\d\d_value/;
+    /(get|set)_\d{3}_value/;
     /(get|set)_\d\d\d\d\d_value/;
     /(get|set)_\d{5}_value/;
-    /(get|set)_\d\d\d\d\d\d_value/;
-    /(get|set)_\d{6}_value/;
 
     /(get|set)_(\d)_value/;
     /(get|set)_(\d){1}_value/;
     /(get|set)_(\d{1})_value/;
+    /(get|set)_(\d\d\d)_value/;
+    /(get|set)_(\d){3}_value/;
+    /(get|set)_(\d{3})_value/;
     /(get|set)_(\d\d\d\d\d)_value/;
     /(get|set)_(\d){5}_value/;
     /(get|set)_(\d{5})_value/;
-    /(get|set)_(\d\d\d\d\d\d)_value/;
-    /(get|set)_(\d){6}_value/;
-    /(get|set)_(\d{6})_value/;
 
     /(get|set)_(\d)?_value/;
     /(get|set)_(\d?)_value/;
@@ -43,8 +43,6 @@
     /(get|set)_(\d+)_value/;
     /(get|set)_(\d)*_value/;
     /(get|set)_(\d*)_value/;
-
-    /(get|set)_(\d?)_value/i;
 }
 
 // Atom expansion and case sensitivity
@@ -58,11 +56,11 @@
     /a{3,5}/i;
     /a{6}/i;
 
+    /^#[\da-f]{0,3}$/;
+    /^#[\da-f]{2,3}$/;
     /^#[\da-f]{3}$/i;
+    /^#[\da-f]{3,3}$/;
     /^#[\da-f]{4}$/i;
-    /^#[\da-f]{0,4}$/;
-    /^#[\da-f]{2,4}$/;
-    /^#[\da-f]{3,4}$/;
     /^#[\da-f]{3,4}$/i;
     /^#[\da-f]{6}$/i;
     /^#[\da-f]{3,6}$/i;
@@ -196,6 +194,72 @@
     // Don't treat them as the letter `b`
     /\b[\b]/i;
     /\b[\b]/iu;
+
+    // Backreferences are really “back”-references – if the capturing group referent isn’t ended (or didn’t ever exist at all),
+    // the reference matches just an empty string
+    /(\1)/;
+    /(foo\1bar)/;
+    /\1(\1)\1/;
+    /\(\1(foo\1bar)\1\)/;
+    /(foo)\2|(bar)/;
+    // Even though `foo` has appeared before `\1`, they aren’t in the same alternative, so `\1` will always be the empty string
+    /(foo)|(bar)\1/;
+    // Combination of the above two cases – both backreferences match the empty strings
+    /^((foo)\1|(bar)\2)$/;
+
+    // Named backreferences
+    /(?<$1>\k<$1>)/;
+    /(?<$1>foo\k<$1>bar)/;
+    /\k<$1>(?<$1>\k<$1>)\k<$1>/;
+    /fizz\k<$1>(?<$1>foo\k<$1>bar)\k<$1>buzz/;
+    /(?<$1>foo)\k<$2>|(?<$2>bar)/;
+    /(?<$1>foo)|(?<$2>bar)\k<$1>/;
+    /^(?<$1>(?<$2>foo)\k<$1>|(?<$3>bar)\k<$2>)$/;
+    // This will only match `foo` or `barbar` and not `foobar`, since they aren’t in the same alternative
+    /(?<$$>foo)|(?<$$>bar)\k<$$>/;
+    // This will only match `foofoo` or `barbar`
+    /\k<$$>(?<$$>\k<$$>foo\k<$$>)\k<$$>|\k<$$>(?<$$>\k<$$>bar\k<$$>)\k<$$>/;
+    // Matches `foo`, `bar`, `foofoo` or `barbar`
+    /\k<$$>?(?<$$>\k<$$>?foo\k<$$>?)\k<$$>?|\k<$$>?(?<$$>\k<$$>?bar\k<$$>?)\k<$$>?/;
+    // Matches ``, `foofoo` or `barbar`
+    /\k<$$>(?<$$>\k<$$>foo\k<$$>)?\k<$$>|\k<$$>(?<$$>\k<$$>bar\k<$$>)?\k<$$>/;
+    // Matches ``, `foo`, `bar`, `foofoo` or `barbar`
+    /\k<$$>?(?<$$>\k<$$>?foo\k<$$>?)?\k<$$>?|\k<$$>?(?<$$>\k<$$>?bar\k<$$>?)?\k<$$>?/;
+    // All `$$` below match the empty strings
+    /(?<$$>f<\k<$$>?(?<f>fizz\k<$$>?(?<b>foo)\k<b>?|(?<b>foo)\k<f>?)\k<f>?>|<\k<b>?(?<b>\k<b>?(?<f>bar)|\k<f>?(?<f>bar)\k<$$>?buzz)\k<$$>?>b)/;
+
+    // Assertions
+    // Positive lookaheads and lookbehinds
+    /(?=(foo))\1/;
+    /(?=(foo|bar))\1/;
+    /(?=(foo)?)\1/;
+    /(?=(foo)|bar)\1/;
+    // In the following four cases, `answer` will only match `foo` or `` and won't ever be `bar`,
+    // but we don't have the ability to exclude them
+    /(?=(foo)|(bar))(?<answer>\1|\2)/;
+    /(?=(foo)|(bar)?)(?<answer>\1|\2)/;
+    /(?=(foo)|(bar))(?=(foo)|(bar))(?<answer>\1|\2|\3|\4)/;
+    /(?<=(foo)|(bar))(?<=(foo)|(bar))(?<answer>\1|\2|\3|\4)/;
+    // In the following two cases, `answer` will only match `foo` or `bar` and won't ever be ``, `foobar`,
+    // but we don't have the ability to exclude them
+    /(?=(foo)|(bar))(?<answer>\1\2)/;
+    /(?<=(foo)|(bar))(?<answer>\1\2)/;
+    // In this case, `answer` will only match `foofoo` or `barbar`,
+    // but we don't have the ability to exclude ``, `foo`, `bar`, `foobar`, `barfoo`, etc.
+    /(?=(foo)|(bar))(?=(foo)|(bar))(?<answer>\1\2\3\4)/;
+    // In the following two cases, although the third and fourth capturing groups are of types `foo` and `bar` respectively,
+    // references to them will always be empty strings since the groups are unseen before
+    /(?=(foo)|(bar))(?<answer>\1|\2|\3|\4)(?=(foo)|(bar))/;
+    /(?=(foo)|(bar))(?<answer>\1\2\3\4)(?=(foo)|(bar))/;
+    // Negative lookaheads and lookbehinds
+    /(?!(foo))\1/;
+    /(?!(foo|bar))\1/;
+    /(?!(foo)?)\1/;
+    /(?!(foo)|bar)\1/;
+    /(?!(foo)|(bar))(?<answer>\1|\2)/;
+    /(?!(foo)|(bar)?)(?<answer>\1|\2)/;
+    // Excerpt of a regex that actually matches a part of a syllable of a natural language
+    /([aeiouy])(?:((?=(ng?|[mptkbd])(?!(([aeiou])|(y)(?!([aeio]))))|(g)(?!(w?[aeiou])|(y)(?!([aeio])|(u)(?!([nt])(?!([aeiou])))))))\2)/
 }
 
 // Finally, a very loosey Temporal (Zoned)DateTime format regex, which tests, in non-Unicode, Unicode, and Unicode Sets modes, if:

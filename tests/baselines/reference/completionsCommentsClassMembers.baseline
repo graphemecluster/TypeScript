@@ -130,7 +130,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -344,7 +348,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -511,7 +519,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -725,7 +737,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -880,7 +896,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -1043,7 +1063,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -1192,7 +1216,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -1354,7 +1382,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -1521,7 +1553,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -1684,7 +1720,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -1847,7 +1887,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -1997,7 +2041,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -2149,7 +2197,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -2299,7 +2351,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -2451,7 +2507,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -2601,7 +2661,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -2753,7 +2817,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -2933,7 +3001,11 @@
 // | readonly
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -3123,7 +3195,11 @@
 // | readonly
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -3313,7 +3389,11 @@
 // | var RangeError: RangeErrorConstructor
 // | interface ReferenceError
 // | var ReferenceError: ReferenceErrorConstructor
-// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags
+// | type RegExp<CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }, Flags extends Partial<RegExpFlags> = RegExpFlags> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & {
+// |     readonly global: Flags["global"];
+// |     readonly ignoreCase: Flags["ignoreCase"];
+// |     readonly multiline: Flags["multiline"];
+// | }
 // | var RegExp: RegExpConstructor
 // | return
 // | satisfies
@@ -7891,15 +7971,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -7909,6 +8005,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -15733,15 +15949,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -15751,6 +15983,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -21313,15 +21665,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -21331,6 +21699,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -29155,15 +29643,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -29173,6 +29677,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -33981,15 +34605,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -33999,6 +34639,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -39968,15 +40728,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -39986,6 +40762,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -44748,15 +45644,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -44766,6 +45678,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -50689,15 +51721,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -50707,6 +51755,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -56676,15 +57844,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -56694,6 +57878,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -62663,15 +63967,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -62681,6 +64001,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -68650,15 +70090,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -68668,6 +70124,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -73471,15 +75047,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -73489,6 +75081,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -78292,15 +80004,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -78310,6 +80038,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -83113,15 +84961,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -83131,6 +84995,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -87934,15 +89918,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -87952,6 +89952,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -92755,15 +94875,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -92773,6 +94909,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -97576,15 +99832,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -97594,6 +99866,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -102839,15 +105231,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -102857,6 +105265,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -108951,15 +111479,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -108969,6 +111513,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",
@@ -114228,15 +116892,31 @@
               "kind": "space"
             },
             {
-              "text": "RegExpFlags",
-              "kind": "interfaceName"
+              "text": "{",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
             },
             {
               "text": " ",
               "kind": "space"
             },
             {
-              "text": "&",
+              "text": "global",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
               "kind": "punctuation"
             },
             {
@@ -114246,6 +116926,126 @@
             {
               "text": "Flags",
               "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"global\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "ignoreCase",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"ignoreCase\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "    ",
+              "kind": "space"
+            },
+            {
+              "text": "readonly",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "multiline",
+              "kind": "propertyName"
+            },
+            {
+              "text": ":",
+              "kind": "punctuation"
+            },
+            {
+              "text": " ",
+              "kind": "space"
+            },
+            {
+              "text": "Flags",
+              "kind": "typeParameterName"
+            },
+            {
+              "text": "[",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\"multiline\"",
+              "kind": "stringLiteral"
+            },
+            {
+              "text": "]",
+              "kind": "punctuation"
+            },
+            {
+              "text": ";",
+              "kind": "punctuation"
+            },
+            {
+              "text": "\n",
+              "kind": "lineBreak"
+            },
+            {
+              "text": "}",
+              "kind": "punctuation"
             },
             {
               "text": "\n",

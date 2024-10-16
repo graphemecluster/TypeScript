@@ -15,8 +15,8 @@ var foo1 = "a/".replace(/.[/]/, "");
 >     : ^^^^
 >replace : { <T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string; }
 >        : ^^^ ^^^^^^^^^      ^^           ^^ ^^            ^^                                                                    ^^^      ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^      ^^^
->/.[/]/ : RegExp<[`${string}/`], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/.[/]/ : RegExp<[`${string}/`], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>       : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >"" : ""
 >   : ^^
 
@@ -31,8 +31,8 @@ var foo2 = "a//".replace(/.[//]/g, "");
 >      : ^^^^^
 >replace : { <T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string; }
 >        : ^^^ ^^^^^^^^^      ^^           ^^ ^^            ^^                                                                    ^^^      ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^      ^^^
->/.[//]/g : RegExp<[`${string}/`], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/.[//]/g : RegExp<[`${string}/`], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>         : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >"" : ""
 >   : ^^
 
@@ -47,8 +47,8 @@ var foo3 = "a/".replace(/.[/no sleep /till/]/, "bugfix");
 >     : ^^^^
 >replace : { <T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string; }
 >        : ^^^ ^^^^^^^^^      ^^           ^^ ^^            ^^                                                                    ^^^      ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^      ^^^
->/.[/no sleep /till/]/ : RegExp<[`${string}/` | `${string}n` | `${string}o` | `${string} ` | `${string}s` | `${string}l` | `${string}e` | `${string}p` | `${string}t` | `${string}i`], undefined, { readonly hasIndices: false; readonly global: false; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->                      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/.[/no sleep /till/]/ : RegExp<[`${string}/` | `${string}n` | `${string}o` | `${string} ` | `${string}s` | `${string}l` | `${string}e` | `${string}p` | `${string}t` | `${string}i`], undefined, { hasIndices: false; global: false; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>                      : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >"bugfix" : "bugfix"
 >         : ^^^^^^^^
 

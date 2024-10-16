@@ -255,6 +255,89 @@ interface String {
     split<This, T, R>(this: This, splitter: { [Symbol.split](string: This, limit?: T): R; }, limit?: T): R;
 }
 
+// The order is important - these overloads from `es5.d.ts` must be prioritized for correct type inference, redeclaring them
+interface String {
+    /**
+     * Matches the string with a regular expression.
+     * @param regexp The regular expression with the global (`g`) flag set.
+     * @returns A {@linkcode RegExpMatchArray} that contains all the matched substrings, or `null` if no matches are present.
+     */
+    match<
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+    >(regexp: RegExp<CapturingGroups, NamedCapturingGroupsObject, { readonly global: true; }>): RegExpMatchArray<CapturingGroups> | null;
+
+    /**
+     * Matches the string with a regular expression.
+     * @param regexp The regular expression with the global (`g`) flag unset.
+     * @returns A {@linkcode RegExpExecArray} which is identical to the return value of `regexp.exec(string)`,
+     * or `null` if no matches are present.
+     */
+    match<
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+        Flags extends Partial<RegExpFlags> & { readonly global: false; } = RegExpFlags & { readonly global: false; },
+    >(regexp: RegExp<CapturingGroups, NamedCapturingGroups, Flags>): RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags> | null;
+
+    /**
+     * Matches the string with a regular expression.
+     * @param regexp The regular expression for searching. If the provided value is not a RegExp,
+     * it is implicitly converted to a RegExp without flags by `new RegExp(regexp)`.
+     * @returns Either a {@linkcode RegExpMatchArray} that contains all the matched substrings when the global (`g`) flag is set on the specified RegExp,
+     * a {@linkcode RegExpExecArray} which is identical to the return value of `regexp.exec(string)`, or `null` if no matches are present.
+     */
+    match<
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+        Flags extends Partial<RegExpFlags> = RegExpFlags,
+    >(regexp: RegExp<CapturingGroups, NamedCapturingGroups, Flags> | string): RegExpMatchArray<CapturingGroups> | RegExpExecArray<CapturingGroups, NamedCapturingGroups, Flags> | null;
+
+    /**
+     * Replaces the first occurrence of a search string in the target string.
+     * @param searchValue A string to search for.
+     * @param replaceValue The replacement text, or a callback function that returns the replacement text.
+     */
+    replace<T extends string>(
+        searchValue: T,
+        replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>,
+    ): string;
+
+    /**
+     * Replaces one or more occurrences of substrings that match a search string or a regular expression.
+     * When the {@linkcode searchValue} is a `RegExp`, all matches are replaced if the `g` (global) flag is set
+     * (or only those matches at the beginning, if the `y` (sticky) flag is also present).
+     * Otherwise, only the first match of {@linkcode searchValue} is replaced.
+     * @param searchValue A string or regular expression to search for.
+     * @param replaceValue The replacement text, or a callback function that returns the replacement text.
+     */
+    replace<
+        CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
+        NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
+    >(
+        searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>,
+        replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>,
+    ): string;
+
+    /**
+     * Returns the index of the first occurrence that match a regular expression, or `-1` if no matches are present.
+     * @param regexp The regular expression for searching. If the provided value is not a RegExp,
+     * it is implicitly converted to a RegExp without flags by `new RegExp(regexp)`.
+     */
+    search(regexp: string | RegExp): number;
+
+    /**
+     * Returns an array of substrings that were delimited by separators in the string.
+     * @param separator A string or a regular expression that identifies character(s) to use in separating the string.
+     * If omitted, a single-element array containing the entire string is returned.
+     *
+     * If the regular expression contains capturing parentheses, then each time this
+     * regular expression matches, the results (including any undefined results) of the
+     * capturing parentheses are spliced.
+     *
+     * @param limit If specified, the output array is truncated so that it contains no more than `limit` elements.
+     */
+    split(separator: string | RegExp, limit?: number): string[];
+}
+
 interface ArrayBuffer {
     readonly [Symbol.toStringTag]: string;
 }

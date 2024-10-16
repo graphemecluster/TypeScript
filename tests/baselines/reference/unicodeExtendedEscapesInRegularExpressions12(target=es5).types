@@ -2,8 +2,8 @@
 
 === unicodeExtendedEscapesInRegularExpressions12.ts ===
 var x = /\u{FFFFFFFF}/gu;
->x : RegExp<["\\u{FFFFFFFF}"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: true; readonly unicodeSets: false; readonly sticky: false; }>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\u{FFFFFFFF}/gu : RegExp<["\\u{FFFFFFFF}"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: true; readonly unicodeSets: false; readonly sticky: false; }>
->                 : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : RegExp<["\\u{FFFFFFFF}"], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: true; unicodeSets: false; sticky: false; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\u{FFFFFFFF}/gu : RegExp<["\\u{FFFFFFFF}"], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: true; unicodeSets: false; sticky: false; }>
+>                 : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

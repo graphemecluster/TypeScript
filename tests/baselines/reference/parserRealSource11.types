@@ -1,7 +1,7 @@
 //// [tests/cases/conformance/parser/ecmascript5/parserRealSource11.ts] ////
 
 === Performance Stats ===
-Type Count: 1,000
+Type Count: 2,500
 
 === parserRealSource11.ts ===
 // Copyright (c) Microsoft. All rights reserved. Licensed under the Apache License, Version 2.0. 
@@ -18616,8 +18616,8 @@ module TypeScript {
 >  : ^^^^^^
 >replace : { <T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string; }
 >        : ^^^ ^^^^^^^^^      ^^           ^^ ^^            ^^                                                                    ^^^      ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^      ^^^
->/^\s+|\s+$/g : RegExp<[string], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/^\s+|\s+$/g : RegExp<[string], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >'' : ""
 >   : ^^
                     }
@@ -18648,8 +18648,8 @@ module TypeScript {
 >        : ^^^^^^
 >replace : { <T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string; }
 >        : ^^^ ^^^^^^^^^      ^^           ^^ ^^            ^^                                                                    ^^^      ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^      ^^^
->/^\s+|\s+$/g : RegExp<[string], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/^\s+|\s+$/g : RegExp<[string], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >'' : ""
 >   : ^^
                 }

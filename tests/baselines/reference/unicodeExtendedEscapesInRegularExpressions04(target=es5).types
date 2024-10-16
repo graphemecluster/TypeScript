@@ -2,8 +2,8 @@
 
 === unicodeExtendedEscapesInRegularExpressions04.ts ===
 var x = /\u{00000000}/gu;
->x : RegExp<["\0"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: true; readonly unicodeSets: false; readonly sticky: false; }>
->  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->/\u{00000000}/gu : RegExp<["\0"], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: true; readonly unicodeSets: false; readonly sticky: false; }>
->                 : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>x : RegExp<["\0"], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: true; unicodeSets: false; sticky: false; }>
+>  : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\u{00000000}/gu : RegExp<["\0"], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: true; unicodeSets: false; sticky: false; }>
+>                 : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

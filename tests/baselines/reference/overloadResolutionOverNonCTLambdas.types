@@ -1,5 +1,8 @@
 //// [tests/cases/compiler/overloadResolutionOverNonCTLambdas.ts] ////
 
+=== Performance Stats ===
+Instantiation count: 1,000
+
 === overloadResolutionOverNonCTLambdas.ts ===
 module Bugs {
 >Bugs : typeof Bugs
@@ -30,8 +33,8 @@ module Bugs {
 >        : ^^^^^^
 >replace : { <T extends string>(searchValue: T, replaceValue: string | StringReplaceCallbackSignature<[searchValue: T], undefined>): string; <CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray, NamedCapturingGroups extends NamedCapturingGroupsObject = { [name: string]: string; }>(searchValue: string | RegExp<CapturingGroups, NamedCapturingGroups>, replaceValue: string | StringReplaceCallbackSignature<CapturingGroups, NamedCapturingGroups>): string; }
 >        : ^^^ ^^^^^^^^^      ^^           ^^ ^^            ^^                                                                    ^^^      ^^^               ^^^^^^^^^                    ^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^^^^                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^           ^^                                                      ^^            ^^                                                                              ^^^      ^^^
->/\{(\d+)\}/g : RegExp<[`{${string}}`, string], undefined, { readonly hasIndices: false; readonly global: true; readonly ignoreCase: false; readonly multiline: false; readonly dotAll: false; readonly unicode: false; readonly unicodeSets: false; readonly sticky: false; }>
->             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>/\{(\d+)\}/g : RegExp<[`{${string}}`, string], undefined, { hasIndices: false; global: true; ignoreCase: false; multiline: false; dotAll: false; unicode: false; unicodeSets: false; sticky: false; }>
+>             : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >function(match, ...rest) {      var index= rest[0];      return typeof args[index] !== 'undefined'        ? args[index]        : match;    } : (match: `{${string}}`, rest_0: string, index: number, input: string) => any
 >                                                                                                                                             : ^     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 >match : `{${string}}`

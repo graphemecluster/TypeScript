@@ -109,7 +109,7 @@ interface Object {
     /** Returns a string representation of an object. */
     toString(): string;
 
-    /** Returns a date converted to a string using the current locale. */
+    /** Returns a string representation of an object appropriate to the host environment's current locale. */
     toLocaleString(): string;
 
     /** Returns the primitive value of the specified object. */
@@ -1073,7 +1073,9 @@ type RegExp<
     CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,
     NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
     Flags extends Partial<RegExpFlags> = RegExpFlags,
-> = _RegExp<CapturingGroups, NamedCapturingGroups, Flags> & RegExpFlags & Flags;
+> =
+    & _RegExp<CapturingGroups, NamedCapturingGroups, Flags>
+    & { readonly [P in keyof RegExpFlags]: Flags[P] & RegExpFlags[P]; }; // Exclude flags not in specified libraries
 
 interface _RegExp<
     CapturingGroups extends CapturingGroupsArray = CapturingGroupsArray,

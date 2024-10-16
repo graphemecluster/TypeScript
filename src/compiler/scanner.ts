@@ -12,6 +12,7 @@ import {
     Debug,
     DiagnosticMessage,
     Diagnostics,
+    flatMap,
     forEach,
     getNameOfScriptTarget,
     getSpellingSuggestion,
@@ -31,7 +32,7 @@ import {
     positionIsSynthesized,
     PunctuationOrKeywordSyntaxKind,
     RegularExpressionAnyString,
-    RegularExpressionBackreference,
+    RegularExpressionDisjunctionScope,
     RegularExpressionFlags,
     RegularExpressionPattern,
     RegularExpressionPatternContent,
@@ -39,6 +40,7 @@ import {
     ScriptKind,
     ScriptTarget,
     setLast,
+    some,
     SourceFileLike,
     SyntaxKind,
     TextRange,
@@ -75,7 +77,7 @@ export interface Scanner {
     /** @internal */
     getRegExpCapturingGroups(): RegularExpressionPatternUnion[];
     /** @internal */
-    getRegExpCapturingGroupSpecifiers(): MultiMap<string, RegularExpressionPatternUnion>;
+    getRegExpCapturingGroupSpecifiers(): MultiMap<string, RegularExpressionPatternUnion> | undefined;
     hasUnicodeEscape(): boolean;
     hasExtendedUnicodeEscape(): boolean;
     hasPrecedingLineBreak(): boolean;
@@ -1070,7 +1072,7 @@ export function createScanner(
 
     var regExpFlags: RegularExpressionFlags;
     var regExpCapturingGroups: RegularExpressionPatternUnion[];
-    var regExpCapturingGroupSpecifiers: MultiMap<string, RegularExpressionPatternUnion>;
+    var regExpCapturingGroupSpecifiers: MultiMap<string, RegularExpressionPatternUnion> | undefined;
 
     var commentDirectives: CommentDirective[] | undefined;
     var skipJsDocLeadingAsterisks = 0;
@@ -2624,11 +2626,11 @@ export function createScanner(
                     }
                     pos += size;
                 }
-                if (reportErrors) {
-                    scanRange(startOfRegExpBody, endOfRegExpBody - startOfRegExpBody, () => {
-                        scanRegularExpressionWorker(/*annexB*/ true, hasNamedCapturingGroups);
-                    });
-                }
+            }
+            if (reportErrors) {
+                scanRange(startOfRegExpBody, endOfRegExpBody - startOfRegExpBody, () => {
+                    scanRegularExpressionWorker(/*annexB*/ true, hasNamedCapturingGroups);
+                });
             }
             tokenValue = text.substring(tokenStart, pos);
             token = SyntaxKind.RegularExpressionLiteral;
@@ -2658,19 +2660,20 @@ export function createScanner(
 
         /** The number of all (named and unnamed) capturing groups defined in the regex. */
         var numberOfCapturingGroups = 0;
-        /** All named capturing groups defined in the regex. */
-        var groupSpecifiers: Set<string> | undefined;
         /** All references to named capturing groups in the regex. */
         var groupNameReferences: (TextRange & { name: string; })[] | undefined;
         /** All numeric backreferences within the regex. */
         var decimalEscapes: (TextRange & { value: number; })[] | undefined;
+        /** A stack of scopes for disjunction, including capturing groups, non-capturing groups, lookaheads and lookbehinds. */
+        var disjunctionsScopeStack: (RegularExpressionDisjunctionScope | undefined)[] = [];
+        var topDisjunctionsScope: RegularExpressionDisjunctionScope | undefined;
         /** A stack of scopes for named capturing groups. @see {scanGroupName} */
         var namedCapturingGroupsScopeStack: (Set<string> | undefined)[] = [];
         var topNamedCapturingGroupsScope: Set<string> | undefined;
         /* eslint-enable no-var */
 
         regExpCapturingGroups = [];
-        regExpCapturingGroupSpecifiers = createMultiMap();
+        regExpCapturingGroupSpecifiers = undefined;
 
         function markAllInnerPatternUnionsAsPossiblyUndefined(patternUnion: RegularExpressionPatternUnion) {
             for (const pattern of patternUnion) {
@@ -2688,15 +2691,18 @@ export function createScanner(
         // Disjunction ::= Alternative ('|' Alternative)*
         function scanDisjunction(isInGroup: boolean): RegularExpressionPatternUnion {
             const patternUnion = new Set() as RegularExpressionPatternUnion;
+            disjunctionsScopeStack.push(topDisjunctionsScope);
+            topDisjunctionsScope = undefined;
+            namedCapturingGroupsScopeStack.push(topNamedCapturingGroupsScope);
+            topNamedCapturingGroupsScope = undefined;
             while (true) {
-                namedCapturingGroupsScopeStack.push(topNamedCapturingGroupsScope);
-                topNamedCapturingGroupsScope = undefined;
                 patternUnion.add(scanAlternative(isInGroup));
-                topNamedCapturingGroupsScope = namedCapturingGroupsScopeStack.pop();
                 if (charCodeChecked(pos) !== CharacterCodes.bar) {
                     if (patternUnion.size > 1) {
                         markAllInnerPatternUnionsAsPossiblyUndefined(patternUnion);
                     }
+                    topDisjunctionsScope = disjunctionsScopeStack.pop();
+                    topNamedCapturingGroupsScope = namedCapturingGroupsScopeStack.pop();
                     return patternUnion;
                 }
                 pos++;
@@ -2755,8 +2761,7 @@ export function createScanner(
                                 isPreviousTermQuantifiable = false;
                                 break;
                             default:
-                                const term = scanAtomEscape();
-                                if (term) pattern.push(term);
+                                pattern.push(scanAtomEscape());
                                 isPreviousTermQuantifiable = true;
                                 break;
                         }
@@ -2766,11 +2771,14 @@ export function createScanner(
                         const prevIsCaseInsensitive = isCaseInsensitive;
                         let groupNumber: number | undefined;
                         let groupName: string | undefined;
+                        let isNegativeAssertion = false;
                         if (charCodeChecked(pos) === CharacterCodes.question) {
                             pos++;
                             switch (charCodeChecked(pos)) {
-                                case CharacterCodes.equals:
                                 case CharacterCodes.exclamation:
+                                    isNegativeAssertion = true;
+                                // falls through
+                                case CharacterCodes.equals:
                                     pos++;
                                     // Although `(?=Disjunction)` and `(?!Disjunction)` are quantifiable in Annex B,
                                     // it's mostly likely a mistake to repeat an assertion.
@@ -2782,8 +2790,10 @@ export function createScanner(
                                     const groupNameStart = pos;
                                     pos++;
                                     switch (charCodeChecked(pos)) {
-                                        case CharacterCodes.equals:
                                         case CharacterCodes.exclamation:
+                                            isNegativeAssertion = true;
+                                        // falls through
+                                        case CharacterCodes.equals:
                                             pos++;
                                             isPreviousTermQuantifiable = false;
                                             break;
@@ -2824,10 +2834,17 @@ export function createScanner(
                             pattern.push(patternUnion);
                             if (groupNumber) {
                                 regExpCapturingGroups[groupNumber] = patternUnion;
+                                ((topDisjunctionsScope ??= {}).groups ??= [])[groupNumber] = patternUnion;
                                 if (groupName) {
-                                    regExpCapturingGroupSpecifiers.add(groupName, patternUnion);
+                                    (regExpCapturingGroupSpecifiers ??= createMultiMap()).add(groupName, patternUnion);
+                                    (topDisjunctionsScope.groupSpecifiers ??= createMultiMap()).add(groupName, patternUnion);
                                 }
                             }
+                        }
+                        else if (isNegativeAssertion) {
+                            // Invalidate all capturing groups in the negative lookahead/lookbehind just closed
+                            // such that they won't be matched by backreferences
+                            topDisjunctionsScope = undefined;
                         }
                         scanExpectedChar(CharacterCodes.closeParen);
                         break;
@@ -2862,7 +2879,7 @@ export function createScanner(
                                     error(Diagnostics.Numbers_out_of_order_in_quantifier, digitsStart, pos - digitsStart);
                                 }
                             }
-                            else {
+                            else if (isPreviousTermQuantifiable) {
                                 setLast(pattern, RegExpAnyString);
                             }
                         }
@@ -2887,7 +2904,7 @@ export function createScanner(
                         }
                         if (isPreviousTermQuantifiable) { // error is emitted below
                             const lastTerm = last(pattern);
-                            if (lastTerm !== RegExpAnyString) {
+                            if (lastTerm && lastTerm !== RegExpAnyString) {
                                 const minValue = Number.parseInt(min);
                                 if (minValue === 0) {
                                     if (lastTerm instanceof Set) {
@@ -2906,7 +2923,7 @@ export function createScanner(
                                     let currPattern = pattern;
                                     for (let i = minValue; i < maxValue; i++) {
                                         const innerPattern = [lastTerm] as unknown as RegularExpressionPattern;
-                                        const patternUnion = new Set([[], innerPattern]) as RegularExpressionPatternUnion;
+                                        const patternUnion = new Set(["", innerPattern]) as RegularExpressionPatternUnion;
                                         currPattern.push(patternUnion);
                                         currPattern = innerPattern;
                                     }
@@ -2932,7 +2949,7 @@ export function createScanner(
                                         markAllInnerPatternUnionsAsPossiblyUndefined(lastTerm);
                                     }
                                     if (ch === CharacterCodes.question) {
-                                        setLast(pattern, new Set([[], [lastTerm]]) as RegularExpressionPatternUnion);
+                                        setLast(pattern, new Set(["", [lastTerm]]) as RegularExpressionPatternUnion);
                                         break;
                                     }
                                 // falls through
@@ -3012,12 +3029,24 @@ export function createScanner(
             return currFlags;
         }
 
+        function getBackreferencePatternUnion(selector: (disjunctionScope: RegularExpressionDisjunctionScope | undefined) => RegularExpressionPatternUnion | RegularExpressionPatternUnion[] | undefined): RegularExpressionPatternContent {
+            disjunctionsScopeStack.push(topDisjunctionsScope);
+            const capturingGroups = flatMap(disjunctionsScopeStack, selector);
+            disjunctionsScopeStack.pop();
+            if (!capturingGroups.length) return "";
+            const patternUnion = new Set(capturingGroups as RegularExpressionPattern) as RegularExpressionPatternUnion;
+            if (some(capturingGroups, patternUnion => patternUnion.isPossiblyUndefined!)) {
+                patternUnion.add("");
+            }
+            return patternUnion;
+        }
+
         // AtomEscape ::=
         //     | DecimalEscape
         //     | CharacterClassEscape
         //     | CharacterEscape
         //     | 'k<' RegExpIdentifierName '>'
-        function scanAtomEscape(): RegularExpressionPatternContent | RegularExpressionBackreference | undefined {
+        function scanAtomEscape(): RegularExpressionPatternContent {
             Debug.assertEqual(charCodeUnchecked(pos - 1), CharacterCodes.backslash);
             const ch = charCodeChecked(pos);
             if (ch === CharacterCodes.k && (anyUnicodeModeOrNonAnnexB || hasNamedCapturingGroups)) {
@@ -3026,7 +3055,7 @@ export function createScanner(
                     pos++;
                     const groupName = scanGroupName(/*isReference*/ true);
                     scanExpectedChar(CharacterCodes.greaterThan);
-                    return groupName ? { backreference: groupName } as RegularExpressionBackreference : undefined;
+                    return groupName ? getBackreferencePatternUnion(disjunctionsScope => disjunctionsScope?.groupSpecifiers?.get(groupName)) : "";
                 }
                 error(Diagnostics.k_must_be_followed_by_a_capturing_group_name_enclosed_in_angle_brackets, pos - 2, 2);
                 return getCharacterEquivalents(String.fromCharCode(ch));
@@ -3036,18 +3065,19 @@ export function createScanner(
                 error(Diagnostics.q_is_only_available_inside_character_class, pos - 2, 2);
                 return getCharacterEquivalents(String.fromCharCode(ch));
             }
-            return scanCharacterClassEscape() || scanDecimalEscape() || scanCharacterEscape(/*atomEscape*/ true);
+            return scanCharacterClassEscape() ?? scanDecimalEscape() ?? scanCharacterEscape(/*atomEscape*/ true);
         }
 
         // DecimalEscape ::= [1-9] [0-9]*
-        function scanDecimalEscape(): RegularExpressionBackreference | undefined {
+        function scanDecimalEscape(): RegularExpressionPatternContent | undefined {
             Debug.assertEqual(charCodeUnchecked(pos - 1), CharacterCodes.backslash);
             const ch = charCodeChecked(pos);
             if (ch >= CharacterCodes._1 && ch <= CharacterCodes._9) {
                 const start = pos;
                 scanDigits();
-                decimalEscapes = append(decimalEscapes, { pos: start, end: pos, value: +tokenValue });
-                return { backreference: +tokenValue } as RegularExpressionBackreference;
+                const groupNumber = +tokenValue;
+                decimalEscapes = append(decimalEscapes, { pos: start, end: pos, value: groupNumber });
+                return getBackreferencePatternUnion(disjunctionsScope => disjunctionsScope?.groups?.[groupNumber]);
             }
         }
 
@@ -3063,7 +3093,7 @@ export function createScanner(
             let ch = charCodeChecked(pos);
             switch (ch) {
                 case CharacterCodes.EOF:
-                    error(Diagnostics.Undetermined_character_escape, pos - 1, 1);
+                    // no need to report an error, the initial scan will already have reported that the RegExp is unterminated.
                     return "\\";
                 case CharacterCodes.c:
                     pos++;
@@ -3130,8 +3160,6 @@ export function createScanner(
             else {
                 topNamedCapturingGroupsScope ??= new Set();
                 topNamedCapturingGroupsScope.add(tokenValue);
-                groupSpecifiers ??= new Set();
-                groupSpecifiers.add(tokenValue);
                 return tokenValue;
             }
         }
@@ -3156,6 +3184,25 @@ export function createScanner(
             return patternUnion;
         }
 
+        function addCharacterRangeToPatternUnion(patternUnion: RegularExpressionPatternUnion | undefined, minCharacter: string, maxCharacter: string, startPos: number): RegularExpressionPatternUnion | undefined {
+            const minCharacterValue = codePointAt(minCharacter, 0);
+            const maxCharacterValue = codePointAt(maxCharacter, 0);
+            if (
+                minCharacter.length === charSize(minCharacterValue) &&
+                maxCharacter.length === charSize(maxCharacterValue)
+            ) {
+                if (minCharacterValue > maxCharacterValue) {
+                    error(Diagnostics.Range_out_of_order_in_character_class, startPos, pos - startPos);
+                }
+                else if (patternUnion) {
+                    for (let i = minCharacterValue + 1; i <= maxCharacterValue; i++) {
+                        patternUnion = addContentToPatternUnion(patternUnion, getCharacterEquivalents(String.fromCodePoint(i)));
+                    }
+                }
+            }
+            return patternUnion;
+        }
+
         // ClassRanges ::= '^'? (ClassAtom ('-' ClassAtom)?)*
         function scanClassRanges(): RegularExpressionPatternContent {
             Debug.assertEqual(charCodeUnchecked(pos - 1), CharacterCodes.openBracket);
@@ -3174,45 +3221,32 @@ export function createScanner(
                     return patternUnion || RegExpAnyString;
                 }
                 const minStart = pos;
-                const minCharacter = scanClassAtom();
-                patternUnion = addContentToPatternUnion(patternUnion, minCharacter);
+                const minAtom = scanClassAtom();
+                patternUnion = addContentToPatternUnion(patternUnion, minAtom);
                 if (charCodeChecked(pos) === CharacterCodes.minus) {
                     pos++;
                     const ch = charCodeChecked(pos);
                     if (isClassContentExit(ch)) {
                         return patternUnion || RegExpAnyString;
                     }
-                    if (typeof minCharacter !== "string" && anyUnicodeModeOrNonAnnexB) {
+                    const minCharacter = getCharacterFromClassAtomOrOprand(minAtom);
+                    if (!minCharacter && anyUnicodeModeOrNonAnnexB) {
                         error(Diagnostics.A_character_class_range_must_not_be_bounded_by_another_character_class, minStart, pos - 1 - minStart);
                         patternUnion?.add("-"); // Treat it as a normal character
                     }
                     const maxStart = pos;
-                    const maxCharacter = scanClassAtom();
-                    if (typeof maxCharacter !== "string") {
+                    const maxAtom = scanClassAtom();
+                    const maxCharacter = getCharacterFromClassAtomOrOprand(maxAtom);
+                    if (!maxCharacter) {
                         if (anyUnicodeModeOrNonAnnexB) {
                             error(Diagnostics.A_character_class_range_must_not_be_bounded_by_another_character_class, maxStart, pos - maxStart);
                         }
                         patternUnion?.add("-");
-                        patternUnion = addContentToPatternUnion(patternUnion, maxCharacter);
+                        patternUnion = addContentToPatternUnion(patternUnion, maxAtom);
                         continue;
                     }
-                    if (typeof minCharacter !== "string") {
-                        continue;
-                    }
-                    const minCharacterValue = codePointAt(minCharacter, 0);
-                    const maxCharacterValue = codePointAt(maxCharacter, 0);
-                    if (
-                        minCharacter.length === charSize(minCharacterValue) &&
-                        maxCharacter.length === charSize(maxCharacterValue)
-                    ) {
-                        if (minCharacterValue > maxCharacterValue) {
-                            error(Diagnostics.Range_out_of_order_in_character_class, minStart, pos - minStart);
-                        }
-                        else {
-                            for (let i = minCharacterValue + 1; i <= maxCharacterValue; i++) {
-                                patternUnion = addContentToPatternUnion(patternUnion, getCharacterEquivalents(String.fromCodePoint(i)));
-                            }
-                        }
+                    if (minCharacter) {
+                        addCharacterRangeToPatternUnion(patternUnion, minCharacter, maxCharacter, minStart);
                     }
                 }
             }
@@ -3316,7 +3350,8 @@ export function createScanner(
                             continue;
                         }
                         else {
-                            if (typeof operand !== "string") {
+                            const minCharacter = getCharacterFromClassAtomOrOprand(operand);
+                            if (!minCharacter) {
                                 error(Diagnostics.A_character_class_range_must_not_be_bounded_by_another_character_class, start, pos - 1 - start);
                                 patternUnion?.add("-");
                             }
@@ -3326,29 +3361,15 @@ export function createScanner(
                                 error(Diagnostics.Anything_that_would_possibly_match_more_than_a_single_character_is_invalid_inside_a_negated_character_class, secondStart, pos - secondStart);
                             }
                             expressionMayContainStrings ||= mayContainStrings;
-                            if (typeof secondOperand !== "string") {
+                            const maxCharacter = getCharacterFromClassAtomOrOprand(secondOperand);
+                            if (!maxCharacter) {
                                 error(Diagnostics.A_character_class_range_must_not_be_bounded_by_another_character_class, secondStart, pos - secondStart);
                                 patternUnion?.add("-");
                                 patternUnion = addContentToPatternUnion(patternUnion, secondOperand);
                                 break;
                             }
-                            if (typeof operand !== "string") {
-                                break;
-                            }
-                            const minCharacterValue = codePointAt(operand, 0);
-                            const maxCharacterValue = codePointAt(secondOperand, 0);
-                            if (
-                                operand.length === charSize(minCharacterValue) &&
-                                secondOperand.length === charSize(maxCharacterValue)
-                            ) {
-                                if (minCharacterValue > maxCharacterValue) {
-                                    error(Diagnostics.Range_out_of_order_in_character_class, start, pos - start);
-                                }
-                                else {
-                                    for (let i = minCharacterValue + 1; i <= maxCharacterValue; i++) {
-                                        patternUnion = addContentToPatternUnion(patternUnion, getCharacterEquivalents(String.fromCodePoint(i)));
-                                    }
-                                }
+                            if (minCharacter) {
+                                addCharacterRangeToPatternUnion(patternUnion, minCharacter, maxCharacter, start);
                             }
                         }
                         break;
@@ -3654,6 +3675,13 @@ export function createScanner(
                     case CharacterCodes.minus:
                         pos++;
                         return String.fromCharCode(ch);
+                    case CharacterCodes.k:
+                        if (anyUnicodeModeOrNonAnnexB || hasNamedCapturingGroups) {
+                            pos++;
+                            error(Diagnostics.k_is_only_available_outside_character_class, pos - 2, 2);
+                            return getCharacterEquivalents(String.fromCharCode(ch));
+                        }
+                    // falls through
                     default:
                         return scanCharacterClassEscape() || scanCharacterEscape(/*atomEscape*/ false);
                 }
@@ -3777,7 +3805,7 @@ export function createScanner(
         }
 
         function getCharacterEquivalents(ch: string): RegularExpressionPatternContent {
-            if (!isCaseInsensitive) return ch;
+            if (!isCaseInsensitive || ch.length !== charSize(codePointAt(ch, 0))) return ch;
             // In any Unicode mode, a character is canonicalized by the `toCasefold` method of the Unicode Default Case Folding algorithm.
             // The simple case folding variant of the algorithm does not perform a full (one-to-many characters) case folding and
             // only takes account of the Simple_Case_Folding property.
@@ -3786,8 +3814,20 @@ export function createScanner(
             // See `caseFoldEquivalents` and `upperCaseEquivalents` for full descriptions.
             const equivalents = anyUnicodeMode ? caseFoldEquivalents[codePointAt(ch, 0)] : upperCaseEquivalents[ch.charCodeAt(0)];
             if (!equivalents) return ch;
-            if (typeof equivalents === "number") return new Set([ch, String.fromCodePoint(equivalents)]) as RegularExpressionPatternUnion;
-            return new Set([ch, ...String.fromCodePoint(...equivalents)]) as RegularExpressionPatternUnion;
+            const equivalentsSet = (typeof equivalents === "number"
+                ? new Set([ch, String.fromCodePoint(equivalents)])
+                : new Set([ch, ...String.fromCodePoint(...equivalents)])) as RegularExpressionPatternUnion;
+            equivalentsSet.isCharacterEquivalents = true;
+            return equivalentsSet;
+        }
+
+        function getCharacterFromClassAtomOrOprand(content: RegularExpressionPatternContent) {
+            if (typeof content === "string") return content;
+            if (content instanceof Set && content.isCharacterEquivalents) {
+                for (const ch of content) {
+                    return ch as string;
+                }
+            }
         }
 
         function scanExpectedChar(ch: CharacterCodes) {
@@ -3802,10 +3842,10 @@ export function createScanner(
         regExpCapturingGroups[0] = scanDisjunction(/*isInGroup*/ false);
 
         forEach(groupNameReferences, reference => {
-            if (!groupSpecifiers?.has(reference.name)) {
+            if (!regExpCapturingGroupSpecifiers?.has(reference.name)) {
                 error(Diagnostics.There_is_no_capturing_group_named_0_in_this_regular_expression, reference.pos, reference.end - reference.pos, reference.name);
-                if (groupSpecifiers) {
-                    const suggestion = getSpellingSuggestion(reference.name, groupSpecifiers, identity);
+                if (regExpCapturingGroupSpecifiers) {
+                    const suggestion = getSpellingSuggestion(reference.name, regExpCapturingGroupSpecifiers, ([groupName]) => groupName);
                     if (suggestion) {
                         error(Diagnostics.Did_you_mean_0, reference.pos, reference.end - reference.pos, suggestion);
                     }

@@ -33,7 +33,7 @@
 });
 
 "foo_foo_bar".replace(/foo(?<empty>){0}/g, (match, empty, index, input, capturingGroups, ...args) => {
-    match; // `foo${string}`
+    match; // "foo"
     empty; // undefined
     index; // number
     input; // string

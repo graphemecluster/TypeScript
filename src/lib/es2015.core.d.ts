@@ -374,7 +374,7 @@ interface RegExpConstructor {
         NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
     >(pattern: RegExp<CapturingGroups, NamedCapturingGroups> | string, flags: string): RegExp<CapturingGroups, NamedCapturingGroups>;
 
-    // The order is important - redeclaring this signature from `es5.d.ts` such that `Flags` are copied
+    // The order is important - redeclaring this overload from `es5.d.ts` such that `Flags` are copied
     new <T extends RegExp>(pattern: T | string): T;
 
     new <
@@ -387,7 +387,7 @@ interface RegExpConstructor {
         NamedCapturingGroups extends NamedCapturingGroupsObject = NamedCapturingGroupsObject,
     >(pattern: RegExp<CapturingGroups, NamedCapturingGroups> | string, flags: string): RegExp<CapturingGroups, NamedCapturingGroups>;
 
-    // The order is important - redeclaring this signature from `es5.d.ts` such that `Flags` are copied
+    // The order is important - redeclaring this overload from `es5.d.ts` such that `Flags` are copied
     <T extends RegExp>(pattern: T | string): T;
 
     <

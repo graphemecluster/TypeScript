@@ -1,6 +1,0 @@
-//// [tests/cases/compiler/regularExpressionTypeChecking.ts] ////
-
-=== regularExpressionTypeChecking.ts ===
-const regex = /(foo(.+)bar(.+)baz)/g;
->regex : Symbol(regex, Decl(regularExpressionTypeChecking.ts, 0, 5))
-

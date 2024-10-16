@@ -409,7 +409,6 @@ import {
     hasOnlyExpressionInitializer,
     hasOverrideModifier,
     hasPossibleExternalModuleReference,
-    hasProperty,
     hasQuestionToken,
     hasResolutionModeOverride,
     hasRestParameter,
@@ -964,7 +963,6 @@ import {
     ReadonlyKeyword,
     reduceLeft,
     RegExpAnyString,
-    RegularExpressionBackreference,
     RegularExpressionFlags,
     RegularExpressionLiteral,
     RegularExpressionPatternUnion,
@@ -2609,8 +2607,8 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
         return symbol;
     }
 
-    function createProperty(name: __String, type: Type, checkFlags?: CheckFlags) {
-        const symbol = createSymbol(SymbolFlags.Property, name, checkFlags);
+    function createProperty(name: __String, type: Type) {
+        const symbol = createSymbol(SymbolFlags.Property, name);
         symbol.links.type = type;
         return symbol;
     }
@@ -18096,11 +18094,12 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
 
     function checkCrossProductUnion(types: readonly Type[], isRegularExpression?: boolean) {
         const size = getCrossProductUnionSize(types);
+        if (isRegularExpression) {
+            return size < 10000;
+        }
         if (size >= 100000) {
-            if (!isRegularExpression) {
-                tracing?.instant(tracing.Phase.CheckTypes, "checkCrossProductUnion_DepthLimit", { typeIds: types.map(t => t.id), size });
-                error(currentNode, Diagnostics.Expression_produces_a_union_type_that_is_too_complex_to_represent);
-            }
+            tracing?.instant(tracing.Phase.CheckTypes, "checkCrossProductUnion_DepthLimit", { typeIds: types.map(t => t.id), size });
+            error(currentNode, Diagnostics.Expression_produces_a_union_type_that_is_too_complex_to_represent);
             return false;
         }
         return true;
@@ -18357,7 +18356,7 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
         const unionIndex = findIndex(types, t => !!(t.flags & (TypeFlags.Never | TypeFlags.Union)));
         if (unionIndex >= 0) {
             return checkCrossProductUnion(types, isRegularExpression) ?
-                mapType(types[unionIndex], t => getTemplateLiteralType(texts, replaceElement(types, unionIndex, t))) :
+                mapType(types[unionIndex], t => getTemplateLiteralType(texts, replaceElement(types, unionIndex, t), isRegularExpression)) :
                 isRegularExpression ? stringType : errorType;
         }
         if (contains(types, wildcardType)) {
@@ -32461,14 +32460,22 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
             const regExpCapturingGroupSpecifiers = scanner.getRegExpCapturingGroupSpecifiers();
             const patternUnionTypeCache = new WeakMap<RegularExpressionPatternUnion, Type>();
 
-            const capturingGroupsType = createTupleType(map(regExpCapturingGroups, getTypeFromPatternUnion));
+            const capturingGroupsType = createTupleType(map(regExpCapturingGroups, patternUnion => {
+                const patternUnionType = getTypeFromPatternUnion(patternUnion);
+                return patternUnion.isPossiblyUndefined ? getUnionType([patternUnionType, undefinedType]) : patternUnionType;
+            }));
+
             let namedCapturingGroupsType: Type;
-            if (regExpCapturingGroupSpecifiers.size) {
+            if (regExpCapturingGroupSpecifiers?.size) {
                 const namedCapturingGroupsTypeMembers = createSymbolTable();
                 for (const [groupName, capturingGroups] of regExpCapturingGroupSpecifiers) {
                     const escapedGroupName = escapeLeadingUnderscores(groupName);
-                    const groupsType = getUnionType(map(capturingGroups, getTypeFromPatternUnion));
-                    namedCapturingGroupsTypeMembers.set(escapedGroupName, createProperty(escapedGroupName, groupsType));
+                    const types = map(capturingGroups, getTypeFromPatternUnion);
+                    if (some(capturingGroups, patternUnion => patternUnion.isPossiblyUndefined!)) {
+                        types.push(undefinedType);
+                    }
+                    const groupType = getUnionType(types);
+                    namedCapturingGroupsTypeMembers.set(escapedGroupName, createProperty(escapedGroupName, groupType));
                 }
                 namedCapturingGroupsType = createAnonymousType(/*symbol*/ undefined, namedCapturingGroupsTypeMembers, emptyArray, emptyArray, emptyArray);
             }
@@ -32479,7 +32486,7 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
             const regExpFlags = scanner.getRegExpFlags();
             const flagsTypeMembers = createSymbolTable();
             for (const [flag, propertyName] of regExpFlagToPropertyName) {
-                flagsTypeMembers.set(propertyName, createProperty(propertyName, regExpFlags & flag ? trueType : falseType, CheckFlags.Readonly));
+                flagsTypeMembers.set(propertyName, createProperty(propertyName, regExpFlags & flag ? trueType : falseType));
             }
             const flagsType = createAnonymousType(/*symbol*/ undefined, flagsTypeMembers, emptyArray, emptyArray, emptyArray);
 
@@ -32504,21 +32511,11 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
                                 if (content instanceof Set) {
                                     return getTypeFromPatternUnion(content);
                                 }
-                                if (typeof content !== "string" && hasProperty(content, "backreference")) {
-                                    const { backreference } = content as RegularExpressionBackreference;
-                                    if (typeof backreference === "string") {
-                                        return getUnionType(map(regExpCapturingGroupSpecifiers.get(backreference)!, getTypeFromPatternUnion));
-                                    }
-                                    return getTypeFromPatternUnion(regExpCapturingGroups[backreference]);
-                                }
                                 Debug.fail();
                             }),
                             /*isRegularExpression*/ true,
                         );
                     });
-                    if (patternUnion.isPossiblyUndefined) {
-                        types.push(undefinedType);
-                    }
                     patternUnionType = getUnionType(types);
                     patternUnionTypeCache.set(patternUnion, patternUnionType);
                 }
